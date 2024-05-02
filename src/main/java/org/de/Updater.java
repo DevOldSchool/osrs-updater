@@ -277,22 +277,22 @@ public class Updater {
         analysers.add(new AbstractSoundSystem());
         analysers.add(new SoundSystem());
         analysers.add(new AudioTask());
-        // AudioRequestNode
-        // AreaSoundEmitter
-        // AudioRunnable
-        // AudioTrack
-        // NameableComparator
-        // NameableContainer
-        // FriendContainer
-        // FriendListLink
-        // IgnoreContainer
-        // ChatPlayer
-        // IgnoredMessage
-        // FriendMessage
-        // ClanMember
-        // FriendManager
-        // ClanContainer
-        // Occluder
+        analysers.add(new AudioRequestNode());
+        analysers.add(new AreaSoundEmitter());
+        analysers.add(new AudioRunnable());
+        analysers.add(new AudioTrack());
+        analysers.add(new NameableComparator());
+        analysers.add(new NameableContainer());
+        analysers.add(new FriendContainer());
+        analysers.add(new FriendListLink());
+        analysers.add(new IgnoreContainer());
+        analysers.add(new ChatPlayer());
+        analysers.add(new IgnoredMessage());
+        analysers.add(new FriendMessage());
+        analysers.add(new ClanMember());
+        analysers.add(new FriendManager());
+        analysers.add(new ClanContainer());
+        analysers.add(new Occluder());
         // Hitsplat
         // IntegerNode
         // ObjectNode
