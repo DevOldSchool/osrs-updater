@@ -1,23 +1,23 @@
 Gamepack Revision: 221
-Finished loading 567 classes in 62 ms
+Finished loading 567 classes in 63 ms
 Stored 1766 multipliers
 
 Deobfuscation: Removed 2865 RuntimeException try-catch blocks in 1 ms
-Deobfuscation: Removed 31802 dead instructions in 200 ms
-Deobfuscation: Optimised 210960 method control-flow graphs in 437 ms
+Deobfuscation: Removed 31802 dead instructions in 202 ms
+Deobfuscation: Optimised 210960 method control-flow graphs in 440 ms
 Deobfuscation: Optimised 1794 try-catch block handler exception ranges in 1 ms
-Deobfuscation: Removed 8614 IllegalStateException opaque checks in 34 ms
+Deobfuscation: Removed 8614 IllegalStateException opaque checks in 35 ms
 Deobfuscation: Removed 1422 unused method arguments in 29 ms
 Deobfuscation: Removed 94796 redundant GOTO jumps in 8 ms
-Deobfuscation: Removed 71724 jumps and 12112 labels in 165 ms
+Deobfuscation: Removed 71724 jumps and 12112 labels in 168 ms
 Deobfuscation: Removed 101 constructor errors in 1 ms
-Deobfuscation: Fixed 3 invalid getPath() method calls in 6 ms
-Deobfuscation: Moved 5886 fields to original classes in 17 ms
-Deobfuscation: Removed 974 unused fields in 14 ms
+Deobfuscation: Fixed 3 invalid getPath() method calls in 7 ms
+Deobfuscation: Moved 5886 fields to original classes in 18 ms
+Deobfuscation: Removed 974 unused fields in 15 ms
 Deobfuscation: Reordered 4470 fields in 1 ms
-Deobfuscation: Moved 4654 methods to original classes in 1081 ms
-Deobfuscation: Removed 1029 unused methods in 63 ms
-Deobfuscation: Reordered 9784 methods in 29 ms
+Deobfuscation: Moved 4654 methods to original classes in 1114 ms
+Deobfuscation: Removed 1029 unused methods in 64 ms
+Deobfuscation: Reordered 9784 methods in 26 ms
 Deobfuscation: Inlined 4056 strings in 11 ms
 Deobfuscation: Removed 0 decomplier traps in 0 ms
 
@@ -41,10 +41,10 @@ Deobfuscation: Removed 0 decomplier traps in 0 ms
 	[> 'getText()' identified as 'vr.ao' -] (Ljava/lang/String;)
 	[> 'getThrowable()' identified as 'vr.ab' -] (Ljava/lang/Throwable;)
 
-[- Inflater identified as vs extends java/lang/Object -] (1/1) in 1 ms
+[- Inflater identified as vs extends java/lang/Object -] (1/1) in 0 ms
 	[> 'getInflater()' identified as 'vs.az' -] (Ljava/util/zip/Inflater;)
 
-[- ItemStorage identified as dx extends su -] (2/2) in 0 ms
+[- ItemStorage identified as dx extends su -] (2/2) in 1 ms
 	[> 'getStackSizes()' identified as 'dx.af' -] ([I)
 	[> 'getIds()' identified as 'dx.ah' -] ([I)
 
@@ -68,7 +68,7 @@ Deobfuscation: Removed 0 decomplier traps in 0 ms
 	[> 'getImage()' identified as 'bd.ah' -] (Ljava/awt/Image;)
 	[> 'getComponent()' identified as 'bd.az' -] (Ljava/awt/Component;)
 
-[- HashTable identified as tv extends java/lang/Object -] (5/5) in 0 ms
+[- HashTable identified as tv extends java/lang/Object -] (5/5) in 1 ms
 	[> 'getBuckets()' identified as 'tv.ah' -] ([Lsu;)
 	[> 'getCurrent()' identified as 'tv.at' -] (Lsu;)
 	[> 'getIndex()' identified as 'tv.an' -] (I)	[ * 1 ]
@@ -112,7 +112,7 @@ Deobfuscation: Removed 0 decomplier traps in 0 ms
 [- HardReference identified as ll extends lp -] (1/1) in 0 ms
 	[> 'getHardReference()' identified as 'll.az' -] (Ljava/lang/Object;)
 
-[- DoublyNode identified as pa extends java/lang/Object -] (2/2) in 0 ms
+[- DoublyNode identified as pa extends java/lang/Object -] (2/2) in 1 ms
 	[> 'getCurrent()' identified as 'pa.ah' -] (Lst;)
 	[> 'getHead()' identified as 'pa.az' -] (Lst;)
 
@@ -135,7 +135,7 @@ Deobfuscation: Removed 0 decomplier traps in 0 ms
 [- Queue identified as pq extends java/lang/Object -] (1/1) in 0 ms
 	[> 'getEntityNode()' identified as 'pq.az' -] (Lst;)
 
-[- Cache identified as lt extends java/lang/Object -] (5/5) in 1 ms
+[- Cache identified as lt extends java/lang/Object -] (5/5) in 0 ms
 	[> 'getNodeComposite()' identified as 'lt.an' -] (Lpa;)
 	[> 'getFixedSizedDeque()' identified as 'lt.at' -] (Lto;)
 	[> 'getEntityNode()' identified as 'lt.az' -] (Lst;)
@@ -145,7 +145,7 @@ Deobfuscation: Removed 0 decomplier traps in 0 ms
 [- InventoryDefinition identified as hr extends st -] (1/1) in 0 ms
 	[> 'getCapacity()' identified as 'hr.af' -] (I)	[ * 1 ]
 
-[- ISAACCipher identified as vb extends java/lang/Object -] (1/1) in 13 ms
+[- ISAACCipher identified as vb extends java/lang/Object -] (1/1) in 12 ms
 	[> 'getMemory()' identified as 'vb.ao' -] ([I)
 
 [- PacketBuffer identified as un extends ur -] (2/2) in 0 ms
@@ -194,7 +194,7 @@ Deobfuscation: Removed 0 decomplier traps in 0 ms
 
 [- PacketContext identified as de extends jd -] (0/0) in 1 ms
 
-[- IdentityTable identified as vd extends java/lang/Object -] (1/1) in 10 ms
+[- IdentityTable identified as vd extends java/lang/Object -] (1/1) in 9 ms
 	[> 'getIds()' identified as 'vd.az' -] ([I)
 
 [- AbstractArchive identified as oc extends java/lang/Object -] (5/6) in 1 ms
@@ -233,7 +233,7 @@ Deobfuscation: Removed 0 decomplier traps in 0 ms
 
 [- AnimationSequence identified as ig extends st -] (0/0) in 0 ms
 
-[- ModelHeader identified as jj extends jd -] (0/0) in 0 ms
+[- ModelHeader identified as jj extends jd -] (0/0) in 1 ms
 
 [- ItemDefinition identified as id extends st -] (5/9) in 0 ms
 	[> 'getStackIds()' identified as 'id.aq' -] (I)	[ * -2110509111 ]
@@ -266,13 +266,13 @@ Deobfuscation: Removed 0 decomplier traps in 0 ms
 	[> 'isFemale()' identified as 'nq.al' -] (Z)
 	[> Method 'getModelHeader()' identified as 'nq.bs' -] ((Lig;ILig;I)Ljn;)
 
-[- IndexedImage identified as vl extends ui -] (1/1) in 1 ms
+[- IndexedImage identified as vl extends ui -] (1/1) in 0 ms
 	[> 'getPixels()' identified as 'vl.az' -] ([B)
 
 [- RuneScript identified as dn extends st -] (1/1) in 0 ms
 	[> 'getSwitches()' identified as 'dn.al' -] ([Lto;)
 
-[- AccessFile identified as tz extends java/lang/Object -] (2/2) in 0 ms
+[- AccessFile identified as tz extends java/lang/Object -] (2/2) in 1 ms
 	[> 'getPosition()' identified as 'tz.af' -] (J)
 	[> 'getFile()' identified as 'tz.az' -] (Ljava/io/RandomAccessFile;)
 
@@ -312,14 +312,14 @@ Deobfuscation: Removed 0 decomplier traps in 0 ms
 [- RawAudioNode identified as br extends cd -] (1/1) in 0 ms
 	[> 'getBuffer()' identified as 'br.ah' -] ([B)
 
-[- Item identified as ew extends jd -] (2/2) in 1 ms
+[- Item identified as ew extends jd -] (2/2) in 0 ms
 	[> 'getId()' identified as 'ew.az' -] (I)	[ * 1966640063 ]
 	[> 'getStackSize()' identified as 'ew.ah' -] (I)	[ * 1143807725 ]
 
 [- DynamicObject identified as dl extends jd -] (1/1) in 0 ms
 	[> 'getAnimationSequence()' identified as 'dl.ab' -] (Lig;)
 
-[- Projectile identified as ca extends jd -] (5/5) in 0 ms
+[- Projectile identified as ca extends jd -] (5/5) in 1 ms
 	[> 'isMoving()' identified as 'ca.aj' -] (Z)
 	[> 'getX()' identified as 'ca.au' -] (D)
 	[> 'getY()' identified as 'ca.ay' -] (D)
@@ -338,16 +338,16 @@ Deobfuscation: Removed 0 decomplier traps in 0 ms
 	[> 'getValue()' identified as 'gu.aw' -] (Ljava/lang/Object;)
 	[> 'getTask()' identified as 'gu.az' -] (Lgu;)
 
-[- Signlink identified as gd extends java/lang/Object -] (1/1) in 1 ms
+[- Signlink identified as gd extends java/lang/Object -] (1/1) in 0 ms
 	[> 'getThread()' identified as 'gd.an' -] (Ljava/lang/Thread;)
 
-[- Deque identified as ps extends java/lang/Object -] (2/2) in 1 ms
+[- Deque identified as ps extends java/lang/Object -] (2/2) in 2 ms
 	[> 'getCurrent()' identified as 'ps.ah' -] (Lsu;)
 	[> 'getHead()' identified as 'ps.az' -] (Lsu;)
 
 [- MouseTracker identified as dw extends java/lang/Object -] (0/0) in 0 ms
 
-[- CollisionMap identified as ix extends java/lang/Object -] (5/5) in 5 ms
+[- CollisionMap identified as ix extends java/lang/Object -] (5/5) in 4 ms
 	[> 'getWidth()' identified as 'ix.bl' -] (I)	[ * -563864283 ]
 	[> 'getHeightOffset()' identified as 'ix.bx' -] (I)	[ * 1153342305 ]
 	[> 'getFlags()' identified as 'ix.bs' -] ([[I)
@@ -406,10 +406,10 @@ Deobfuscation: Removed 0 decomplier traps in 0 ms
 
 [- AnimableObject identified as cz extends jd -] (0/0) in 0 ms
 
-[- Tile identified as jh extends su -] (1/6) in 1 ms
+[- Tile identified as jh extends su -] (1/6) in 0 ms
 	[> 'getPlane()' identified as 'jh.az' -] (I)	[ * -668451045 ]
 
-[- Region identified as jp extends java/lang/Object -] (0/3) in 0 ms
+[- Region identified as jp extends java/lang/Object -] (0/3) in 1 ms
 
 [- WallDecoration identified as ku extends java/lang/Object -] (4/4) in 0 ms
 	[> 'getRenderInfo()' identified as 'ku.ad' -] (I)	[ * 1136520437 ]
@@ -425,9 +425,9 @@ Deobfuscation: Removed 0 decomplier traps in 0 ms
 
 [- ChatboxMessage identified as cn extends st -] (0/0) in 0 ms
 
-[- ChatboxChannel identified as df extends java/lang/Object -] (0/0) in 1 ms
+[- ChatboxChannel identified as df extends java/lang/Object -] (0/0) in 0 ms
 
-[- BufferedImage identified as mu extends st -] (0/0) in 0 ms
+[- BufferedImage identified as mu extends st -] (0/0) in 1 ms
 
 [- Widget identified as nt extends su -] (10/26) in 34 ms
 	[> 'getOpcodes()' identified as 'nt.gr' -] ([[I)
@@ -456,7 +456,31 @@ Deobfuscation: Removed 0 decomplier traps in 0 ms
 
 [- Server identified as ck extends java/lang/Object -] (0/0) in 0 ms
 
-Identified 117/117 classes
+[- RSShadowedFont identified as jw extends jt -] (0/0) in 0 ms
+
+[- CombatBarData identified as dz extends su -] (0/0) in 0 ms
+
+[- CombatBar identified as dd extends su -] (2/2) in 0 ms
+	[> 'getNodeList()' identified as 'dd.at' -] (Lpr;)
+	[> 'getDefinition()' identified as 'dd.af' -] (Lhl;)
+
+[- CombatBarDefinition identified as hl extends st -] (0/0) in 0 ms
+
+[- TaskDataNode identified as ba extends su -] (1/1) in 0 ms
+	[> 'getAudioNode()' identified as 'ba.ay' -] (Lcd;)
+
+[- AbstractSoundSystem identified as by extends java/lang/Object -] (0/0) in 0 ms
+
+[- SoundSystem identified as ae extends by -] (4/4) in 0 ms
+	[> 'getSourceDataLine()' identified as 'ae.ah' -] (Ljavax/sound/sampled/SourceDataLine;)
+	[> 'getLength()' identified as 'ae.af' -] (I)	[ * -119439397 ]
+	[> 'getBytes()' identified as 'ae.at' -] ([B)
+	[> 'getAudioFormat()' identified as 'ae.az' -] (Ljavax/sound/sampled/AudioFormat;)
+
+[- AudioTask identified as mx extends ba -] (1/1) in 1 ms
+	[> 'getHashTable()' identified as 'mx.az' -] (Ltv;)
+
+Identified 125/125 classes
 Identified 3/4 methods
-Identified 198/253 fields
-Finished analysing in 121 ms
+Identified 206/261 fields
+Finished analysing in 120 ms

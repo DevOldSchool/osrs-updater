@@ -269,14 +269,14 @@ public class Updater {
         analysers.add(new ScriptState());
         analysers.add(new RuneScriptVM());
         analysers.add(new Server());
-        // RSShadowedFont
-        // CombatBarDefinition
-        // CombatBarData
-        // CombatBar
-        // TaskDataNode
-        // AbstractSoundSystem
-        // SoundSystem
-        // AudioTask
+        analysers.add(new RSShadowedFont());
+        analysers.add(new CombatBarData());
+        analysers.add(new CombatBar());
+        analysers.add(new CombatBarDefinition());
+        analysers.add(new TaskDataNode());
+        analysers.add(new AbstractSoundSystem());
+        analysers.add(new SoundSystem());
+        analysers.add(new AudioTask());
         // AudioRequestNode
         // AreaSoundEmitter
         // AudioRunnable
