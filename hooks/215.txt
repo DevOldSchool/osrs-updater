@@ -1,25 +1,25 @@
 Gamepack Revision: 215
-Finished loading 547 classes in 68 ms
+Finished loading 547 classes in 67 ms
 Stored 1676 multipliers
 
 Deobfuscation: Removed 2773 RuntimeException try-catch blocks in 2 ms
-Deobfuscation: Removed 30715 dead instructions in 214 ms
-Deobfuscation: Optimised 210681 method control-flow graphs in 455 ms
+Deobfuscation: Removed 30715 dead instructions in 203 ms
+Deobfuscation: Optimised 210681 method control-flow graphs in 483 ms
 Deobfuscation: Optimised 1923 try-catch block handler exception ranges in 2 ms
-Deobfuscation: Removed 8490 IllegalStateException opaque checks in 33 ms
-Deobfuscation: Removed 1359 unused method arguments in 28 ms
+Deobfuscation: Removed 8490 IllegalStateException opaque checks in 55 ms
+Deobfuscation: Removed 1359 unused method arguments in 31 ms
 Deobfuscation: Removed 94661 redundant GOTO jumps in 8 ms
-Deobfuscation: Removed 70947 jumps and 11728 labels in 137 ms
+Deobfuscation: Removed 70947 jumps and 11728 labels in 177 ms
 Deobfuscation: Removed 90 constructor errors in 1 ms
 Deobfuscation: Fixed 4 invalid getPath() method calls in 6 ms
 Deobfuscation: Moved 6045 fields to original classes in 17 ms
-Deobfuscation: Removed 989 unused fields in 13 ms
-Deobfuscation: Reordered 4302 fields in 1 ms
-Deobfuscation: Moved 4718 methods to original classes in 1141 ms
+Deobfuscation: Removed 989 unused fields in 12 ms
+Deobfuscation: Reordered 4302 fields in 2 ms
+Deobfuscation: Moved 4718 methods to original classes in 1118 ms
 Deobfuscation: Removed 988 unused methods in 67 ms
-Deobfuscation: Reordered 9649 methods in 41 ms
-Deobfuscation: Inlined 3030 strings in 11 ms
-Deobfuscation: Removed 0 decomplier traps in 1 ms
+Deobfuscation: Reordered 9649 methods in 25 ms
+Deobfuscation: Inlined 3030 strings in 12 ms
+Deobfuscation: Removed 0 decomplier traps in 2 ms
 
 [- Canvas identified as af extends java/awt/Canvas -] (1/1) in 0 ms
 	[> 'getComponent()' identified as 'af.aw' -] (Ljava/awt/Component;)
@@ -44,7 +44,7 @@ Deobfuscation: Removed 0 decomplier traps in 1 ms
 [- Inflater identified as un extends java/lang/Object -] (1/1) in 0 ms
 	[> 'getInflater()' identified as 'un.aw' -] (Ljava/util/zip/Inflater;)
 
-[- ItemStorage identified as do extends sb -] (2/2) in 1 ms
+[- ItemStorage identified as do extends sb -] (2/2) in 0 ms
 	[> 'getStackSizes()' identified as 'do.ar' -] ([I)
 	[> 'getIds()' identified as 'do.ay' -] ([I)
 
@@ -56,7 +56,7 @@ Deobfuscation: Removed 0 decomplier traps in 1 ms
 
 [- AbstractByteBuffer identified as me extends java/lang/Object -] (0/0) in 0 ms
 
-[- BasicByteBuffer identified as np extends me -] (1/1) in 0 ms
+[- BasicByteBuffer identified as np extends me -] (1/1) in 1 ms
 	[> 'getBuffer()' identified as 'np.aw' -] (Ljava/nio/ByteBuffer;)
 
 [- Producer identified as uk extends java/lang/Object -] (3/3) in 0 ms
@@ -106,13 +106,13 @@ Deobfuscation: Removed 0 decomplier traps in 1 ms
 [- Reference identified as la extends sh -] (1/1) in 0 ms
 	[> 'getIndex()' identified as 'la.ay' -] (I)	[ * 1 ]
 
-[- SoftReference identified as lr extends la -] (1/1) in 0 ms
+[- SoftReference identified as lr extends la -] (1/1) in 1 ms
 	[> 'getSoftReference()' identified as 'lr.aw' -] (Ljava/lang/ref/SoftReference;)
 
 [- HardReference identified as li extends la -] (1/1) in 0 ms
 	[> 'getHardReference()' identified as 'li.aw' -] (Ljava/lang/Object;)
 
-[- DoublyNode identified as oz extends java/lang/Object -] (2/2) in 1 ms
+[- DoublyNode identified as oz extends java/lang/Object -] (2/2) in 0 ms
 	[> 'getCurrent()' identified as 'oz.ay' -] (Lsh;)
 	[> 'getHead()' identified as 'oz.aw' -] (Lsh;)
 
@@ -135,17 +135,17 @@ Deobfuscation: Removed 0 decomplier traps in 1 ms
 [- Queue identified as ob extends java/lang/Object -] (1/1) in 0 ms
 	[> 'getEntityNode()' identified as 'ob.aw' -] (Lsh;)
 
-[- Cache identified as ld extends java/lang/Object -] (5/5) in 0 ms
+[- Cache identified as ld extends java/lang/Object -] (5/5) in 1 ms
 	[> 'getNodeComposite()' identified as 'ld.as' -] (Loz;)
 	[> 'getFixedSizedDeque()' identified as 'ld.am' -] (Lsa;)
 	[> 'getEntityNode()' identified as 'ld.aw' -] (Lsh;)
 	[> 'getRemaining()' identified as 'ld.ar' -] (I)	[ * 1 ]
 	[> 'getSize()' identified as 'ld.ay' -] (I)	[ * 1 ]
 
-[- InventoryDefinition identified as hh extends sh -] (1/1) in 1 ms
+[- InventoryDefinition identified as hh extends sh -] (1/1) in 0 ms
 	[> 'getCapacity()' identified as 'hh.ar' -] (I)	[ * 1 ]
 
-[- ISAACCipher identified as uy extends java/lang/Object -] (1/1) in 13 ms
+[- ISAACCipher identified as uy extends java/lang/Object -] (1/1) in 12 ms
 	[> 'getMemory()' identified as 'uy.aj' -] ([I)
 
 [- PacketBuffer identified as tc extends ty -] (2/2) in 0 ms
@@ -180,7 +180,7 @@ Deobfuscation: Removed 0 decomplier traps in 1 ms
 	[> 'getSize()' identified as 'rh.ar' -] (I)	[ * -1482716161 ]
 	[> 'getThread()' identified as 'rh.aw' -] (Ljava/lang/Thread;)
 
-[- Socket identified as qq extends qh -] (4/4) in 0 ms
+[- Socket identified as qq extends qh -] (4/4) in 1 ms
 	[> 'getSocket()' identified as 'qq.aw' -] (Ljava/net/Socket;)
 	[> 'getOutputStream()' identified as 'qq.ar' -] (Lrh;)
 	[> 'getInputStream()' identified as 'qq.ay' -] (Lqy;)
@@ -188,7 +188,7 @@ Deobfuscation: Removed 0 decomplier traps in 1 ms
 
 [- AbstractSocket identified as qh extends java/lang/Object -] (0/0) in 0 ms
 
-[- PacketContext identified as eb extends java/lang/Object -] (0/0) in 1 ms
+[- PacketContext identified as eb extends java/lang/Object -] (0/0) in 0 ms
 
 [- IdentityTable identified as uj extends java/lang/Object -] (1/1) in 11 ms
 	[> 'getIds()' identified as 'uj.aw' -] ([I)
@@ -229,7 +229,7 @@ Deobfuscation: Removed 0 decomplier traps in 1 ms
 
 [- ModelHeader identified as ie extends it -] (0/0) in 0 ms
 
-[- ItemDefinition identified as hc extends sh -] (5/9) in 0 ms
+[- ItemDefinition identified as hc extends sh -] (5/9) in 1 ms
 	[> 'getStackIds()' identified as 'hc.ac' -] (I)	[ * 678600745 ]
 	[> 'isMember()' identified as 'hc.bv' -] (Z)
 	[> 'getName()' identified as 'hc.au' -] (Ljava/lang/String;)
@@ -239,7 +239,7 @@ Deobfuscation: Removed 0 decomplier traps in 1 ms
 [- DefinitionProperty identified as hq extends sh -] (1/2) in 0 ms
 	[> 'getCache()' identified as 'hq.ay' -] (Lld;)
 
-[- ObjectDefinition identified as hb extends sh -] (2/4) in 5 ms
+[- ObjectDefinition identified as hb extends sh -] (2/4) in 4 ms
 	[> 'getName()' identified as 'hb.at' -] (Ljava/lang/String;)
 	[> 'getActions()' identified as 'hb.bn' -] ([Ljava/lang/String;)
 
@@ -253,7 +253,7 @@ Deobfuscation: Removed 0 decomplier traps in 1 ms
 	[> 'getHue()' identified as 'hj.am' -] (I)	[ * 777199619 ]
 	[> 'getRgbColor()' identified as 'hj.ar' -] (I)	[ * -1605256317 ]
 
-[- SpotAnim identified as hw extends sh -] (0/0) in 1 ms
+[- SpotAnim identified as hw extends sh -] (0/0) in 0 ms
 
 [- PlayerDefinition identified as mb extends java/lang/Object -] (2/3) in 8 ms
 	[> 'getEquipment()' identified as 'mb.ar' -] ([I)
@@ -266,20 +266,20 @@ Deobfuscation: Removed 0 decomplier traps in 1 ms
 [- RuneScript identified as dc extends sh -] (1/1) in 0 ms
 	[> 'getSwitches()' identified as 'dc.ap' -] ([Lsa;)
 
-[- AccessFile identified as tn extends java/lang/Object -] (2/2) in 0 ms
+[- AccessFile identified as tn extends java/lang/Object -] (2/2) in 1 ms
 	[> 'getPosition()' identified as 'tn.ar' -] (J)
 	[> 'getFile()' identified as 'tn.aw' -] (Ljava/io/RandomAccessFile;)
 
-[- AccessFileHandler identified as ts extends java/lang/Object -] (1/1) in 3 ms
+[- AccessFileHandler identified as ts extends java/lang/Object -] (1/1) in 2 ms
 	[> 'getAccessFile()' identified as 'ts.ay' -] (Ltn;)
 
-[- ArchiveDisk identified as rg extends java/lang/Object -] (2/2) in 9 ms
+[- ArchiveDisk identified as rg extends java/lang/Object -] (2/2) in 10 ms
 	[> 'getIndexFile()' identified as 'rg.ar' -] (Lts;)
 	[> 'getDataFile()' identified as 'rg.ay' -] (Lts;)
 
 [- Archive identified as ny extends nd -] (0/0) in 0 ms
 
-[- FileSystemRequest identified as nn extends sb -] (0/0) in 1 ms
+[- FileSystemRequest identified as nn extends sb -] (0/0) in 0 ms
 
 [- ClassInfo identified as bw extends sb -] (2/2) in 0 ms
 	[> 'getMethods()' identified as 'bw.ag' -] ([Ljava/lang/reflect/Method;)
@@ -299,7 +299,7 @@ Deobfuscation: Removed 0 decomplier traps in 1 ms
 [- AbstractRawAudioNode identified as cm extends sb -] (1/1) in 0 ms
 	[> 'getId()' identified as 'cm.aj' -] (I)	[ * 1 ]
 
-[- Resampler identified as cj extends java/lang/Object -] (1/1) in 2 ms
+[- Resampler identified as cj extends java/lang/Object -] (1/1) in 1 ms
 	[> 'getResampleTable()' identified as 'cj.aj' -] ([[I)
 
 [- RawAudioNode identified as bi extends cm -] (1/1) in 0 ms
@@ -350,22 +350,26 @@ Deobfuscation: Removed 0 decomplier traps in 1 ms
 [- SoundFilter identified as cn extends java/lang/Object -] (1/1) in 1 ms
 	[> 'getPairs()' identified as 'cn.aw' -] ([I)
 
-[- AudioInstrument identified as cq extends java/lang/Object -] (0/0) in 1 ms
+[- AudioInstrument identified as cq extends java/lang/Object -] (0/0) in 0 ms
 
 [- AudioEffect identified as bc extends java/lang/Object -] (0/0) in 0 ms
 
-[- Actor identified as dx extends it -] (2/7) in 0 ms
+[- MovementType identified as io extends java/lang/Object -] (0/0) in 0 ms
+
+[- Actor identified as dx extends it -] (2/7) in 1 ms
 	[> 'isAnimating()' identified as 'dx.an' -] (Z)
 	[> 'getMessage()' identified as 'dx.bj' -] (Ljava/lang/String;)
 
 [- Npc identified as dh extends dx -] (1/1) in 0 ms
 	[> 'getDefinition()' identified as 'dh.aw' -] (Lhi;)
 
-[- Player identified as df extends dx -] (4/7) in 9 ms
+[- Player identified as df extends dx -] (4/7) in 8 ms
 	[> 'getPrayerIcon()' identified as 'df.ar' -] (I)	[ * -2104548197 ]
 	[> 'getName()' identified as 'df.aj' -] ([Ljava/lang/String;)
 	[> 'getModel()' identified as 'df.aa' -] (Ljo;)
 	[> 'getCombatLevel()' identified as 'df.ag' -] (I)	[ * -999165743 ]
+
+[- GrandExchangeOffer identified as oc extends java/lang/Object -] (0/0) in 1 ms
 
 [- MouseListener identified as bo extends java/lang/Object -] (0/0) in 0 ms
 
@@ -381,6 +385,8 @@ Deobfuscation: Removed 0 decomplier traps in 1 ms
 [- TileModel identified as ju extends java/lang/Object -] (0/0) in 1 ms
 
 [- TilePaint identified as jl extends java/lang/Object -] (0/0) in 0 ms
+
+[- JagexLoginType identified as si extends java/lang/Object -] (0/0) in 0 ms
 
 [- ItemLayer identified as ix extends java/lang/Object -] (1/2) in 1 ms
 	[> 'getRenderable()' identified as 'ix.aj' -] (Lit;)
@@ -410,7 +416,7 @@ Deobfuscation: Removed 0 decomplier traps in 1 ms
 
 [- BufferedImage identified as mi extends sh -] (0/0) in 0 ms
 
-[- Widget identified as mt extends sb -] (13/26) in 40 ms
+[- Widget identified as mt extends sb -] (13/26) in 38 ms
 	[> 'getTextureId()' identified as 'mt.cg' -] (I)	[ * 701078763 ]
 	[> 'getScrollX()' identified as 'mt.cb' -] (I)	[ * -633207203 ]
 	[> 'getScrollY()' identified as 'mt.by' -] (I)	[ * -1602574411 ]
@@ -427,7 +433,7 @@ Deobfuscation: Removed 0 decomplier traps in 1 ms
 
 [- ScriptEvent identified as di extends sb -] (0/0) in 0 ms
 
-Identified 110/110 classes
+Identified 113/113 classes
 Identified 3/4 methods
 Identified 183/246 fields
-Finished analysing in 138 ms
+Finished analysing in 134 ms

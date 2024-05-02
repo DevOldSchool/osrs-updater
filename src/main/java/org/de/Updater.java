@@ -235,14 +235,14 @@ public class Updater {
         analysers.add(new SoundFilter());
         analysers.add(new AudioInstrument());
         analysers.add(new AudioEffect());
-        // MovementType
+        analysers.add(new MovementType());
         analysers.add(new Actor());
         analysers.add(new Npc());
         // ChatSetting
         analysers.add(new Player());
         // MenuRowContext
         // AttackOptionSetting
-        // GrandExchangeOffer
+        analysers.add(new GrandExchangeOffer());
         analysers.add(new MouseListener());
         analysers.add(new MouseWheelListener());
         analysers.add(new KeyInputData());
@@ -250,7 +250,7 @@ public class Updater {
         analysers.add(new KeyInputHandler());
         analysers.add(new TileModel());
         analysers.add(new TilePaint());
-        // JagexLoginType
+        analysers.add(new JagexLoginType());
         analysers.add(new ItemLayer());
         // BoundaryObject
         // InteractableObject
