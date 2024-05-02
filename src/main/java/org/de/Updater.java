@@ -253,7 +253,7 @@ public class Updater {
         analysers.add(new JagexLoginType());
         analysers.add(new ItemLayer());
         // BoundaryObject
-        // InteractableObject
+        analysers.add(new InteractableObject());
         analysers.add(new AnimableObject());
         analysers.add(new Tile());
         // PendingSpawn
@@ -266,9 +266,9 @@ public class Updater {
         analysers.add(new BufferedImage());
         analysers.add(new Widget());
         analysers.add(new ScriptEvent());
-        // ScriptState
-        // RuneScriptVM
-        // Server
+        analysers.add(new ScriptState());
+        analysers.add(new RuneScriptVM());
+        analysers.add(new Server());
         // RSShadowedFont
         // CombatBarDefinition
         // CombatBarData

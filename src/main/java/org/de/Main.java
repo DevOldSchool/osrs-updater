@@ -1,6 +1,9 @@
 package org.de;
 
+import java.io.FileDescriptor;
+import java.io.FileOutputStream;
 import java.io.IOException;
+import java.io.PrintStream;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
@@ -67,6 +70,11 @@ public class Main {
                 } catch (IOException e) {
                     throw new RuntimeException(e);
                 }
+            }
+
+            // Reset standard output
+            if (resultsToFile) {
+                System.setOut(new PrintStream(new FileOutputStream(FileDescriptor.out)));
             }
 
             System.out.println("\n");
