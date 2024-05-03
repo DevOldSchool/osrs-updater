@@ -141,8 +141,6 @@ public class Updater {
         deobfuscators.add(new MethodSorter());
 
         deobfuscators.add(new InlineStrings());
-//        deobfuscators.add(new MultiplierRemover());
-//        deobfuscators.add(new StackFrames());
         deobfuscators.add(new DecomplierTrap());
     }
 
@@ -293,35 +291,35 @@ public class Updater {
         analysers.add(new FriendManager());
         analysers.add(new ClanContainer());
         analysers.add(new Occluder());
-        // Hitsplat
-        // IntegerNode
-        // ObjectNode
-        // UrlRequest
-        // AbstractRequester
-        // UrlRequester
-        // AppletParameter
+        analysers.add(new Hitsplat());
+        analysers.add(new IntegerNode());
+        analysers.add(new ObjectNode());
+        analysers.add(new UrlRequest());
+        analysers.add(new AbstractRequester());
+        analysers.add(new UrlRequester());
+        analysers.add(new AppletParameter());
         // PlatformInfo
-        // MachineInfo
-        // WorldMapLabelSize
-        // WorldMapLabel
+        analysers.add(new MachineInfo());
+        analysers.add(new WorldMapLabelSize());
+        analysers.add(new WorldMapLabel());
         // WorldMapDecoration
-        // AbstractWorldMapData
-        // KitDefinition
-        // FileRequest
+        analysers.add(new AbstractWorldMapData());
+        analysers.add(new KitDefinition());
+        analysers.add(new FileRequest());
         // VarCString
-        // Overlay
+        analysers.add(new Overlay());
         // HorizontalAlignment
         // VerticalAlignment
         // Area
         // Bounds
-        // AbstractTimer
-        // NanoTimer
-        // MilliTimer
+        analysers.add(new AbstractTimer());
+        analysers.add(new NanoTimer());
+        analysers.add(new MilliTimer());
         // Enumerated
-        // JagexGame
-        // LanguageType
-        // BuildType
-        // GameShell
+        analysers.add(new JagexGame());
+        analysers.add(new LanguageType());
+        analysers.add(new BuildType());
+        analysers.add(new GameShell());
 //        analysers.add(new Client());
     }
 }
