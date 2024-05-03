@@ -24,11 +24,11 @@ public class JFont extends Analyser {
                 continue;
             }
 
-            if (classNode.superName.equals(getClassAnalyser("JGraphics").getNode().name)) {
+            if (classNode.superName.equals(getClassAnalyser("Rasterizer2D").getNode().name)) {
                 return classNode;
             }
         }
-        
+
         return null;
     }
 

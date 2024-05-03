@@ -6,7 +6,7 @@ import org.objectweb.asm.tree.MethodNode;
 
 import java.util.List;
 
-public class JGraphics extends Analyser {
+public class Rasterizer2D extends Analyser {
     @Override
     public int getExpectedFieldsSize() {
         return 0;

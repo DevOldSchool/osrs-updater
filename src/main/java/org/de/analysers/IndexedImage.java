@@ -23,7 +23,7 @@ public class IndexedImage extends Analyser {
     @Override
     public ClassNode matchClassNode(List<ClassNode> classes) {
         for (ClassNode classNode : classes) {
-            if (!classNode.superName.equals(getClassAnalyser("JGraphics").getNode().name)) {
+            if (!classNode.superName.equals(getClassAnalyser("Rasterizer2D").getNode().name)) {
                 continue;
             }
 

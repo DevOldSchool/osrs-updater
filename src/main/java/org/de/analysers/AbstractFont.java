@@ -2,13 +2,14 @@ package org.de.analysers;
 
 import org.de.Analyser;
 import org.objectweb.asm.tree.ClassNode;
+import org.objectweb.asm.tree.FieldNode;
 
 import java.util.List;
 
-public class Rasterizer extends Analyser {
+public class AbstractFont extends Analyser {
     @Override
     public int getExpectedFieldsSize() {
-        return 0;
+        return 1;
     }
 
     @Override
@@ -24,17 +25,21 @@ public class Rasterizer extends Analyser {
                 continue;
             }
 
-            if (classNode.superName.equals(getClassAnalyser("JGraphics").getNode().name)) {
+            if (classNode.superName.equals(getClassAnalyser("Rasterizer2D").getNode().name)) {
                 return classNode;
             }
         }
-        
+
         return null;
     }
 
     @Override
     public void matchFields(ClassNode classNode) {
-
+        for (FieldNode fieldNode : classNode.fields) {
+            if (fieldNode.desc.equals("[[B")) {
+                addField("getPixels()", fieldNode);
+            }
+        }
     }
 
     @Override

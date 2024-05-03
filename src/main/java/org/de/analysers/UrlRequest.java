@@ -3,6 +3,7 @@ package org.de.analysers;
 import org.de.Analyser;
 import org.objectweb.asm.tree.ClassNode;
 import org.objectweb.asm.tree.FieldNode;
+import org.objectweb.asm.tree.MethodNode;
 
 import java.lang.reflect.Modifier;
 import java.util.List;
@@ -10,12 +11,12 @@ import java.util.List;
 public class UrlRequest extends Analyser {
     @Override
     public int getExpectedFieldsSize() {
-        return 3;
+        return 2;
     }
 
     @Override
     public int getExpectedMethodsSize() {
-        return 0;
+        return 1;
     }
 
     @Override
@@ -46,10 +47,6 @@ public class UrlRequest extends Analyser {
                 addField("getUrl()", fieldNode);
             }
 
-            if (fieldNode.desc.equals("Z")) {
-                addField("isComplete()", fieldNode);
-            }
-
             if (fieldNode.desc.equals("[B")) {
                 addField("getResponse()", fieldNode);
             }
@@ -58,6 +55,14 @@ public class UrlRequest extends Analyser {
 
     @Override
     public void matchMethods(ClassNode classNode) {
+        for (MethodNode methodNode : classNode.methods) {
+            if (Modifier.isStatic(methodNode.access)) {
+                continue;
+            }
 
+            if (methodNode.desc.endsWith(")Z")) {
+                addMethod("isComplete()", methodNode);
+            }
+        }
     }
 }

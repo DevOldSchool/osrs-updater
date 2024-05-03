@@ -51,7 +51,12 @@ public abstract class Analyser implements Opcodes {
     }
 
     public void print() {
-        System.out.println(toString().concat(String.format(" (%s/%s) in %s ms", fields.size(), getExpectedFieldsSize(), end)));
+        System.out.println(toString().concat(String.format(" (%s/%s) (%s/%s) in %s ms",
+                fields.size(),
+                getExpectedFieldsSize(),
+                methods.size(),
+                getExpectedMethodsSize(),
+                end)));
 
         for (Field field : fields.values()) {
             System.out.println(field.toString());

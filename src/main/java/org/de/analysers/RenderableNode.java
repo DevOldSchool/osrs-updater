@@ -18,7 +18,7 @@ public class RenderableNode extends Analyser {
 
     @Override
     public int getExpectedMethodsSize() {
-        return 1;
+        return 0;
     }
 
     @Override
@@ -53,12 +53,6 @@ public class RenderableNode extends Analyser {
 
     @Override
     public void matchMethods(ClassNode classNode) {
-//        for (MethodNode methodNode : classNode.methods) {
-//            if (Modifier.isProtected(methodNode.access)) {
-//                if (wildcard("(I)L*;", methodNode.desc)) {
-//                    addMethod("getModel()", methodNode);
-//                }
-//            }
-//        }
+
     }
 }

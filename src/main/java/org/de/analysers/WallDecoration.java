@@ -46,7 +46,7 @@ public class WallDecoration extends Analyser {
                 }
             }
 
-            if (renderableNodeFieldCount != 2 && intFieldCount != 8) {
+            if (renderableNodeFieldCount != 2 || intFieldCount != 8) {
                 continue;
             }
 
@@ -58,7 +58,6 @@ public class WallDecoration extends Analyser {
                             FieldInsnNode fieldInsnNode = (FieldInsnNode) matches[6];
 
                             if (fieldInsnNode.owner.equals(classNode.name) && fieldInsnNode.desc.equals("J")) {
-//                                System.out.println("FOUND CLASS " + classNode.name + " " + intFieldCount);
                                 return classNode;
                             }
                         }

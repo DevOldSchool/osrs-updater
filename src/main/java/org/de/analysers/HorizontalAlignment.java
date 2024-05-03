@@ -2,12 +2,12 @@ package org.de.analysers;
 
 import org.de.Analyser;
 import org.objectweb.asm.tree.ClassNode;
-import org.objectweb.asm.tree.MethodNode;
+import org.objectweb.asm.tree.FieldNode;
 
 import java.lang.reflect.Modifier;
 import java.util.List;
 
-public class Sprite extends Analyser {
+public class HorizontalAlignment extends Analyser {
     @Override
     public int getExpectedFieldsSize() {
         return 0;
@@ -21,19 +21,23 @@ public class Sprite extends Analyser {
     @Override
     public ClassNode matchClassNode(List<ClassNode> classes) {
         for (ClassNode classNode : classes) {
-            if (!Modifier.isFinal(classNode.access) ||
-                    Modifier.isStatic(classNode.access) ||
-                    Modifier.isAbstract(classNode.access)) {
+            int selfFieldCount = 0;
+            int intCount = 0;
+            for (FieldNode fieldNode : classNode.fields) {
+                if (fieldNode.desc.equals(String.format("L%s;", classNode.name))) {
+                    selfFieldCount++;
+                }
+
+                if (!Modifier.isStatic(fieldNode.access) && fieldNode.desc.equals("I")) {
+                    intCount++;
+                }
+            }
+
+            if (selfFieldCount != 4 || intCount != 2) {
                 continue;
             }
 
-            if (classNode.superName.equals(getClassAnalyser("Rasterizer2D").getNode().name)) {
-                for (MethodNode methodNode : classNode.methods) {
-                    if (methodNode.desc.equals("(IIIIIIII[I[I)V")) {
-                        return classNode;
-                    }
-                }
-            }
+            return classNode;
         }
 
         return null;

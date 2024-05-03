@@ -492,22 +492,20 @@ public class Client extends Analyser {
                     }
                 }
             }
-
-            for (MethodNode mn : cn.methods) {
-                if (mn.desc.contains(String.format("L%s;", getClassAnalyser("ItemDefinition").getNode().name))) {
-                    addMethod("getItemComposite()", mn);
-                }
-
-                if (wildcard(String.format("(*)L%s;", getClassAnalyser("ObjectDefinition").getNode().name), mn.desc)) {
-                    addMethod("getObjectComposite()", mn);
-                }
-            }
         }
     }
 
     @Override
     public void matchMethods(ClassNode classNode) {
+        for (MethodNode methodNode : classNode.methods) {
+            if (methodNode.desc.contains(String.format("L%s;", getClassAnalyser("ItemDefinition").getNode().name))) {
+                addMethod("getItemComposite()", methodNode);
+            }
 
+            if (wildcard(String.format("(*)L%s;", getClassAnalyser("ObjectDefinition").getNode().name), methodNode.desc)) {
+                addMethod("getObjectComposite()", methodNode);
+            }
+        }
     }
 
     private boolean findCompassAngle(final MethodNode mn) {

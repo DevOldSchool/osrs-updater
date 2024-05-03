@@ -70,20 +70,8 @@ public class PlayerDefinition extends Analyser {
     @Override
     public void matchMethods(ClassNode classNode) {
         for (MethodNode methodNode : classNode.methods) {
-//            if (methodNode.desc.equals(String.format("(B)L%s;", getClassAnalyser("ModelHeader").getNode().name))) {
-//                addMethod("getModelHeader()", methodNode);
-//            }
-
-            InstructionSearcher instructionSearcher = new InstructionSearcher(methodNode.instructions, 0, ICONST_M1, ALOAD, GETFIELD, LDC, IMUL);
-            if (instructionSearcher.match()) {
-                for (AbstractInsnNode[] abstractInsnNodes : instructionSearcher.getMatches()) {
-                    FieldInsnNode fieldInsnNode = (FieldInsnNode) abstractInsnNodes[2];
-
-                    if (fieldInsnNode.owner.equals(classNode.name) && fieldInsnNode.desc.equals("I")) {
-                        addMethod("getModelHeader()", methodNode);
-                        break;
-                    }
-                }
+            if (methodNode.desc.endsWith(String.format(")L%s;", getClassAnalyser("ModelHeader").getNode().name))) {
+                addMethod("getModelHeader()", methodNode);
             }
         }
     }

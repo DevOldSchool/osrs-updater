@@ -187,10 +187,10 @@ public class Updater {
         analysers.add(new PacketContext());
         analysers.add(new IdentityTable());
         analysers.add(new AbstractArchive());
-        analysers.add(new JGraphics());
+        analysers.add(new Rasterizer2D());
         analysers.add(new JFont());
         analysers.add(new Sprite());
-        analysers.add(new Rasterizer());
+        analysers.add(new AbstractFont());
         analysers.add(new Skins());
         analysers.add(new IdentityKit());
         analysers.add(new IdentityKitNode());
@@ -236,10 +236,10 @@ public class Updater {
         analysers.add(new MovementType());
         analysers.add(new Actor());
         analysers.add(new Npc());
-        // ChatSetting
+//        analysers.add(new ChatSetting());
         analysers.add(new Player());
-        // MenuRowContext
-        // AttackOptionSetting
+        analysers.add(new MenuRowContext());
+        analysers.add(new AttackOptionSetting());
         analysers.add(new GrandExchangeOffer());
         analysers.add(new MouseListener());
         analysers.add(new MouseWheelListener());
@@ -250,7 +250,7 @@ public class Updater {
         analysers.add(new TilePaint());
         analysers.add(new JagexLoginType());
         analysers.add(new ItemLayer());
-        // BoundaryObject
+        analysers.add(new BoundaryObject());
         analysers.add(new InteractableObject());
         analysers.add(new AnimableObject());
         analysers.add(new Tile());
@@ -285,6 +285,7 @@ public class Updater {
         analysers.add(new FriendListLink());
         analysers.add(new IgnoreContainer());
         analysers.add(new ChatPlayer());
+//        analysers.add(new ChatPlayerComparator());
         analysers.add(new IgnoredMessage());
         analysers.add(new FriendMessage());
         analysers.add(new ClanMember());
@@ -302,16 +303,18 @@ public class Updater {
         analysers.add(new MachineInfo());
         analysers.add(new WorldMapLabelSize());
         analysers.add(new WorldMapLabel());
+//        analysers.add(new AbstractWorldMapIcon());
         // WorldMapDecoration
         analysers.add(new AbstractWorldMapData());
         analysers.add(new KitDefinition());
         analysers.add(new FileRequest());
         // VarCString
         analysers.add(new Overlay());
-        // HorizontalAlignment
-        // VerticalAlignment
+        analysers.add(new HorizontalAlignment());
+        analysers.add(new VerticalAlignment());
         // Area
-        // Bounds
+//        analysers.add(new Bounds());
+//        analysers.add(new AddRequestTask());
         analysers.add(new AbstractTimer());
         analysers.add(new NanoTimer());
         analysers.add(new MilliTimer());

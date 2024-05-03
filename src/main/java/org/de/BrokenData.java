@@ -77,7 +77,7 @@ public class BrokenData {
                     String methodName = methodEntry.getKey();
                     Set<Integer> methodRevisionsSet = methodEntry.getValue();
                     totalBrokenMethods++;
-                    System.out.printf("    [> Method %s.%s() broken in revisions - ] %s\n", className, methodName, methodRevisionsSet);
+                    System.out.printf("    [> Method %s.%s broken in revisions - ] %s\n", className, methodName, methodRevisionsSet);
                 }
             }
         }
