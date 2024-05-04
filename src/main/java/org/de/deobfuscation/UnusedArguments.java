@@ -5,6 +5,7 @@ import org.objectweb.asm.Opcodes;
 import org.objectweb.asm.Type;
 import org.objectweb.asm.tree.*;
 
+import java.lang.reflect.Modifier;
 import java.util.*;
 
 public class UnusedArguments extends Deobfuscator {
@@ -19,6 +20,10 @@ public class UnusedArguments extends Deobfuscator {
     @Override
     public void execute(List<ClassNode> classes) {
         for (ClassNode classNode : classes) {
+            if (Modifier.isInterface(classNode.access)) {
+                continue;
+            }
+
             for (MethodNode methodNode : classNode.methods) {
                 removeUnusedArguments(classNode.name, methodNode);
             }

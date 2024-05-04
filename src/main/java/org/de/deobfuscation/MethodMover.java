@@ -4,6 +4,7 @@ import org.de.Deobfuscator;
 import org.objectweb.asm.Type;
 import org.objectweb.asm.tree.*;
 
+import java.lang.reflect.Modifier;
 import java.util.*;
 import java.util.stream.Collectors;
 
@@ -22,7 +23,10 @@ public class MethodMover extends Deobfuscator {
         // Collect duplicate static methods
         for (ClassNode classNode : classes) {
             for (MethodNode method : classNode.methods) {
-
+                if (!Modifier.isStatic(method.access)) {
+                    continue;
+                }
+                
                 String fingerprint = methodFingerprint(method);
                 String methodNameDesc = classNode.name + "." + method.name + method.desc;
                 List<String> methodsList = duplicateMethodsMap.computeIfAbsent(fingerprint, k -> new ArrayList<>());

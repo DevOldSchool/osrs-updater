@@ -3,7 +3,6 @@ package org.de.deobfuscation;
 import org.de.Deobfuscator;
 import org.objectweb.asm.tree.*;
 
-import java.lang.reflect.Modifier;
 import java.util.HashSet;
 import java.util.Iterator;
 import java.util.List;
@@ -26,8 +25,8 @@ public class UnusedFields extends Deobfuscator {
             while (fieldIterator.hasNext()) {
                 FieldNode fieldNode = fieldIterator.next();
 
-                // If the field is not referenced and not abstract, remove it
-                if (!Modifier.isAbstract(fieldNode.access) && !referencedFields.contains(classNode.name + "." + fieldNode.name + fieldNode.desc)) {
+                // If the field is not referenced, remove it
+                if (!referencedFields.contains(classNode.name + "." + fieldNode.name + fieldNode.desc)) {
                     fieldIterator.remove();
                     removed++;
                 }

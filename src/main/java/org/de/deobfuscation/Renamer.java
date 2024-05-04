@@ -6,6 +6,7 @@ import org.de.Field;
 import org.de.Method;
 import org.objectweb.asm.tree.*;
 
+import java.util.ArrayList;
 import java.util.List;
 
 public class Renamer extends Deobfuscator {
@@ -75,12 +76,16 @@ public class Renamer extends Deobfuscator {
             }
 
             // Update interface references
+            List<String> interfacesToRemove = new ArrayList<>();
+            List<String> interfacesToAdd = new ArrayList<>();
             for (String interfaceName : classNode.interfaces) {
                 if (interfaceName.equals(obfuscatedName)) {
-                    classNode.interfaces.remove(interfaceName);
-                    classNode.interfaces.add(deobfuscatedName);
+                    interfacesToRemove.add(interfaceName);
+                    interfacesToAdd.add(deobfuscatedName);
                 }
             }
+            classNode.interfaces.removeAll(interfacesToRemove);
+            classNode.interfaces.addAll(interfacesToAdd);
 
             // Update inner class references
             for (InnerClassNode innerClassNode : classNode.innerClasses) {

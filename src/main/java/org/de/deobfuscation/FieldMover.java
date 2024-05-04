@@ -38,7 +38,7 @@ public class FieldMover extends Deobfuscator {
         }
     }
 
-    private class FieldOwnerResolver {
+    private static class FieldOwnerResolver {
         private final Map<String, ClassNode> classNames = new HashMap<>();
 
         public FieldOwnerResolver(List<ClassNode> classes) {

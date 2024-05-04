@@ -4,7 +4,6 @@ import org.de.Deobfuscator;
 import org.objectweb.asm.Type;
 import org.objectweb.asm.tree.*;
 
-import java.lang.reflect.Modifier;
 import java.util.*;
 
 public class UnusedMethods extends Deobfuscator {
@@ -24,8 +23,8 @@ public class UnusedMethods extends Deobfuscator {
             while (methodIterator.hasNext()) {
                 MethodNode methodNode = methodIterator.next();
 
-                // If the method is not referenced and not abstract, remove it
-                if (!Modifier.isAbstract(methodNode.access) && !referencedMethods.contains(classNode.name + "." + methodNode.name + methodNode.desc)) {
+                // If the method is not referenced, remove it
+                if (!referencedMethods.contains(classNode.name + "." + methodNode.name + methodNode.desc)) {
                     methodIterator.remove();
                     removed++;
                 }
