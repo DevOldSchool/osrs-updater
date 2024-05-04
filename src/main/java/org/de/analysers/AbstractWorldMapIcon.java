@@ -2,12 +2,12 @@ package org.de.analysers;
 
 import org.de.Analyser;
 import org.objectweb.asm.tree.ClassNode;
-import org.objectweb.asm.tree.MethodNode;
+import org.objectweb.asm.tree.FieldNode;
 
 import java.lang.reflect.Modifier;
 import java.util.List;
 
-public class KeyInputData extends Analyser {
+public class AbstractWorldMapIcon extends Analyser {
     @Override
     public int getExpectedFieldsSize() {
         return 0;
@@ -21,25 +21,18 @@ public class KeyInputData extends Analyser {
     @Override
     public ClassNode matchClassNode(List<ClassNode> classes) {
         for (ClassNode classNode : classes) {
-            if (!Modifier.isInterface(classNode.access)) {
+            if (!Modifier.isAbstract(classNode.access)) {
                 continue;
             }
 
-            boolean hasAllAbstractMethods = true;
-            boolean hasBoolMethod = false;
-            for (MethodNode methodNode : classNode.methods) {
-                if (!Modifier.isAbstract(methodNode.access)) {
-                    hasAllAbstractMethods = false;
+            for (FieldNode fieldNode : classNode.fields) {
+                if (Modifier.isStatic(fieldNode.access)) {
+                    continue;
                 }
 
-                if (methodNode.desc.endsWith(")Z")) {
-                    hasBoolMethod = true;
+                if (fieldNode.desc.equals(String.format("L%s;", getClassAnalyser("WorldMapLabelSize").getNode().name))) {
+                    return classNode;
                 }
-            }
-
-            if (hasAllAbstractMethods && hasBoolMethod) {
-//                System.out.println(classNode.name);
-                return classNode;
             }
         }
 

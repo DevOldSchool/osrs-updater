@@ -1,13 +1,15 @@
 package org.de.analysers;
 
 import org.de.Analyser;
+import org.de.utilities.InstructionSearcher;
 import org.objectweb.asm.tree.ClassNode;
+import org.objectweb.asm.tree.FieldNode;
 import org.objectweb.asm.tree.MethodNode;
 
 import java.lang.reflect.Modifier;
 import java.util.List;
 
-public class KeyInputData extends Analyser {
+public class Bounds extends Analyser {
     @Override
     public int getExpectedFieldsSize() {
         return 0;
@@ -21,25 +23,26 @@ public class KeyInputData extends Analyser {
     @Override
     public ClassNode matchClassNode(List<ClassNode> classes) {
         for (ClassNode classNode : classes) {
-            if (!Modifier.isInterface(classNode.access)) {
+            int intCount = 0;
+            for (FieldNode fieldNode : classNode.fields) {
+                if (Modifier.isStatic(fieldNode.access)) {
+                    continue;
+                }
+
+                intCount++;
+            }
+
+            if (intCount != 4) {
                 continue;
             }
 
-            boolean hasAllAbstractMethods = true;
-            boolean hasBoolMethod = false;
             for (MethodNode methodNode : classNode.methods) {
-                if (!Modifier.isAbstract(methodNode.access)) {
-                    hasAllAbstractMethods = false;
+                if (methodNode.name.equals("<init>") && methodNode.desc.equals("(IIII)V")) {
+                    InstructionSearcher instructionSearch = new InstructionSearcher(methodNode.instructions, 0, ALOAD, ILOAD, ILOAD, LDC, INVOKEVIRTUAL);
+                    if (instructionSearch.match()) {
+                        return classNode;
+                    }
                 }
-
-                if (methodNode.desc.endsWith(")Z")) {
-                    hasBoolMethod = true;
-                }
-            }
-
-            if (hasAllAbstractMethods && hasBoolMethod) {
-//                System.out.println(classNode.name);
-                return classNode;
             }
         }
 

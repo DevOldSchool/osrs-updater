@@ -4,10 +4,9 @@ import org.de.Analyser;
 import org.objectweb.asm.tree.ClassNode;
 import org.objectweb.asm.tree.MethodNode;
 
-import java.lang.reflect.Modifier;
 import java.util.List;
 
-public class KeyInputData extends Analyser {
+public class ChatPlayerComparator extends Analyser {
     @Override
     public int getExpectedFieldsSize() {
         return 0;
@@ -21,26 +20,28 @@ public class KeyInputData extends Analyser {
     @Override
     public ClassNode matchClassNode(List<ClassNode> classes) {
         for (ClassNode classNode : classes) {
-            if (!Modifier.isInterface(classNode.access)) {
+            if (!classNode.superName.equals(getClassAnalyser("NameableComparator").getNode().name)) {
                 continue;
             }
 
-            boolean hasAllAbstractMethods = true;
-            boolean hasBoolMethod = false;
+            int initMethod = 0;
+            int chatPlayerMethodCount = 0;
+            String chatPlayerName = getClassAnalyser("ChatPlayer").getNode().name;
             for (MethodNode methodNode : classNode.methods) {
-                if (!Modifier.isAbstract(methodNode.access)) {
-                    hasAllAbstractMethods = false;
+                if (methodNode.name.equals("<init>") && methodNode.desc.equals("(Z)V")) {
+                    initMethod++;
                 }
 
-                if (methodNode.desc.endsWith(")Z")) {
-                    hasBoolMethod = true;
+                if (methodNode.desc.equals(String.format("(L%s;L%s;)I", chatPlayerName, chatPlayerName))) {
+                    chatPlayerMethodCount++;
                 }
             }
 
-            if (hasAllAbstractMethods && hasBoolMethod) {
-//                System.out.println(classNode.name);
-                return classNode;
+            if (initMethod != 1 || chatPlayerMethodCount < 4) {
+                continue;
             }
+
+            return classNode;
         }
 
         return null;

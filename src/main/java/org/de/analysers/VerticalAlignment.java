@@ -3,7 +3,6 @@ package org.de.analysers;
 import org.de.Analyser;
 import org.objectweb.asm.tree.ClassNode;
 import org.objectweb.asm.tree.FieldNode;
-import org.objectweb.asm.tree.MethodNode;
 
 import java.lang.reflect.Modifier;
 import java.util.List;
@@ -24,13 +23,19 @@ public class VerticalAlignment extends Analyser {
         for (ClassNode classNode : classes) {
             int selfFieldCount = 0;
             int intCount = 0;
+            int widgetCount = 0;
             for (FieldNode fieldNode : classNode.fields) {
-                if (fieldNode.desc.equals(String.format("L%s;", classNode.name))) {
+                if (Modifier.isFinal(fieldNode.access) && fieldNode.desc.equals(String.format("L%s;", classNode.name))) {
                     selfFieldCount++;
                 }
 
                 if (!Modifier.isStatic(fieldNode.access) && fieldNode.desc.equals("I")) {
                     intCount++;
+                }
+
+                if (Modifier.isStatic(fieldNode.access) &&
+                        fieldNode.desc.equals(String.format("L%s;", getClassAnalyser("Widget").getNode().name))) {
+                    widgetCount++;
                 }
             }
 
@@ -38,22 +43,11 @@ public class VerticalAlignment extends Analyser {
                 continue;
             }
 
-            int initMethodCount = 0;
-            int methodCount = 0;
-            for (MethodNode methodNode : classNode.methods) {
-                if (methodNode.name.equals("<init>") && methodNode.desc.equals("(II)V")) {
-                    initMethodCount++;
-                }
-
-                if (Modifier.isStatic(methodNode.access)) {
-                    methodCount++;
-                }
-            }
-
-            if (initMethodCount != 1 || methodCount != 1) {
+            if (classNode.name.equals(getClassAnalyser("HorizontalAlignment").getNode().name)) {
                 continue;
             }
 
+//            System.out.println(classNode.name + " " + selfFieldCount + " " + intCount + " " + widgetCount);
             return classNode;
         }
 

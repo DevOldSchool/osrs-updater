@@ -4,10 +4,9 @@ import org.de.Analyser;
 import org.objectweb.asm.tree.ClassNode;
 import org.objectweb.asm.tree.FieldNode;
 
-import java.lang.reflect.Modifier;
 import java.util.List;
 
-public class HorizontalAlignment extends Analyser {
+public class ChatSetting extends Analyser {
     @Override
     public int getExpectedFieldsSize() {
         return 0;
@@ -22,18 +21,13 @@ public class HorizontalAlignment extends Analyser {
     public ClassNode matchClassNode(List<ClassNode> classes) {
         for (ClassNode classNode : classes) {
             int selfFieldCount = 0;
-            int intCount = 0;
             for (FieldNode fieldNode : classNode.fields) {
                 if (fieldNode.desc.equals(String.format("L%s;", classNode.name))) {
                     selfFieldCount++;
                 }
-
-                if (!Modifier.isStatic(fieldNode.access) && fieldNode.desc.equals("I")) {
-                    intCount++;
-                }
             }
 
-            if (selfFieldCount != 3 || intCount != 2) {
+            if (selfFieldCount != 3 || classNode.fields.size() != 3) {
                 continue;
             }
 

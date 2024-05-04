@@ -1,8 +1,8 @@
 package org.de.analysers;
 
 import org.de.Analyser;
-import org.objectweb.asm.tree.ClassNode;
-import org.objectweb.asm.tree.FieldNode;
+import org.de.utilities.InstructionSearcher;
+import org.objectweb.asm.tree.*;
 
 import java.lang.reflect.Modifier;
 import java.util.List;
@@ -21,26 +21,37 @@ public class NanoTimer extends Analyser {
     @Override
     public ClassNode matchClassNode(List<ClassNode> classes) {
         for (ClassNode classNode : classes) {
-            if (!classNode.superName.equals(getClassAnalyser("AbstractTimer").getNode().name)) {
-                continue;
-            }
-
-            int longArrayCount = 0;
+            int longCount = 0;
             for (FieldNode fieldNode : classNode.fields) {
                 if (Modifier.isStatic(fieldNode.access)) {
                     continue;
                 }
 
-                if (fieldNode.desc.equals("[J")) {
-                    longArrayCount++;
+                if (fieldNode.desc.equals("J")) {
+                    longCount++;
                 }
             }
 
-            if (longArrayCount != 0) {
+            if (longCount < 1) {
                 continue;
             }
 
-            return classNode;
+            for (MethodNode methodNode : classNode.methods) {
+                if (!methodNode.name.equals("<init>")) {
+                    continue;
+                }
+
+                InstructionSearcher instructionSearch = new InstructionSearcher(methodNode.instructions, 0, ALOAD, INVOKESTATIC);
+                if (instructionSearch.match()) {
+                    for (AbstractInsnNode[] matches : instructionSearch.getMatches()) {
+                        MethodInsnNode methodInsnNode = (MethodInsnNode) matches[1];
+
+                        if (methodInsnNode.name.equals("nanoTime")) {
+                            return classNode;
+                        }
+                    }
+                }
+            }
         }
 
         return null;

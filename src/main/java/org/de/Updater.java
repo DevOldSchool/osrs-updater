@@ -254,7 +254,7 @@ public class Updater {
         analysers.add(new InteractableObject());
         analysers.add(new AnimableObject());
         analysers.add(new Tile());
-        // PendingSpawn
+        analysers.add(new PendingSpawn());
         analysers.add(new Region());
         analysers.add(new WallDecoration());
         analysers.add(new FloorDecoration());
@@ -312,13 +312,13 @@ public class Updater {
         analysers.add(new Overlay());
         analysers.add(new HorizontalAlignment());
         analysers.add(new VerticalAlignment());
-        // Area
+        analysers.add(new Area());
+        analysers.add(new Enumerated());
 //        analysers.add(new Bounds());
 //        analysers.add(new AddRequestTask());
-        analysers.add(new AbstractTimer());
         analysers.add(new NanoTimer());
+        analysers.add(new AbstractTimer());
         analysers.add(new MilliTimer());
-        // Enumerated
         analysers.add(new JagexGame());
         analysers.add(new LanguageType());
         analysers.add(new BuildType());

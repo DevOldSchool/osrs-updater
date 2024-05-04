@@ -5,7 +5,7 @@ import org.objectweb.asm.tree.ClassNode;
 
 import java.util.List;
 
-public class AbstractTimer extends Analyser {
+public class Enumerated extends Analyser {
     @Override
     public int getExpectedFieldsSize() {
         return 0;
@@ -19,7 +19,7 @@ public class AbstractTimer extends Analyser {
     @Override
     public ClassNode matchClassNode(List<ClassNode> classes) {
         for (ClassNode classNode : classes) {
-            if (classNode.name.equals(getClassAnalyser("NanoTimer").getNode().superName)) {
+            if (classNode.name.equals(getClassAnalyser("HorizontalAlignment").getNode().interfaces.getFirst())) {
                 return classNode;
             }
         }

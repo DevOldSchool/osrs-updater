@@ -2,12 +2,13 @@ package org.de.analysers;
 
 import org.de.Analyser;
 import org.objectweb.asm.tree.ClassNode;
+import org.objectweb.asm.tree.FieldNode;
 import org.objectweb.asm.tree.MethodNode;
 
 import java.lang.reflect.Modifier;
 import java.util.List;
 
-public class KeyInputData extends Analyser {
+public class PendingSpawn extends Analyser {
     @Override
     public int getExpectedFieldsSize() {
         return 0;
@@ -21,26 +22,41 @@ public class KeyInputData extends Analyser {
     @Override
     public ClassNode matchClassNode(List<ClassNode> classes) {
         for (ClassNode classNode : classes) {
-            if (!Modifier.isInterface(classNode.access)) {
+            if (!classNode.superName.equals(getClassAnalyser("Node").getNode().name)) {
                 continue;
             }
 
-            boolean hasAllAbstractMethods = true;
-            boolean hasBoolMethod = false;
+            int intCount = 0;
+            for (FieldNode fieldNode : classNode.fields) {
+                if (Modifier.isStatic(fieldNode.access)) {
+                    continue;
+                }
+
+                if (fieldNode.desc.equals("I")) {
+                    intCount++;
+                }
+            }
+
+            if (intCount < 10) {
+                continue;
+            }
+
+            int boolMethodCount = 0;
             for (MethodNode methodNode : classNode.methods) {
-                if (!Modifier.isAbstract(methodNode.access)) {
-                    hasAllAbstractMethods = false;
+                if (Modifier.isStatic(methodNode.access)) {
+                    continue;
                 }
 
                 if (methodNode.desc.endsWith(")Z")) {
-                    hasBoolMethod = true;
+                    boolMethodCount++;
                 }
             }
 
-            if (hasAllAbstractMethods && hasBoolMethod) {
-//                System.out.println(classNode.name);
-                return classNode;
+            if (boolMethodCount < 2) {
+                continue;
             }
+
+            return classNode;
         }
 
         return null;
