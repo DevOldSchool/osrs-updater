@@ -14,15 +14,18 @@ public class MultiplierAnalyser implements Opcodes {
             "(ldc|getstatic|aload) (aload|getfield|getstatic|ldc|invokevirtual) (getfield|ldc) imul putstatic"
     };
 
-    public static void findMultipliers(List<org.objectweb.asm.tree.ClassNode> classes2) {
-        for (org.objectweb.asm.tree.ClassNode cn : classes2) {
-            List<MethodNode> methods = (List<MethodNode>) cn.methods;
+    public static void findMultipliers(List<org.objectweb.asm.tree.ClassNode> classes) {
+        for (org.objectweb.asm.tree.ClassNode classNode : classes) {
+            List<MethodNode> methods = classNode.methods;
             for (MethodNode mn : methods) {
                 RegexInsnSearcher searcher = new RegexInsnSearcher(mn.instructions);
+
                 for (String pattern : PATTERNS) {
                     List<AbstractInsnNode[]> matches = searcher.search(pattern);
+
                     for (AbstractInsnNode[] match : matches) {
-                        Integer value = null, refHash = null;
+                        Integer value = null;
+                        Integer refHash = null;
 
                         for (AbstractInsnNode insn : match) {
                             if (insn.getOpcode() == LDC) {

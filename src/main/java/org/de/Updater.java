@@ -141,6 +141,7 @@ public class Updater {
         deobfuscators.add(new MethodSorter());
 
         deobfuscators.add(new InlineStrings());
+        deobfuscators.add(new MultiplierRemover());
         deobfuscators.add(new DecomplierTrap());
     }
 
@@ -253,11 +254,11 @@ public class Updater {
         analysers.add(new BoundaryObject());
         analysers.add(new InteractableObject());
         analysers.add(new AnimableObject());
-        analysers.add(new Tile());
-        analysers.add(new PendingSpawn());
         analysers.add(new Region());
         analysers.add(new WallDecoration());
         analysers.add(new FloorDecoration());
+        analysers.add(new Tile());
+        analysers.add(new PendingSpawn());
         analysers.add(new WidgetNode());
         analysers.add(new ChatboxMessage());
         analysers.add(new ChatboxChannel());

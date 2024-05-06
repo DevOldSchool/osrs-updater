@@ -9,12 +9,14 @@ public class Multipliers {
 
     public static void put(int refHash, int multiplier) {
         Map<Integer, Multiplier> potentialMultiplierMap = potentialMultipliers.get(refHash);
+
         if (potentialMultiplierMap == null) {
             potentialMultiplierMap = new HashMap<>();
             potentialMultiplierMap.put(multiplier, new Multiplier(refHash, 1, multiplier));
             potentialMultipliers.put(refHash, potentialMultiplierMap);
         } else {
             Multiplier inst = potentialMultiplierMap.get(multiplier);
+
             if (inst == null) {
                 potentialMultiplierMap.put(multiplier, new Multiplier(refHash, 1, multiplier));
             } else {
@@ -37,13 +39,16 @@ public class Multipliers {
 
     public static void decideMultipliers() {
         multipliers = new HashMap<>();
+
         for (Map<Integer, Multiplier> potential : potentialMultipliers.values()) {
             Multiplier max = null;
+
             for (Multiplier m : potential.values()) {
                 if (max == null || m.count > max.count) {
                     max = m;
                 }
             }
+
             assert max != null;
             multipliers.put(max.ref, max);
         }
