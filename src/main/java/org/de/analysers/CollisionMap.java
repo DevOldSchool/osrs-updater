@@ -79,10 +79,10 @@ public class CollisionMap extends Analyser {
                 }
             }
 
-            instructionSearcher = new InstructionSearcher(methodNode.instructions, 0, ILOAD, ALOAD, GETFIELD, LDC);
+            instructionSearcher = new InstructionSearcher(methodNode.instructions, 0, ALOAD, ALOAD, GETFIELD, IMUL, ALOAD, GETFIELD, IMUL);
             if (instructionSearcher.match()) {
                 for (AbstractInsnNode[] matches : instructionSearcher.getMatches()) {
-                    FieldInsnNode fieldInsnNode = (FieldInsnNode) matches[2];
+                    FieldInsnNode fieldInsnNode = (FieldInsnNode) matches[5];
                     addField("getHeight()", insnToField(fieldInsnNode, classNode));
                     break;
                 }

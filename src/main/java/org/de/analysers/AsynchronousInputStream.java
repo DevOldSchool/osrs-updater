@@ -47,26 +47,17 @@ public class AsynchronousInputStream extends Analyser {
                 case "Ljava/lang/Thread;":
                     addField("getThread()", fieldNode);
                     break;
+                case "[B":
+                    addField("getBuffer()", fieldNode);
+                    break;
             }
         }
 
         for (MethodNode methodNode : classNode.methods) {
-            InstructionSearcher instructionSearch = new InstructionSearcher(methodNode.instructions, 0, ALOAD, GETFIELD, IMUL, NEWARRAY, PUTFIELD);
+            InstructionSearcher instructionSearch = new InstructionSearcher(methodNode.instructions, 0, ALOAD, ALOAD, GETFIELD);
             if (instructionSearch.match()) {
                 for (AbstractInsnNode[] matches : instructionSearch.getMatches()) {
-                    FieldInsnNode fieldInsnNode = (FieldInsnNode) matches[4];
-
-                    if (fieldInsnNode.owner.equals(classNode.name) && fieldInsnNode.desc.equals("[B")) {
-                        addField("getBuffer()", insnToField(fieldInsnNode, classNode));
-                        break;
-                    }
-                }
-            }
-
-            instructionSearch = new InstructionSearcher(methodNode.instructions, 0, ILOAD, ICONST_1, IADD, IMUL, PUTFIELD);
-            if (instructionSearch.match()) {
-                for (AbstractInsnNode[] matches : instructionSearch.getMatches()) {
-                    FieldInsnNode fieldInsnNode = (FieldInsnNode) matches[4];
+                    FieldInsnNode fieldInsnNode = (FieldInsnNode) matches[2];
 
                     if (fieldInsnNode.owner.equals(classNode.name) && fieldInsnNode.desc.equals("I")) {
                         addField("getSize()", insnToField(fieldInsnNode, classNode));
@@ -75,10 +66,10 @@ public class AsynchronousInputStream extends Analyser {
                 }
             }
 
-            instructionSearch = new InstructionSearcher(methodNode.instructions, 0, IMUL, IREM, LDC, IMUL, PUTFIELD);
+            instructionSearch = new InstructionSearcher(methodNode.instructions, 0, IMUL, IREM, IMUL, PUTFIELD);
             if (instructionSearch.match()) {
                 for (AbstractInsnNode[] matches : instructionSearch.getMatches()) {
-                    FieldInsnNode fieldInsnNode = (FieldInsnNode) matches[4];
+                    FieldInsnNode fieldInsnNode = (FieldInsnNode) matches[3];
 
                     if (fieldInsnNode.owner.equals(classNode.name) && fieldInsnNode.desc.equals("I")) {
                         addField("getOffset()", insnToField(fieldInsnNode, classNode));

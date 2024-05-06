@@ -4,6 +4,7 @@ import org.de.Analyser;
 import org.objectweb.asm.tree.ClassNode;
 import org.objectweb.asm.tree.FieldNode;
 
+import java.lang.reflect.Modifier;
 import java.util.List;
 
 public class AbstractFont extends Analyser {
@@ -25,8 +26,18 @@ public class AbstractFont extends Analyser {
                 continue;
             }
 
-            if (classNode.superName.equals(getClassAnalyser("Rasterizer2D").getNode().name)) {
-                return classNode;
+            if (!classNode.superName.equals(getClassAnalyser("Rasterizer2D").getNode().name)) {
+                continue;
+            }
+
+            for (FieldNode fieldNode : classNode.fields) {
+                if (Modifier.isStatic(fieldNode.access)) {
+                    continue;
+                }
+
+                if (fieldNode.desc.equals("[B")) {
+                    return classNode;
+                }
             }
         }
 
@@ -36,7 +47,7 @@ public class AbstractFont extends Analyser {
     @Override
     public void matchFields(ClassNode classNode) {
         for (FieldNode fieldNode : classNode.fields) {
-            if (fieldNode.desc.equals("[[B")) {
+            if (fieldNode.desc.equals("[B")) {
                 addField("getPixels()", fieldNode);
             }
         }

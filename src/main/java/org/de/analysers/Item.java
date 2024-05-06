@@ -43,7 +43,7 @@ public class Item extends Analyser {
     @Override
     public void matchFields(ClassNode classNode) {
         for (MethodNode methodNode : classNode.methods) {
-            InstructionSearcher instructionSearcher = new InstructionSearcher(methodNode.instructions, 0, ALOAD, GETFIELD, LDC, IMUL);
+            InstructionSearcher instructionSearcher = new InstructionSearcher(methodNode.instructions, 0, ALOAD, GETFIELD, IMUL);
             if (instructionSearcher.match()) {
                 for (AbstractInsnNode[] abstractInsnNodes : instructionSearcher.getMatches()) {
                     FieldInsnNode fieldInsnNode = (FieldInsnNode) abstractInsnNodes[1];

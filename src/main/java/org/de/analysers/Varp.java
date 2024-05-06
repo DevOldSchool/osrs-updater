@@ -78,10 +78,10 @@ public class Varp extends Analyser {
                 }
             }
 
-            instructionSearch = new InstructionSearcher(methodNode.instructions, 0, ALOAD, ALOAD, LDC, INVOKEVIRTUAL, LDC, IMUL, PUTFIELD);
+            instructionSearch = new InstructionSearcher(methodNode.instructions, 0, ALOAD, ALOAD, INVOKEVIRTUAL, IMUL, PUTFIELD);
             if (instructionSearch.match()) {
                 for (AbstractInsnNode[] matches : instructionSearch.getMatches()) {
-                    FieldInsnNode fieldInsnNode = (FieldInsnNode) matches[6];
+                    FieldInsnNode fieldInsnNode = (FieldInsnNode) matches[4];
 
                     if (fieldInsnNode.owner.equals(classNode.name) && fieldInsnNode.desc.equals("I")) {
                         addField("getConfigId()", insnToField(fieldInsnNode, classNode));

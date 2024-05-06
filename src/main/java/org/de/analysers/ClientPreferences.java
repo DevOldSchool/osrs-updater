@@ -10,7 +10,7 @@ import java.util.List;
 public class ClientPreferences extends Analyser {
     @Override
     public int getExpectedFieldsSize() {
-        return 6;
+        return 7;
     }
 
     @Override
@@ -47,20 +47,28 @@ public class ClientPreferences extends Analyser {
     @Override
     public void matchFields(ClassNode classNode) {
         for (FieldNode fieldNode : classNode.fields) {
-            if (fieldNode.desc.equals("Ljava/util/Map;")) {
+            if (Modifier.isStatic(fieldNode.access)) {
+                continue;
+            }
+
+            if (fieldNode.desc.startsWith("Ljava/util/")) {
                 addField("getAuthTokens()", fieldNode);
             }
 
             if (fieldNode.desc.equals("Ljava/lang/String;")) {
                 addField("getRememberedUsername()", fieldNode);
             }
+
+            if (fieldNode.desc.equals("D")) {
+                addField("getMusicVolume()", fieldNode);
+            }
         }
 
         for (MethodNode methodNode : classNode.methods) {
-            InstructionSearcher instructionSearch = new InstructionSearcher(methodNode.instructions, 0, ALOAD, ALOAD, LDC, INVOKEVIRTUAL, LDC, IMUL, PUTFIELD);
+            InstructionSearcher instructionSearch = new InstructionSearcher(methodNode.instructions, 0, INVOKEVIRTUAL, IMUL, PUTFIELD);
             if (instructionSearch.match()) {
                 for (AbstractInsnNode[] matches : instructionSearch.getMatches()) {
-                    FieldInsnNode fieldInsnNode = (FieldInsnNode) matches[6];
+                    FieldInsnNode fieldInsnNode = (FieldInsnNode) matches[2];
 
                     if (fieldInsnNode.owner.equals(classNode.name) && fieldInsnNode.desc.equals("I")) {
                         addField("getDisplayFps()", insnToField(fieldInsnNode, classNode));
@@ -97,14 +105,16 @@ public class ClientPreferences extends Analyser {
                 }
             }
 
-            instructionSearch = new InstructionSearcher(methodNode.instructions, 0, ALOAD, LDC, PUTFIELD);
-            if (instructionSearch.match()) {
-                for (AbstractInsnNode[] matches : instructionSearch.getMatches()) {
-                    FieldInsnNode fieldInsnNode = (FieldInsnNode) matches[2];
+            if (methodNode.name.equals("<init>")) {
+                instructionSearch = new InstructionSearcher(methodNode.instructions, 0, ALOAD, ICONST_0, PUTFIELD, -1, -1, ALOAD, ICONST_0, PUTFIELD);
+                if (instructionSearch.match()) {
+                    for (AbstractInsnNode[] matches : instructionSearch.getMatches()) {
+                        FieldInsnNode fieldInsnNode = (FieldInsnNode) matches[2];
 
-                    if (fieldInsnNode.owner.equals(classNode.name) && fieldInsnNode.desc.equals("D")) {
-                        addField("getMusicVolume()", insnToField(fieldInsnNode, classNode));
-                        break;
+                        if (fieldInsnNode.owner.equals(classNode.name) && fieldInsnNode.desc.equals("Z")) {
+                            addField("getBrightness()", insnToField(fieldInsnNode, classNode));
+                            break;
+                        }
                     }
                 }
             }

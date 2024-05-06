@@ -67,11 +67,11 @@ public class IncomingPacketMeta extends Analyser {
     @Override
     public void matchFields(ClassNode classNode) {
         for (MethodNode methodNode : classNode.methods) {
-            InstructionSearcher instructionSearcher = new InstructionSearcher(methodNode.instructions, 0, ALOAD, LDC, ILOAD, IMUL, PUTFIELD, -1, -1, ALOAD, LDC, ILOAD, IMUL, PUTFIELD);
+            InstructionSearcher instructionSearcher = new InstructionSearcher(methodNode.instructions, 0, ALOAD, ILOAD, IMUL, PUTFIELD, -1, -1, ALOAD, ILOAD, IMUL, PUTFIELD);
             if (instructionSearcher.match()) {
                 for (AbstractInsnNode[] abstractInsnNodes : instructionSearcher.getMatches()) {
-                    FieldInsnNode fieldInsnNode = (FieldInsnNode) abstractInsnNodes[4];
-                    FieldInsnNode fieldInsnNode2 = (FieldInsnNode) abstractInsnNodes[11];
+                    FieldInsnNode fieldInsnNode = (FieldInsnNode) abstractInsnNodes[3];
+                    FieldInsnNode fieldInsnNode2 = (FieldInsnNode) abstractInsnNodes[9];
 
                     if (fieldInsnNode.owner.equals(classNode.name) && fieldInsnNode.desc.equals("I") &&
                             fieldInsnNode2.owner.equals(classNode.name) && fieldInsnNode2.desc.equals("I")) {

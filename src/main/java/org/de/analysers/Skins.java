@@ -10,7 +10,7 @@ import java.util.List;
 public class Skins extends Analyser {
     @Override
     public int getExpectedFieldsSize() {
-        return 3;
+        return 4;
     }
 
     @Override
@@ -54,9 +54,23 @@ public class Skins extends Analyser {
 
     @Override
     public void matchFields(ClassNode classNode) {
+        for (FieldNode fieldNode : classNode.fields) {
+            if (Modifier.isStatic(fieldNode.access)) {
+                continue;
+            }
+
+            if (fieldNode.desc.equals("[I")) {
+                addField("getOpcodes()", fieldNode);
+            }
+
+            if (fieldNode.desc.equals("[[I")) {
+                addField("getSkinList()", fieldNode);
+            }
+        }
+
         for (MethodNode methodNode : classNode.methods) {
             if (methodNode.name.equals("<init>")) {
-                InstructionSearcher instructionSearch = new InstructionSearcher(methodNode.instructions, 0, ILOAD, LDC, IMUL, PUTFIELD);
+                InstructionSearcher instructionSearch = new InstructionSearcher(methodNode.instructions, 0, ALOAD, ILOAD, IMUL, PUTFIELD);
                 if (instructionSearch.match()) {
                     for (AbstractInsnNode[] matches : instructionSearch.getMatches()) {
                         FieldInsnNode fieldInsnNode = (FieldInsnNode) matches[3];
@@ -68,19 +82,7 @@ public class Skins extends Analyser {
                     }
                 }
 
-                instructionSearch = new InstructionSearcher(methodNode.instructions, 0, ALOAD, GETFIELD, IMUL, ANEWARRAY, PUTFIELD);
-                if (instructionSearch.match()) {
-                    for (AbstractInsnNode[] matches : instructionSearch.getMatches()) {
-                        FieldInsnNode fieldInsnNode = (FieldInsnNode) matches[4];
-
-                        if (fieldInsnNode.owner.equals(classNode.name) && fieldInsnNode.desc.equals("[[I")) {
-                            addField("getSkinList()", insnToField(fieldInsnNode, classNode));
-                            break;
-                        }
-                    }
-                }
-
-                instructionSearch = new InstructionSearcher(methodNode.instructions, 0, LDC, IMUL, PUTFIELD);
+                instructionSearch = new InstructionSearcher(methodNode.instructions, 0, ALOAD, ALOAD, GETFIELD, IMUL, NEWARRAY, PUTFIELD);
                 if (instructionSearch.match()) {
                     for (AbstractInsnNode[] matches : instructionSearch.getMatches()) {
                         FieldInsnNode fieldInsnNode = (FieldInsnNode) matches[2];

@@ -1,18 +1,16 @@
 package org.de.analysers;
 
 import org.de.Analyser;
-import org.de.Updater;
 import org.de.utilities.InstructionSearcher;
 import org.objectweb.asm.tree.*;
 
+import java.lang.reflect.Modifier;
 import java.util.List;
-
-import static org.de.utilities.Wildcard.wildcard;
 
 public class Player extends Analyser {
     @Override
     public int getExpectedFieldsSize() {
-        return 7;
+        return 8;
     }
 
     @Override
@@ -40,74 +38,55 @@ public class Player extends Analyser {
     @Override
     public void matchFields(ClassNode classNode) {
         for (FieldNode fieldNode : classNode.fields) {
-            if (fieldNode.access == 0 && fieldNode.desc.contains("String")) {
-                addField("getName()", fieldNode);
-            }
-            if (fieldNode.access == 0 & fieldNode.desc.contains(getClassAnalyser("Model").getNode().name)) {
-                addField("getModel()", fieldNode);
-            }
-        }
-        for (MethodNode methodNode : classNode.methods) {
-            InstructionSearcher insn = new InstructionSearcher(methodNode.instructions, 0, ALOAD, GETFIELD, ICONST_1);
-            if (insn.match()) {
-                for (AbstractInsnNode[] abstractInsnNodes : insn.getMatches()) {
-                    FieldInsnNode fieldInsnNode = (FieldInsnNode) abstractInsnNodes[1];
-
-                    if (fieldInsnNode.owner.equals(classNode.name) && wildcard("L*;", fieldInsnNode.desc)) {
-//                        System.out.println("FOUND FIELD " + fieldInsnNode.name + " " + fieldInsnNode.desc);
-                        addField("getPlayerDefinition()", insnToField(fieldInsnNode, classNode));
-                        break;
-                    }
-                }
-            }
-        }
-        for (MethodNode methodNode : classNode.methods) {
-            InstructionSearcher insn = new InstructionSearcher(methodNode.instructions, 0, ALOAD, GETFIELD, IFNE);
-            if (insn.match()) {
-                for (AbstractInsnNode[] abstractInsnNodes : insn.getMatches()) {
-                    FieldInsnNode fieldInsnNode = (FieldInsnNode) abstractInsnNodes[1];
-                    if (fieldInsnNode.desc.equals("Z")) {
-                        addField("isVisible()", insnToField(fieldInsnNode));
-                    }
-                }
-            }
-        }
-        for (MethodNode methodNode : classNode.methods) {
-            InstructionSearcher insn = new InstructionSearcher(methodNode.instructions, 0, ALOAD, ALOAD, LDC, INVOKEVIRTUAL, LDC, IMUL, PUTFIELD);
-            if (insn.match()) {
-                for (AbstractInsnNode[] abstractInsnNodes : insn.getMatches()) {
-                    FieldInsnNode fieldInsnNode = (FieldInsnNode) abstractInsnNodes[6];
-                    if (fieldInsnNode.desc.equals("I")) {
-                        addField("getCombatLevel()", insnToField(fieldInsnNode));
-                    }
-                }
-            }
-        }
-        for (MethodNode methodNode : classNode.methods) {
-            if (!wildcard(String.format("(*)L%s;", getClassAnalyser("Model").getNode().name), methodNode.desc)) {
+            if (Modifier.isStatic(fieldNode.access)) {
                 continue;
             }
-            InstructionSearcher insn = new InstructionSearcher(methodNode.instructions, 0, GETFIELD, -1, IF_ICMPGE);
-            if (insn.match()) {
-                for (AbstractInsnNode[] abstractInsnNodes : insn.getMatches()) {
-                    FieldInsnNode fieldInsnNode = (FieldInsnNode) abstractInsnNodes[0];
-                    if (fieldInsnNode.desc.equals("I")) {
-                        addField("getSkullIcon()", insnToField(fieldInsnNode));
-                    }
-                }
+
+            if (fieldNode.desc.equals("[Ljava/lang/String;")) {
+                addField("getActions()", fieldNode);
+            }
+
+            if (fieldNode.desc.equals(String.format("L%s;", getClassAnalyser("Model").getNode().name))) {
+                addField("getModel()", fieldNode);
+            }
+
+            if (fieldNode.desc.equals(String.format("L%s;", getClassAnalyser("PlayerDefinition").getNode().name))) {
+                addField("getPlayerDefinition()", fieldNode);
+            }
+
+            if (fieldNode.desc.equals(String.format("L%s;", getClassAnalyser("NameComposite").getNode().name))) {
+                addField("getNameComposite()", fieldNode);
             }
         }
-        for (ClassNode cn : Updater.classes) {
-            for (MethodNode methodNode : cn.methods) {
-                if (!wildcard("(*)V", methodNode.desc)) {
-                    continue;
+
+        InstructionSearcher instructionSearcher;
+        for (MethodNode methodNode : classNode.methods) {
+            if (methodNode.name.equals("<init>") && methodNode.desc.equals("()V")) {
+                instructionSearcher = new InstructionSearcher(methodNode.instructions, 0, ALOAD, PUTFIELD, -1, -1, ALOAD, PUTFIELD, -1, -1, ALOAD, ICONST_3);
+                if (instructionSearcher.match()) {
+                    for (AbstractInsnNode[] matches : instructionSearcher.getMatches()) {
+                        FieldInsnNode fieldInsnNode = (FieldInsnNode) matches[1];
+                        FieldInsnNode fieldInsnNode2 = (FieldInsnNode) matches[5];
+
+                        if (fieldInsnNode.owner.equals(classNode.name) && fieldInsnNode.desc.equals("I") &&
+                                fieldInsnNode2.owner.equals(classNode.name) && fieldInsnNode2.desc.equals("I")) {
+                            addField("getSkullIcon()", insnToField(fieldInsnNode));
+                            addField("getOverheadIcon()", insnToField(fieldInsnNode2));
+                            break;
+                        }
+                    }
                 }
-                InstructionSearcher insn = new InstructionSearcher(methodNode.instructions, 0, GETSTATIC, -1, ALOAD, GETFIELD, -1, AALOAD);
-                if (insn.match()) {
-                    for (AbstractInsnNode[] abstractInsnNodes : insn.getMatches()) {
-                        FieldInsnNode fieldInsnNode = (FieldInsnNode) abstractInsnNodes[3];
-                        if (fieldInsnNode != null && fieldInsnNode.desc.equals("I")) {
-                            addField("getPrayerIcon()", insnToField(fieldInsnNode));
+
+                instructionSearcher = new InstructionSearcher(methodNode.instructions, 0, ALOAD, ICONST_0, PUTFIELD, -1, -1, ALOAD, ICONST_0, PUTFIELD, -1, -1, ALOAD, ICONST_0, PUTFIELD);
+                if (instructionSearcher.match()) {
+                    for (AbstractInsnNode[] matches : instructionSearcher.getMatches()) {
+                        FieldInsnNode fieldInsnNode = (FieldInsnNode) matches[2];
+                        FieldInsnNode fieldInsnNode2 = (FieldInsnNode) matches[7];
+
+                        if (fieldInsnNode.owner.equals(classNode.name) && fieldInsnNode.desc.equals("I") &&
+                                fieldInsnNode2.owner.equals(classNode.name) && fieldInsnNode2.desc.equals("I")) {
+                            addField("getCombatLevel()", insnToField(fieldInsnNode));
+                            addField("getTotalLevel()", insnToField(fieldInsnNode2));
                         }
                     }
                 }

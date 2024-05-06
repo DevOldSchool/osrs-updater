@@ -70,10 +70,10 @@ public class FloorUnderlayDefinition extends Analyser {
                 }
             }
 
-            instructionSearcher = new InstructionSearcher(methodNode.instructions, 0, ALOAD, DLOAD, LDC, DMUL, D2I, LDC, IMUL, PUTFIELD);
+            instructionSearcher = new InstructionSearcher(methodNode.instructions, 0, ALOAD, DLOAD, LDC, DMUL, D2I, IMUL, PUTFIELD);
             if (instructionSearcher.match()) {
                 for (AbstractInsnNode[] abstractInsnNodes : instructionSearcher.getMatches()) {
-                    FieldInsnNode fieldInsnNode = (FieldInsnNode) abstractInsnNodes[7];
+                    FieldInsnNode fieldInsnNode = (FieldInsnNode) abstractInsnNodes[6];
 
                     if (fieldInsnNode.owner.equals(classNode.name) && fieldInsnNode.desc.equals("I")) {
                         addField("getSaturation()", insnToField(fieldInsnNode, classNode));
@@ -94,10 +94,10 @@ public class FloorUnderlayDefinition extends Analyser {
                 }
             }
 
-            instructionSearcher = new InstructionSearcher(methodNode.instructions, 0, ALOAD, DLOAD, LDC, DMUL, D2I, LDC, IMUL, PUTFIELD, -1, -1, LDC, ALOAD);
+            instructionSearcher = new InstructionSearcher(methodNode.instructions, 0, ALOAD, DLOAD, LDC, DMUL, D2I, IMUL, PUTFIELD, -1, -1, ALOAD);
             if (instructionSearcher.match()) {
                 for (AbstractInsnNode[] abstractInsnNodes : instructionSearcher.getMatches()) {
-                    FieldInsnNode fieldInsnNode = (FieldInsnNode) abstractInsnNodes[7];
+                    FieldInsnNode fieldInsnNode = (FieldInsnNode) abstractInsnNodes[6];
 
                     if (fieldInsnNode.owner.equals(classNode.name) && fieldInsnNode.desc.equals("I")) {
                         addField("getLightness()", insnToField(fieldInsnNode, classNode));

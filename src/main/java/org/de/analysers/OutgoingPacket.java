@@ -4,12 +4,13 @@ import org.de.Analyser;
 import org.de.utilities.InstructionSearcher;
 import org.objectweb.asm.tree.*;
 
+import java.lang.reflect.Modifier;
 import java.util.List;
 
 public class OutgoingPacket extends Analyser {
     @Override
     public int getExpectedFieldsSize() {
-        return 4;
+        return 3;
     }
 
     @Override
@@ -36,47 +37,32 @@ public class OutgoingPacket extends Analyser {
 
     @Override
     public void matchFields(ClassNode classNode) {
+        for (FieldNode fieldNode : classNode.fields) {
+            if (Modifier.isStatic(fieldNode.access)) {
+                continue;
+            }
+
+            if (fieldNode.desc.equals(String.format("L%s;", getClassAnalyser("PacketBuffer").getNode().name))) {
+                addField("getBuffer()", fieldNode);
+            }
+
+            if (fieldNode.desc.equals(String.format("L%s;", getClassAnalyser("OutgoingPacketMeta").getNode().name))) {
+                addField("getMeta()", fieldNode);
+            }
+        }
+
+        InstructionSearcher instructionSearcher;
         for (MethodNode methodNode : classNode.methods) {
-            InstructionSearcher instructionSearcher = new InstructionSearcher(methodNode.instructions, 0, ALOAD, NEW, DUP, SIPUSH, INVOKESPECIAL, PUTFIELD);
-            if (instructionSearcher.match()) {
-                for (AbstractInsnNode[] abstractInsnNodes : instructionSearcher.getMatches()) {
-                    FieldInsnNode fieldInsnNode = (FieldInsnNode) abstractInsnNodes[5];
+            if (methodNode.name.equals("<clinit>")) {
+                instructionSearcher = new InstructionSearcher(methodNode.instructions, 0, ICONST_0, PUTSTATIC, RETURN);
+                if (instructionSearcher.match()) {
+                    for (AbstractInsnNode[] abstractInsnNodes : instructionSearcher.getMatches()) {
+                        FieldInsnNode fieldInsnNode = (FieldInsnNode) abstractInsnNodes[1];
 
-                    if (fieldInsnNode.owner.equals(classNode.name) && fieldInsnNode.desc.equals(String.format("L%s;", getClassAnalyser("PacketBuffer").getNode().name))) {
-                        addField("getBuffer()", insnToField(fieldInsnNode, classNode));
-                    }
-                }
-            }
-
-            instructionSearcher = new InstructionSearcher(methodNode.instructions, 0, ALOAD, ICONST_0, PUTFIELD);
-            if (instructionSearcher.match()) {
-                for (AbstractInsnNode[] abstractInsnNodes : instructionSearcher.getMatches()) {
-                    FieldInsnNode fieldInsnNode = (FieldInsnNode) abstractInsnNodes[2];
-
-                    if (fieldInsnNode.owner.equals(classNode.name) && fieldInsnNode.desc.equals("I")) {
-                        addField("getBufferSize()", insnToField(fieldInsnNode, classNode));
-                    }
-                }
-            }
-
-            instructionSearcher = new InstructionSearcher(methodNode.instructions, 0, ALOAD, ACONST_NULL, PUTFIELD);
-            if (instructionSearcher.match()) {
-                for (AbstractInsnNode[] abstractInsnNodes : instructionSearcher.getMatches()) {
-                    FieldInsnNode fieldInsnNode = (FieldInsnNode) abstractInsnNodes[2];
-
-                    if (fieldInsnNode.owner.equals(classNode.name) && fieldInsnNode.desc.equals(String.format("L%s;", getClassAnalyser("OutgoingPacketMeta").getNode().name))) {
-                        addField("getMeta()", insnToField(fieldInsnNode, classNode));
-                    }
-                }
-            }
-
-            instructionSearcher = new InstructionSearcher(methodNode.instructions, 0, LDC, IADD, DUP, PUTSTATIC);
-            if (instructionSearcher.match()) {
-                for (AbstractInsnNode[] abstractInsnNodes : instructionSearcher.getMatches()) {
-                    FieldInsnNode fieldInsnNode = (FieldInsnNode) abstractInsnNodes[3];
-
-                    if (fieldInsnNode.owner.equals(classNode.name) && fieldInsnNode.desc.equals("I")) {
-                        addField("getSize()", insnToField(fieldInsnNode, classNode));
+                        if (fieldInsnNode.owner.equals(classNode.name) && fieldInsnNode.desc.equals("I")) {
+                            addField("getSize()", insnToField(fieldInsnNode, classNode));
+                            break;
+                        }
                     }
                 }
             }

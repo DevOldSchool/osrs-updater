@@ -1,13 +1,11 @@
 package org.de.analysers;
 
 import org.de.Analyser;
-import org.de.utilities.InstructionSearcher;
-import org.objectweb.asm.tree.*;
+import org.objectweb.asm.tree.ClassNode;
+import org.objectweb.asm.tree.FieldNode;
 
 import java.lang.reflect.Modifier;
 import java.util.List;
-
-import static org.de.utilities.Wildcard.wildcard;
 
 public class WidgetNode extends Analyser {
     @Override
@@ -46,18 +44,13 @@ public class WidgetNode extends Analyser {
 
     @Override
     public void matchFields(ClassNode classNode) {
-        for (MethodNode mn : classNode.methods) {
-            if (!wildcard("(*II)V", mn.desc)) {
+        for (FieldNode fieldNode : classNode.fields) {
+            if (Modifier.isStatic(fieldNode.access)) {
                 continue;
             }
-            InstructionSearcher instructionSearcher = new InstructionSearcher(mn.instructions, 0, ALOAD, GETFIELD, -1, -1);
-            if (instructionSearcher.match()) {
-                for (AbstractInsnNode[] insnNodes : instructionSearcher.getMatches()) {
-                    FieldInsnNode fieldInsnNode = (FieldInsnNode) insnNodes[1];
-                    if (fieldInsnNode.owner.equals(classNode.name) && fieldInsnNode.desc.equals("I")) {
-                        addField("getId()", insnToField(fieldInsnNode));
-                    }
-                }
+
+            if (fieldNode.desc.equals("Z")) {
+                addField("isRoot()", fieldNode);
             }
         }
     }

@@ -1,18 +1,17 @@
 package org.de.analysers;
 
 import org.de.Analyser;
-import org.de.utilities.EIS;
 import org.objectweb.asm.tree.ClassNode;
-import org.objectweb.asm.tree.FieldInsnNode;
 import org.objectweb.asm.tree.FieldNode;
 import org.objectweb.asm.tree.MethodNode;
 
+import java.lang.reflect.Modifier;
 import java.util.List;
 
 public class Tile extends Analyser {
     @Override
     public int getExpectedFieldsSize() {
-        return 6;
+        return 9;
     }
 
     @Override
@@ -31,6 +30,7 @@ public class Tile extends Analyser {
                 if (!methodNode.name.equals("<init>")) {
                     continue;
                 }
+
                 if (methodNode.desc.equals("(III)V")) {
                     return classNode;
                 }
@@ -42,59 +42,47 @@ public class Tile extends Analyser {
 
     @Override
     public void matchFields(ClassNode classNode) {
-        ClassNode gameObject = getClassAnalyser("ItemLayer").getNode();
-        ClassNode floorDecoration = getClassAnalyser("FloorDecoration").getNode();
-        ClassNode wallDecoration = getClassAnalyser("WallDecoration").getNode();
-
         for (FieldNode fieldNode : classNode.fields) {
-            if (gameObject != null && fieldNode.desc.equals(String.format("[L%s;", gameObject.name))) {
-                addField("getGameObjects()", fieldNode);
+            if (Modifier.isStatic(fieldNode.access)) {
+                continue;
             }
-            if (floorDecoration != null && fieldNode.desc.equals(String.format("L%s;", floorDecoration.name))) {
+
+            if (fieldNode.desc.equals(String.format("L%s;", getClassAnalyser("BoundaryObject").getNode().name))) {
+                addField("getBoundaryObject()", fieldNode);
+            }
+
+            if (fieldNode.desc.equals(String.format("L%s;", getClassAnalyser("FloorDecoration").getNode().name))) {
                 addField("getFloorDecoration()", fieldNode);
             }
-            if (wallDecoration != null && fieldNode.desc.equals(String.format("L%s;", wallDecoration.name))) {
+
+            if (fieldNode.desc.equals(String.format("L%s;", getClassAnalyser("WallDecoration").getNode().name))) {
                 addField("getWallDecoration()", fieldNode);
             }
-        }
 
-        for (final MethodNode methodNode : getNode().methods) {
-            final EIS eis = new EIS(methodNode, "putfield ldc imul");
-            if (eis.found() > 0) {
-                final FieldInsnNode fin = (FieldInsnNode) eis.getNodesAt(0)[0];
-                if (fin.desc.equals("I")) {
-                    addField("getPlane()", insnToField(fin));
-                }
+            if (fieldNode.desc.equals(String.format("L%s;", getClassAnalyser("ItemLayer").getNode().name))) {
+                addField("getItemLayer()", fieldNode);
+            }
+
+            if (fieldNode.desc.equals(String.format("L%s;", getClassAnalyser("TileModel").getNode().name))) {
+                addField("getTileModel()", fieldNode);
+            }
+
+            if (fieldNode.desc.equals(String.format("L%s;", getClassAnalyser("TilePaint").getNode().name))) {
+                addField("getTilePaint()", fieldNode);
+            }
+
+            if (fieldNode.desc.equals(String.format("[L%s;", getClassAnalyser("InteractableObject").getNode().name))) {
+                addField("getInteractableObjects()", fieldNode);
+            }
+
+            if (fieldNode.desc.equals(String.format("L%s;", classNode.name))) {
+                addField("getTile()", fieldNode);
+            }
+
+            if (fieldNode.desc.equals("[I")) {
+                addField("getEntityFlags()", fieldNode);
             }
         }
-
-//        ClassNode reg = getClassAnalyser("Region").getNode();
-//        getX:
-//        for (MethodNode mn : reg.methods) {
-//            InstructionSearcher insn = new InstructionSearcher(mn.instructions, 0, ALOAD, GETFIELD, LDC, IMUL, ISTORE);
-//            if (insn.match()) {
-//                for (AbstractInsnNode[] matches : insn.getMatches()) {
-//                    FieldInsnNode fin = (FieldInsnNode) matches[1];
-//                    if (fin.desc.equals("I") && fin.owner.equals(classNode.name)) {
-//                        addField("getX()", insnToField(fin, classNode));
-//                        break getX;
-//                    }
-//                }
-//            }
-//        }
-//        getY:
-//        for (MethodNode mn : reg.methods) {
-//            InstructionSearcher insn = new InstructionSearcher(mn.instructions, 0, ISTORE, ALOAD, GETFIELD, LDC, IMUL);
-//            if (insn.match()) {
-//                for (AbstractInsnNode[] matches : insn.getMatches()) {
-//                    FieldInsnNode fin = (FieldInsnNode) matches[2];
-//                    if (fin.desc.equals("I") && fin.owner.equals(classNode.name)) {
-//                        addField("getY()", insnToField(fin, classNode));
-//                        break getY;
-//                    }
-//                }
-//            }
-//        }
     }
 
     @Override

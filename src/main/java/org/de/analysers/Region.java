@@ -10,7 +10,7 @@ import java.util.List;
 public class Region extends Analyser {
     @Override
     public int getExpectedFieldsSize() {
-        return 3;
+        return 2;
     }
 
     @Override
@@ -41,11 +41,16 @@ public class Region extends Analyser {
     @Override
     public void matchFields(ClassNode classNode) {
         for (FieldNode fieldNode : classNode.fields) {
-            if (!Modifier.isStatic(fieldNode.access) && fieldNode.desc.equals(String.format("[L%s;", getClassAnalyser("ItemLayer").getNode().name))) {
-                addField("getGameObjects()", fieldNode);
+            if (Modifier.isStatic(fieldNode.access)) {
+                continue;
             }
-            if (Modifier.isStatic(fieldNode.access) && fieldNode.desc.equals(String.format("[L%s;", getClassAnalyser("ItemLayer").getNode().name))) {
-                addField("getGameObjectCache()", fieldNode);
+
+            if (fieldNode.desc.equals(String.format("[L%s;", getClassAnalyser("InteractableObject").getNode().name))) {
+                addField("getInteractableObjects()", fieldNode);
+            }
+
+            if (fieldNode.desc.startsWith("[[[L")) {
+                addField("getTiles()", fieldNode);
             }
         }
     }

@@ -24,26 +24,21 @@ public class ItemLayer extends Analyser {
             if (!classNode.superName.equals("java/lang/Object")) {
                 continue;
             }
-            boolean rend = false;
-            int pubints = 0;
-            int ints = 0;
+
+            int renderableNodeCount = 0;
 
             for (FieldNode fieldNode : classNode.fields) {
-                if (!Modifier.isStatic(fieldNode.access) &&
-                        fieldNode.desc.equals(String.format("L%s;", getClassAnalyser("RenderableNode").getNode().name))) {
-                    rend = true;
+                if (Modifier.isStatic(fieldNode.access)) {
+                    continue;
                 }
-                if (!Modifier.isStatic(fieldNode.access) && fieldNode.desc.equals("I")) {
-                    if (fieldNode.access == 1) {
-                        pubints++;
-                    } else if (fieldNode.access == 0) {
-                        ints++;
-                    }
 
+                if (fieldNode.desc.equals(String.format("L%s;", getClassAnalyser("RenderableNode").getNode().name))) {
+                    renderableNodeCount++;
                 }
             }
 
-            if (rend) {
+            if (renderableNodeCount == 3) {
+//                System.out.println("FOUND CLASS " + classNode.name + " " + renderableNodeCount);
                 return classNode;
             }
         }
@@ -57,11 +52,13 @@ public class ItemLayer extends Analyser {
             if (Modifier.isStatic(fieldNode.access)) {
                 continue;
             }
+
             if (fieldNode.desc.equals(String.format("L%s;", getClassAnalyser("RenderableNode").getNode().name))) {
                 addField("getRenderable()", fieldNode);
             }
-            if (fieldNode.desc.equals("I") && (!Modifier.isStatic(fieldNode.access)) && (Modifier.isPublic(fieldNode.access))) {
-                addField("getId()", fieldNode);
+
+            if (fieldNode.desc.equals("J")) {
+                addField("getHash()", fieldNode);
             }
         }
     }

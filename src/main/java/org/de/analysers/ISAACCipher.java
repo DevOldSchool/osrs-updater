@@ -12,7 +12,7 @@ import java.util.List;
 public class ISAACCipher extends Analyser {
     @Override
     public int getExpectedFieldsSize() {
-        return 1;
+        return 6;
     }
 
     @Override
@@ -47,9 +47,60 @@ public class ISAACCipher extends Analyser {
             if (instructionSearch.match()) {
                 for (AbstractInsnNode[] matches : instructionSearch.getMatches()) {
                     FieldInsnNode fieldInsnNode = (FieldInsnNode) matches[3];
+                    FieldInsnNode fieldInsnNode2 = (FieldInsnNode) matches[9];
 
-                    if (fieldInsnNode.owner.equals(classNode.name) && fieldInsnNode.desc.equals("[I")) {
+                    if (fieldInsnNode.owner.equals(classNode.name) && fieldInsnNode.desc.equals("[I") &&
+                            fieldInsnNode2.owner.equals(classNode.name) && fieldInsnNode2.desc.equals("[I")) {
                         addField("getMemory()", insnToField(fieldInsnNode, classNode));
+                        addField("getResults()", insnToField(fieldInsnNode2, classNode));
+                        break;
+                    }
+                }
+            }
+
+            instructionSearch = new InstructionSearcher(methodNode.instructions, 0, PUTFIELD, IMUL, IADD, PUTFIELD);
+            if (instructionSearch.match()) {
+                for (AbstractInsnNode[] matches : instructionSearch.getMatches()) {
+                    FieldInsnNode fieldInsnNode = (FieldInsnNode) matches[3];
+
+                    if (fieldInsnNode.owner.equals(classNode.name) && fieldInsnNode.desc.equals("I")) {
+                        addField("getLast()", insnToField(fieldInsnNode, classNode));
+                        break;
+                    }
+                }
+            }
+
+            instructionSearch = new InstructionSearcher(methodNode.instructions, 0, INVOKEVIRTUAL, -1, -1, ALOAD, PUTFIELD);
+            if (instructionSearch.match()) {
+                for (AbstractInsnNode[] matches : instructionSearch.getMatches()) {
+                    FieldInsnNode fieldInsnNode = (FieldInsnNode) matches[4];
+
+                    if (fieldInsnNode.owner.equals(classNode.name) && fieldInsnNode.desc.equals("I")) {
+                        addField("getCount()", insnToField(fieldInsnNode, classNode));
+                        break;
+                    }
+                }
+            }
+
+            instructionSearch = new InstructionSearcher(methodNode.instructions, 0, IMUL, BIPUSH, ISHL, IXOR, IMUL, PUTFIELD);
+            if (instructionSearch.match()) {
+                for (AbstractInsnNode[] matches : instructionSearch.getMatches()) {
+                    FieldInsnNode fieldInsnNode = (FieldInsnNode) matches[5];
+
+                    if (fieldInsnNode.owner.equals(classNode.name) && fieldInsnNode.desc.equals("I")) {
+                        addField("getAccumulator()", insnToField(fieldInsnNode, classNode));
+                        break;
+                    }
+                }
+            }
+
+            instructionSearch = new InstructionSearcher(methodNode.instructions, 0, GETFIELD, IADD, DUP_X1, PUTFIELD);
+            if (instructionSearch.match()) {
+                for (AbstractInsnNode[] matches : instructionSearch.getMatches()) {
+                    FieldInsnNode fieldInsnNode = (FieldInsnNode) matches[3];
+
+                    if (fieldInsnNode.owner.equals(classNode.name) && fieldInsnNode.desc.equals("I")) {
+                        addField("getCounter()", insnToField(fieldInsnNode, classNode));
                         break;
                     }
                 }

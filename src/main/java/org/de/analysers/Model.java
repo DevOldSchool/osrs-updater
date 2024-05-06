@@ -43,21 +43,19 @@ public class Model extends Analyser {
     @Override
     public void matchFields(ClassNode classNode) {
         for (MethodNode methodNode : classNode.methods) {
-//            hookIndices(methodNode);
             hookVertices(methodNode);
 
-            if (methodNode.name.equals("<init>")) {
+            if (methodNode.desc.equals("(ZZZJ)V")) {
                 InstructionSearcher instructionSearch = new InstructionSearcher(methodNode.instructions, 0,
-                        ALOAD, ALOAD, GETFIELD, NEWARRAY, PUTFIELD,
-                        ALOAD, ALOAD, GETFIELD, NEWARRAY, PUTFIELD,
-                        ALOAD, ALOAD, GETFIELD, NEWARRAY, PUTFIELD,
-                        ALOAD, ALOAD, GETFIELD, NEWARRAY, PUTFIELD,
-                        ALOAD, ALOAD);
+                        ALOAD, GETFIELD, ILOAD, IALOAD, ISTORE, -1, -1,
+                        ALOAD, GETFIELD, ILOAD, IALOAD, ISTORE, -1, -1,
+                        ALOAD, GETFIELD, ILOAD, IALOAD, ISTORE, -1, -1,
+                        GETSTATIC);
                 if (instructionSearch.match()) {
                     for (AbstractInsnNode[] matches : instructionSearch.getMatches()) {
-                        FieldInsnNode yFieldInsnNode = (FieldInsnNode) matches[9];
-                        FieldInsnNode zFieldInsnNode = (FieldInsnNode) matches[14];
-                        FieldInsnNode xFieldInsnNode = (FieldInsnNode) matches[19];
+                        FieldInsnNode yFieldInsnNode = (FieldInsnNode) matches[1];
+                        FieldInsnNode zFieldInsnNode = (FieldInsnNode) matches[8];
+                        FieldInsnNode xFieldInsnNode = (FieldInsnNode) matches[15];
 
                         if (yFieldInsnNode.owner.equals(classNode.name) && yFieldInsnNode.desc.equals("[I") &&
                                 zFieldInsnNode.owner.equals(classNode.name) && zFieldInsnNode.desc.equals("[I") &&

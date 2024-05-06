@@ -44,10 +44,10 @@ public class SpotAnim extends Analyser {
                     }
                 }
 
-                instructionSearcher = new InstructionSearcher(methodNode.instructions, 0, LDC, IMUL, PUTFIELD);
+                instructionSearcher = new InstructionSearcher(methodNode.instructions, 0, IMUL, PUTFIELD);
                 if (instructionSearcher.match()) {
                     for (AbstractInsnNode[] abstractInsnNodes : instructionSearcher.getMatches()) {
-                        FieldInsnNode fieldInsnNode = (FieldInsnNode) abstractInsnNodes[2];
+                        FieldInsnNode fieldInsnNode = (FieldInsnNode) abstractInsnNodes[1];
                         if (fieldInsnNode.owner.equals(classNode.name) && fieldInsnNode.desc.equals("I")) {
                             hasContrastField = true;
                         }

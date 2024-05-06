@@ -1,9 +1,9 @@
 package org.de.analysers;
 
 import org.de.Analyser;
-import org.de.Updater;
-import org.de.utilities.InstructionSearcher;
-import org.objectweb.asm.tree.*;
+import org.objectweb.asm.tree.ClassNode;
+import org.objectweb.asm.tree.FieldNode;
+import org.objectweb.asm.tree.MethodNode;
 
 import java.lang.reflect.Modifier;
 import java.util.List;
@@ -13,7 +13,7 @@ import static org.de.utilities.Wildcard.wildcard;
 public class ObjectDefinition extends Analyser {
     @Override
     public int getExpectedFieldsSize() {
-        return 4;
+        return 2;
     }
 
     @Override
@@ -41,33 +41,16 @@ public class ObjectDefinition extends Analyser {
     @Override
     public void matchFields(ClassNode classNode) {
         for (FieldNode fieldNode : classNode.fields) {
-            if (Modifier.isStatic(fieldNode.access)) continue;
-            if (fieldNode.desc.equals("Ljava/lang/String;")) addField("getName()", fieldNode);
-            if (fieldNode.desc.equals("[Ljava/lang/String;")) addField("getActions()", fieldNode);
-        }
+            if (Modifier.isStatic(fieldNode.access)) {
+                continue;
+            }
 
-        for (ClassNode cn : Updater.classes) {
-            for (MethodNode methodNode : cn.methods) {
-                if (!wildcard("(I*)V", methodNode.desc)) {
-                    continue;
-                }
-                InstructionSearcher is = new InstructionSearcher(methodNode.instructions, 0, GETFIELD, -1, ISTORE, -1, ALOAD, GETFIELD);
-                if (is.match()) {
-                    for (AbstractInsnNode[] insnNodes : is.getMatches()) {
-                        FieldInsnNode width = (FieldInsnNode) insnNodes[0];
-                        FieldInsnNode height = (FieldInsnNode) insnNodes[5];
-                        if (height == null) {
-                            continue;
-                        }
+            if (fieldNode.desc.equals("Ljava/lang/String;")) {
+                addField("getName()", fieldNode);
+            }
 
-                        if (width.owner.equals(classNode.name) && width.desc.equals("I")) {
-                            addField("getWidth()", insnToField(width));
-                        }
-                        if (height.owner.equals(classNode.name) && height.desc.equals("I")) {
-                            addField("getHeight()", insnToField(height));
-                        }
-                    }
-                }
+            if (fieldNode.desc.equals("[Ljava/lang/String;")) {
+                addField("getActions()", fieldNode);
             }
         }
     }

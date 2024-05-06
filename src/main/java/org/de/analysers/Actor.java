@@ -7,12 +7,10 @@ import org.objectweb.asm.tree.*;
 import java.lang.reflect.Modifier;
 import java.util.List;
 
-import static org.de.utilities.Wildcard.wildcard;
-
 public class Actor extends Analyser {
     @Override
     public int getExpectedFieldsSize() {
-        return 7;
+        return 8;
     }
 
     @Override
@@ -47,24 +45,33 @@ public class Actor extends Analyser {
 
     @Override
     public void matchFields(ClassNode classNode) {
-        // TODO, nothing in here is stable across versions!
         for (FieldNode fieldNode : classNode.fields) {
             if (Modifier.isStatic(fieldNode.access)) {
                 continue;
             }
+
             if (fieldNode.desc.contains("String")) {
                 addField("getMessage()", fieldNode);
             }
+
             if (fieldNode.desc.equals("Z")) {
                 addField("isAnimating()", fieldNode);
+            }
+
+            if (fieldNode.desc.equals(String.format("[L%s;", getClassAnalyser("MovementType").getNode().name))) {
+                addField("getMovementTypes()", fieldNode);
+            }
+
+            if (fieldNode.desc.equals(String.format("L%s;", getClassAnalyser("NodeList").getNode().name))) {
+                addField("getNodeList()", fieldNode);
             }
         }
 
         for (MethodNode methodNode : classNode.methods) {
-            InstructionSearcher instructionSearcher = new InstructionSearcher(methodNode.instructions, 0, ALOAD, ICONST_0, PUTFIELD, ALOAD, ICONST_4);
+            InstructionSearcher instructionSearcher = new InstructionSearcher(methodNode.instructions, 0, INVOKESPECIAL, PUTFIELD, -1, -1, ALOAD, PUTFIELD, -1, -1, ALOAD, ICONST_0, PUTFIELD, -1, -1, ALOAD, PUTFIELD);
             if (instructionSearcher.match()) {
                 for (AbstractInsnNode[] abstractInsnNodes : instructionSearcher.getMatches()) {
-                    FieldInsnNode fieldInsnNode = (FieldInsnNode) abstractInsnNodes[2];
+                    FieldInsnNode fieldInsnNode = (FieldInsnNode) abstractInsnNodes[10];
 
                     if (fieldInsnNode.owner.equals(classNode.name) && fieldInsnNode.desc.equals("Z")) {
                         addField("isInteracting()", insnToField(fieldInsnNode, classNode));
@@ -73,55 +80,20 @@ public class Actor extends Analyser {
                 }
             }
 
-            instructionSearcher = new InstructionSearcher(methodNode.instructions, 0, ALOAD, ICONST_4, NEWARRAY, PUTFIELD, ALOAD);
+            instructionSearcher = new InstructionSearcher(methodNode.instructions, 0, ALOAD, ICONST_4, NEWARRAY, PUTFIELD, -1, -1, ALOAD, ICONST_4, NEWARRAY, PUTFIELD, -1, -1, ALOAD, ICONST_4, NEWARRAY, PUTFIELD);
             if (instructionSearcher.match()) {
                 for (AbstractInsnNode[] abstractInsnNodes : instructionSearcher.getMatches()) {
                     FieldInsnNode fieldInsnNode = (FieldInsnNode) abstractInsnNodes[3];
-
-                    if (fieldInsnNode.owner.equals(classNode.name) && fieldInsnNode.desc.equals("[I")) {
-                        addField("getHitsplatTypes()", insnToField(fieldInsnNode));
-                        break;
-                    }
-                }
-            }
-
-            instructionSearcher = new InstructionSearcher(methodNode.instructions, 0, ALOAD, ICONST_4, NEWARRAY, PUTFIELD, ALOAD, ICONST_0);
-            if (instructionSearcher.match()) {
-                for (AbstractInsnNode[] abstractInsnNodes : instructionSearcher.getMatches()) {
-                    FieldInsnNode fieldInsnNode = (FieldInsnNode) abstractInsnNodes[3];
+                    FieldInsnNode fieldInsnNode2 = (FieldInsnNode) abstractInsnNodes[9];
+                    FieldInsnNode fieldInsnNode3 = (FieldInsnNode) abstractInsnNodes[15];
 
                     if (fieldInsnNode.owner.equals(classNode.name) && fieldInsnNode.desc.equals("[I") &&
-                            !isDuplicate(insnToField(fieldInsnNode))) {
-                        addField("getHitsplatDamage()", insnToField(fieldInsnNode));
-                    }
-                }
-            }
-
-            instructionSearcher = new InstructionSearcher(methodNode.instructions, 0, ALOAD, ICONST_4, NEWARRAY, PUTFIELD, ALOAD, ICONST_4);
-            if (instructionSearcher.match()) {
-                for (AbstractInsnNode[] abstractInsnNodes : instructionSearcher.getMatches()) {
-                    FieldInsnNode fieldInsnNode = (FieldInsnNode) abstractInsnNodes[3];
-
-                    if (fieldInsnNode.owner.equals(classNode.name) && fieldInsnNode.desc.equals("[I")) {
-                        addField("getHitsplatCycles()", insnToField(fieldInsnNode));
-                    }
-                }
-            }
-
-            instructionSearcher = new InstructionSearcher(methodNode.instructions, 0, ILOAD, I2C, BIPUSH, INVOKESTATIC, ICONST_1);
-            if (instructionSearcher.match()) {
-                for (AbstractInsnNode[] insnNodes : instructionSearcher.getMatches()) {
-                    MethodInsnNode methodInsnNode = (MethodInsnNode) insnNodes[3];
-
-                    if (wildcard("(*)Z", methodInsnNode.desc)) {
-                        String fieldName = methodInsnNode.desc.substring(methodInsnNode.desc.indexOf('(') + 1, methodInsnNode.desc.indexOf(')')).toLowerCase();
-
-                        for (FieldNode fieldNode : classNode.fields) {
-                            if (fieldNode.name.equals(fieldName) && fieldNode.desc.equals("I")) {
-                                addField("getOrientation()", fieldNode);
-                                break;
-                            }
-                        }
+                            fieldInsnNode2.owner.equals(classNode.name) && fieldInsnNode2.desc.equals("[I") &&
+                            fieldInsnNode3.owner.equals(classNode.name) && fieldInsnNode3.desc.equals("[I")) {
+                        addField("getHitsplatTypes()", insnToField(fieldInsnNode));
+                        addField("getHitsplatDamage()", insnToField(fieldInsnNode2));
+                        addField("getHitsplatCycles()", insnToField(fieldInsnNode3));
+                        break;
                     }
                 }
             }

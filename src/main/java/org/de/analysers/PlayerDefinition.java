@@ -53,7 +53,7 @@ public class PlayerDefinition extends Analyser {
         }
 
         for (MethodNode methodNode : classNode.methods) {
-            InstructionSearcher instructionSearcher = new InstructionSearcher(methodNode.instructions, 0, ALOAD, LDC, LLOAD, IMUL, PUTFIELD);
+            InstructionSearcher instructionSearcher = new InstructionSearcher(methodNode.instructions, 0, LMUL, ICONST_4, LSHL, LMUL, PUTFIELD);
             if (instructionSearcher.match()) {
                 for (AbstractInsnNode[] abstractInsnNodes : instructionSearcher.getMatches()) {
                     FieldInsnNode fieldInsnNode = (FieldInsnNode) abstractInsnNodes[4];
