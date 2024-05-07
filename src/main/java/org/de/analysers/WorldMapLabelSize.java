@@ -21,6 +21,7 @@ public class WorldMapLabelSize extends Analyser {
     public ClassNode matchClassNode(List<ClassNode> classes) {
         for (ClassNode classNode : classes) {
             boolean initMethod = false;
+            boolean hasEqualsMethod = false;
             int boolMethodCount = 0;
             for (MethodNode methodNode : classNode.methods) {
                 if (methodNode.name.equals("<init>") && methodNode.desc.equals("(III)V")) {
@@ -30,9 +31,13 @@ public class WorldMapLabelSize extends Analyser {
                 if (methodNode.desc.endsWith(")Z")) {
                     boolMethodCount++;
                 }
+
+                if (methodNode.name.equals("equals")) {
+                    hasEqualsMethod = true;
+                }
             }
 
-            if (initMethod && boolMethodCount > 4) {
+            if (initMethod && boolMethodCount > 4 && hasEqualsMethod) {
                 return classNode;
             }
         }

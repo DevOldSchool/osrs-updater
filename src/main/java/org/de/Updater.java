@@ -189,12 +189,12 @@ public class Updater {
         analysers.add(new IdentityTable());
         analysers.add(new AbstractArchive());
         analysers.add(new Rasterizer2D());
-        analysers.add(new JFont());
+        analysers.add(new AbstractRasterizer());
         analysers.add(new Sprite());
         analysers.add(new AbstractFont());
-        analysers.add(new Skins());
-        analysers.add(new IdentityKit());
-        analysers.add(new IdentityKitNode());
+        analysers.add(new Skeleton());
+        analysers.add(new Animation());
+        analysers.add(new Frames());
         analysers.add(new Model());
         analysers.add(new AppearanceCustomization());
         analysers.add(new AnimationSequence());
@@ -280,7 +280,7 @@ public class Updater {
         analysers.add(new AreaSoundEmitter());
         analysers.add(new AudioRunnable());
         analysers.add(new AudioTrack());
-        analysers.add(new NameableComparator());
+        analysers.add(new AbstractNameableComparator());
         analysers.add(new NameableContainer());
         analysers.add(new FriendContainer());
         analysers.add(new FriendListLink());
@@ -304,7 +304,7 @@ public class Updater {
         analysers.add(new MachineInfo());
         analysers.add(new WorldMapLabelSize());
         analysers.add(new WorldMapLabel());
-//        analysers.add(new AbstractWorldMapIcon());
+        analysers.add(new AbstractWorldMapIcon());
         // WorldMapDecoration
         analysers.add(new AbstractWorldMapData());
         analysers.add(new KitDefinition());
@@ -313,10 +313,9 @@ public class Updater {
         analysers.add(new Overlay());
         analysers.add(new HorizontalAlignment());
         analysers.add(new VerticalAlignment());
-        analysers.add(new Area());
+        analysers.add(new WorldMapElement());
         analysers.add(new Enumerated());
 //        analysers.add(new Bounds());
-//        analysers.add(new AddRequestTask());
         analysers.add(new NanoTimer());
         analysers.add(new AbstractTimer());
         analysers.add(new MilliTimer());
@@ -324,6 +323,18 @@ public class Updater {
         analysers.add(new LanguageType());
         analysers.add(new BuildType());
         analysers.add(new GameShell());
+
+        analysers.add(new ApproximateRouteStrategy());
+        analysers.add(new FileSystemRequestHandler());
+        analysers.add(new ArchiveLoader());
+
+        if (gamepackRevision >= 213) {
+            analysers.add(new ActorSpotAnim());
+        }
+
+        if (gamepackRevision >= 215) {
+            analysers.add(new AddRequestTask());
+        }
 //        analysers.add(new Client());
     }
 }

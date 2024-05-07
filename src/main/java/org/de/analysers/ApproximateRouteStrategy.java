@@ -2,11 +2,11 @@ package org.de.analysers;
 
 import org.de.Analyser;
 import org.objectweb.asm.tree.ClassNode;
+import org.objectweb.asm.tree.MethodNode;
 
-import java.lang.reflect.Modifier;
 import java.util.List;
 
-public class JFont extends Analyser {
+public class ApproximateRouteStrategy extends Analyser {
     @Override
     public int getExpectedFieldsSize() {
         return 0;
@@ -20,12 +20,14 @@ public class JFont extends Analyser {
     @Override
     public ClassNode matchClassNode(List<ClassNode> classes) {
         for (ClassNode classNode : classes) {
-            if (!Modifier.isAbstract(classNode.access)) {
+            if (classNode.superName.equals("java/lang/Object")) {
                 continue;
             }
 
-            if (classNode.superName.equals(getClassAnalyser("Rasterizer2D").getNode().name)) {
-                return classNode;
+            for (MethodNode methodNode : classNode.methods) {
+                if (methodNode.desc.equals(String.format("(IIL%s;)Z", getClassAnalyser("CollisionMap").getNode().name))) {
+                    return classNode;
+                }
             }
         }
 

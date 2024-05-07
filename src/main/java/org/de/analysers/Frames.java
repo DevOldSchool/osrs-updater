@@ -6,7 +6,7 @@ import org.objectweb.asm.tree.FieldNode;
 
 import java.util.List;
 
-public class IdentityKitNode extends Analyser {
+public class Frames extends Analyser {
     @Override
     public int getExpectedFieldsSize() {
         return 1;
@@ -19,7 +19,7 @@ public class IdentityKitNode extends Analyser {
 
     @Override
     public ClassNode matchClassNode(List<ClassNode> classes) {
-        ClassNode identityKitClassNode = getClassAnalyser("IdentityKit").getNode();
+        ClassNode identityKitClassNode = getClassAnalyser("Animation").getNode();
 
         if (identityKitClassNode == null) {
             return null;
@@ -41,7 +41,7 @@ public class IdentityKitNode extends Analyser {
     @Override
     public void matchFields(ClassNode classNode) {
         for (FieldNode fieldNode : classNode.fields) {
-            if (fieldNode.desc.equals(String.format("[L%s;", getClassAnalyser("IdentityKit").getNode().name))) {
+            if (fieldNode.desc.equals(String.format("[L%s;", getClassAnalyser("Animation").getNode().name))) {
                 addField("getKits()", fieldNode);
             }
         }

@@ -15,7 +15,7 @@ import static org.de.utilities.Wildcard.wildcard;
 public class Projectile extends Analyser {
     @Override
     public int getExpectedFieldsSize() {
-        return 5;
+        return 9;
     }
 
     @Override
@@ -67,23 +67,38 @@ public class Projectile extends Analyser {
                 }
             }
 
-            instructionSearcher = new InstructionSearcher(methodNode.instructions, 0, DLOAD, DDIV, DADD, PUTFIELD);
+            instructionSearcher = new InstructionSearcher(methodNode.instructions, 0, GETFIELD, DSUB, DLOAD, DDIV, PUTFIELD);
             if (instructionSearcher.match()) {
-                for (AbstractInsnNode[] abstractInsnNodes : instructionSearcher.getMatches()) {
-                    FieldInsnNode fieldInsnNode = (FieldInsnNode) abstractInsnNodes[3];
-                    if (fieldInsnNode.desc.equals("D")) {
-                        addField("getX()", insnToField(fieldInsnNode, classNode));
-                        break;
+                for (int i = 0; i < instructionSearcher.getMatches().size(); i++) {
+                    FieldInsnNode fieldInsnNode = (FieldInsnNode) instructionSearcher.getMatches().get(i)[0];
+                    FieldInsnNode fieldInsnNode2 = (FieldInsnNode) instructionSearcher.getMatches().get(i)[4];
+
+                    if (fieldInsnNode.owner.equals(classNode.name) && fieldInsnNode.desc.equals("D") &&
+                            fieldInsnNode2.owner.equals(classNode.name) && fieldInsnNode2.desc.equals("D")) {
+                        switch (i) {
+                            case 0:
+                                addField("getX()", insnToField(fieldInsnNode, classNode));
+                                addField("getSpeedX()", insnToField(fieldInsnNode2, classNode));
+                                break;
+                            case 1:
+                                addField("getY()", insnToField(fieldInsnNode, classNode));
+                                addField("getSpeedY()", insnToField(fieldInsnNode2, classNode));
+                                break;
+                        }
                     }
                 }
             }
 
-            instructionSearcher = new InstructionSearcher(methodNode.instructions, 0, I2D, DADD, PUTFIELD);
+            instructionSearcher = new InstructionSearcher(methodNode.instructions, 0, GETFIELD, DSUB, ALOAD, GETFIELD);
             if (instructionSearcher.match()) {
                 for (AbstractInsnNode[] abstractInsnNodes : instructionSearcher.getMatches()) {
-                    FieldInsnNode fieldInsnNode = (FieldInsnNode) abstractInsnNodes[2];
-                    if (fieldInsnNode.desc.equals("D")) {
-                        addField("getY()", insnToField(fieldInsnNode, classNode));
+                    FieldInsnNode fieldInsnNode = (FieldInsnNode) abstractInsnNodes[0];
+                    FieldInsnNode fieldInsnNode2 = (FieldInsnNode) abstractInsnNodes[3];
+
+                    if (fieldInsnNode.owner.equals(classNode.name) && fieldInsnNode.desc.equals("D") &&
+                            fieldInsnNode2.owner.equals(classNode.name) && fieldInsnNode2.desc.equals("D")) {
+                        addField("getZ()", insnToField(fieldInsnNode, classNode));
+                        addField("getSpeedZ()", insnToField(fieldInsnNode2, classNode));
                         break;
                     }
                 }

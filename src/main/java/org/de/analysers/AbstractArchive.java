@@ -103,10 +103,10 @@ public class AbstractArchive extends Analyser {
                 }
             }
 
-            instructionSearcher = new InstructionSearcher(methodNode.instructions, 0, BIPUSH, ALOAD, ALOAD, BIPUSH, INVOKEVIRTUAL, IMUL, PUTFIELD);
+            instructionSearcher = new InstructionSearcher(methodNode.instructions, 0, ALOAD, ALOAD, GETFIELD, IMUL, NEWARRAY, PUTFIELD);
             if (instructionSearcher.match()) {
                 for (AbstractInsnNode[] abstractInsnNodes : instructionSearcher.getMatches()) {
-                    FieldInsnNode fieldInsnNode = (FieldInsnNode) abstractInsnNodes[6];
+                    FieldInsnNode fieldInsnNode = (FieldInsnNode) abstractInsnNodes[2];
 
                     if (fieldInsnNode.owner.equals(classNode.name) && fieldInsnNode.desc.equals("I")) {
                         addField("getEntryIndexCount()", insnToField(fieldInsnNode, classNode));

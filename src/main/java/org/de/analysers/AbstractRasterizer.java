@@ -3,9 +3,10 @@ package org.de.analysers;
 import org.de.Analyser;
 import org.objectweb.asm.tree.ClassNode;
 
+import java.lang.reflect.Modifier;
 import java.util.List;
 
-public class RSShadowedFont extends Analyser {
+public class AbstractRasterizer extends Analyser {
     @Override
     public int getExpectedFieldsSize() {
         return 0;
@@ -19,11 +20,13 @@ public class RSShadowedFont extends Analyser {
     @Override
     public ClassNode matchClassNode(List<ClassNode> classes) {
         for (ClassNode classNode : classes) {
-            if (!classNode.superName.equals(getClassAnalyser("AbstractRasterizer").getNode().name)) {
+            if (!Modifier.isAbstract(classNode.access)) {
                 continue;
             }
 
-            return classNode;
+            if (classNode.superName.equals(getClassAnalyser("Rasterizer2D").getNode().name)) {
+                return classNode;
+            }
         }
 
         return null;

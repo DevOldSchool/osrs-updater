@@ -54,17 +54,17 @@ public class Item extends Analyser {
                     }
                 }
             }
-        }
 
-        for (MethodNode methodNode : classNode.methods) {
-            InstructionSearcher instructionSearcher = new InstructionSearcher(methodNode.instructions, 0, ALOAD, GETFIELD, IMUL, BIPUSH, INVOKEVIRTUAL);
-            if (instructionSearcher.match()) {
-                for (AbstractInsnNode[] abstractInsnNodes : instructionSearcher.getMatches()) {
-                    FieldInsnNode fieldInsnNode = (FieldInsnNode) abstractInsnNodes[1];
+            if (methodNode.desc.equals(String.format("()L%s;", getClassAnalyser("Model").getNode().name))) {
+                instructionSearcher = new InstructionSearcher(methodNode.instructions, 0, ALOAD, GETFIELD);
+                if (instructionSearcher.match()) {
+                    for (AbstractInsnNode[] abstractInsnNodes : instructionSearcher.getMatches()) {
+                        FieldInsnNode fieldInsnNode = (FieldInsnNode) abstractInsnNodes[1];
 
-                    if (fieldInsnNode.owner.equals(classNode.name) && fieldInsnNode.desc.equals("I")) {
-                        addField("getStackSize()", insnToField(fieldInsnNode, classNode));
-                        break;
+                        if (fieldInsnNode.owner.equals(classNode.name) && fieldInsnNode.desc.equals("I")) {
+                            addField("getStackSize()", insnToField(fieldInsnNode, classNode));
+                            break;
+                        }
                     }
                 }
             }

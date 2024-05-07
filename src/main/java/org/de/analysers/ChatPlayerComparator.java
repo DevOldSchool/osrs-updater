@@ -20,7 +20,7 @@ public class ChatPlayerComparator extends Analyser {
     @Override
     public ClassNode matchClassNode(List<ClassNode> classes) {
         for (ClassNode classNode : classes) {
-            if (!classNode.superName.equals(getClassAnalyser("NameableComparator").getNode().name)) {
+            if (!classNode.superName.equals(getClassAnalyser("AbstractNameableComparator").getNode().name)) {
                 continue;
             }
 

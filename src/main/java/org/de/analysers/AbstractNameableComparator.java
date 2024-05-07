@@ -7,7 +7,7 @@ import org.objectweb.asm.tree.FieldNode;
 import java.lang.reflect.Modifier;
 import java.util.List;
 
-public class NameableComparator extends Analyser {
+public class AbstractNameableComparator extends Analyser {
     @Override
     public int getExpectedFieldsSize() {
         return 1;

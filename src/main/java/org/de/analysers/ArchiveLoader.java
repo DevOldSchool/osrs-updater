@@ -3,11 +3,11 @@ package org.de.analysers;
 import org.de.Analyser;
 import org.objectweb.asm.tree.ClassNode;
 import org.objectweb.asm.tree.FieldNode;
+import org.objectweb.asm.tree.MethodNode;
 
-import java.lang.reflect.Modifier;
 import java.util.List;
 
-public class AbstractFont extends Analyser {
+public class ArchiveLoader extends Analyser {
     @Override
     public int getExpectedFieldsSize() {
         return 1;
@@ -21,21 +21,20 @@ public class AbstractFont extends Analyser {
     @Override
     public ClassNode matchClassNode(List<ClassNode> classes) {
         for (ClassNode classNode : classes) {
-            if (classNode.name.equals(getClassAnalyser("AbstractRasterizer").getNode().name) ||
-                    classNode.name.equals(getClassAnalyser("Sprite").getNode().name)) {
-                continue;
-            }
-
-            if (!classNode.superName.equals(getClassAnalyser("Rasterizer2D").getNode().name)) {
-                continue;
-            }
-
+            int archiveCount = 0;
             for (FieldNode fieldNode : classNode.fields) {
-                if (Modifier.isStatic(fieldNode.access)) {
-                    continue;
+                if (fieldNode.desc.equals(String.format("L%s;", getClassAnalyser("Archive").getNode().name))) {
+                    archiveCount++;
                 }
+            }
 
-                if (fieldNode.desc.equals("[B")) {
+            if (archiveCount < 1) {
+                continue;
+            }
+
+            for (MethodNode methodNode : classNode.methods) {
+                if (methodNode.name.equals("<init>") &&
+                        methodNode.desc.equals(String.format("(L%s;Ljava/lang/String;)V", getClassAnalyser("Archive").getNode().name))) {
                     return classNode;
                 }
             }
@@ -47,8 +46,8 @@ public class AbstractFont extends Analyser {
     @Override
     public void matchFields(ClassNode classNode) {
         for (FieldNode fieldNode : classNode.fields) {
-            if (fieldNode.desc.equals("[B")) {
-                addField("getPixels()", fieldNode);
+            if (fieldNode.desc.equals(String.format("L%s;", getClassAnalyser("Archive").getNode().name))) {
+                addField("getArchive()", fieldNode);
             }
         }
     }

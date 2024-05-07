@@ -6,7 +6,7 @@ import org.objectweb.asm.tree.*;
 
 import java.util.List;
 
-public class IdentityKit extends Analyser {
+public class Animation extends Analyser {
     @Override
     public int getExpectedFieldsSize() {
         return 1;
@@ -19,7 +19,7 @@ public class IdentityKit extends Analyser {
 
     @Override
     public ClassNode matchClassNode(List<ClassNode> classes) {
-        ClassNode skinsClassNode = getClassAnalyser("Skins").getNode();
+        ClassNode skinsClassNode = getClassAnalyser("Skeleton").getNode();
 
         if (skinsClassNode == null) {
             return null;
@@ -43,7 +43,7 @@ public class IdentityKit extends Analyser {
                 }
             }
         }
-        
+
         return null;
     }
 
@@ -55,7 +55,7 @@ public class IdentityKit extends Analyser {
                 for (AbstractInsnNode[] matches : instructionSearch.getMatches()) {
                     FieldInsnNode fieldInsnNode = (FieldInsnNode) matches[1];
 
-                    if (fieldInsnNode.desc.equals(String.format("L%s;", getClassAnalyser("Skins").getNode().name))) {
+                    if (fieldInsnNode.desc.equals(String.format("L%s;", getClassAnalyser("Skeleton").getNode().name))) {
                         addField("getSkins()", insnToField(fieldInsnNode, classNode));
                     }
                 }
