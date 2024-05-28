@@ -21,18 +21,22 @@ public class Region extends Analyser {
     @Override
     public ClassNode matchClassNode(List<ClassNode> classes) {
         for (ClassNode classNode : classes) {
-            int tripleI = 0;
-            if (classNode.superName.contains("Object")) {
-                for (FieldNode fn : classNode.fields) {
-                    if (!Modifier.isStatic(fn.access) && !Modifier.isPublic(fn.access)) {
-                        if (fn.desc.equals("[[I") || fn.desc.contains("[[[I"))
-                            tripleI++;
-                    }
+            int tileArray = 0;
+            for (FieldNode fieldNode : classNode.fields) {
+                if (Modifier.isStatic(fieldNode.access)) {
+                    continue;
                 }
-                if (tripleI == 4) {
-                    return classNode;
+
+                if (fieldNode.desc.equals(String.format("[[[L%s;", getClassAnalyser("Tile").getNode().name))) {
+                    tileArray++;
                 }
             }
+
+            if (tileArray < 1) {
+                continue;
+            }
+
+            return classNode;
         }
 
         return null;
@@ -49,7 +53,7 @@ public class Region extends Analyser {
                 addField("getInteractableObjects()", fieldNode);
             }
 
-            if (fieldNode.desc.startsWith("[[[L")) {
+            if (fieldNode.desc.equals(String.format("[[[L%s;", getClassAnalyser("Tile").getNode().name))) {
                 addField("getTiles()", fieldNode);
             }
         }

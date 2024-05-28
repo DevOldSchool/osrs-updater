@@ -27,12 +27,41 @@ public class Item extends Analyser {
 
             int intFieldCount = 0;
             for (FieldNode fieldNode : classNode.fields) {
-                if (!Modifier.isStatic(fieldNode.access) && fieldNode.desc.equals("I")) {
+                if (Modifier.isStatic(fieldNode.access)) {
+                    continue;
+                }
+
+                if (fieldNode.desc.equals("I")) {
                     intFieldCount++;
                 }
             }
 
-            if (intFieldCount == 3) {
+            if (intFieldCount < 3) {
+                continue;
+            }
+
+            int modelIntMethodCount = 0;
+            int modelByteMethodCount = 0;
+            int boolMethodCount = 0;
+            for (MethodNode methodNode : classNode.methods) {
+                if (methodNode.desc.equals(String.format("(I)L%s;", getClassAnalyser("Model").getNode().name))) {
+                    modelIntMethodCount++;
+                }
+
+                if (methodNode.desc.equals(String.format("(B)L%s;", getClassAnalyser("Model").getNode().name))) {
+                    modelByteMethodCount++;
+                }
+
+                if (methodNode.desc.equals("(I)Z")) {
+                    boolMethodCount++;
+                }
+            }
+
+            if (boolMethodCount < 1) {
+                continue;
+            }
+
+            if (modelIntMethodCount > 0 || modelByteMethodCount > 0) {
                 return classNode;
             }
         }

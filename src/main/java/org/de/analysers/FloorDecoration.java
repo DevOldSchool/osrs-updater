@@ -21,9 +21,8 @@ public class FloorDecoration extends Analyser {
     @Override
     public ClassNode matchClassNode(List<ClassNode> classes) {
         ClassNode wallDecoration = getClassAnalyser("WallDecoration").getNode();
-        ClassNode region = getClassAnalyser("Region").getNode();
 
-        if (wallDecoration == null || region == null) {
+        if (wallDecoration == null) {
             return null;
         }
 

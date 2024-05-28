@@ -38,7 +38,7 @@ public class MenuRowContext extends Analyser {
                 }
             }
 
-            if (intCount != 5 || stringCount != 2) {
+            if (intCount < 5 || stringCount != 2) {
                 continue;
             }
 

@@ -1,4 +1,5 @@
 # osrs-updater
+
 This program attempts to deobfuscate OSRS gamepacks and identify classes, fields and methods.
 
 ## Options
@@ -23,7 +24,7 @@ Run deobfuscation and updater for single revision.
 Run deobfuscation and updater across multiple revisions.
 
 ```bash
--base-path /path-to/osrs-gamepacks/gamepacks/ -start-revision 209 -end-revision 221
+-base-path /path-to/osrs-gamepacks/gamepacks/ -start-revision 209 -end-revision 222
 ```
 
 ## Hooks

@@ -1,6 +1,7 @@
 package org.de.analysers;
 
 import org.de.Analyser;
+import org.de.Updater;
 import org.objectweb.asm.tree.ClassNode;
 import org.objectweb.asm.tree.FieldNode;
 import org.objectweb.asm.tree.MethodNode;
@@ -34,8 +35,14 @@ public class MovementType extends Analyser {
             }
 
             for (MethodNode methodNode : classNode.methods) {
-                if (methodNode.name.equals("<init>") && methodNode.desc.equals("(B)V")) {
-                    return classNode;
+                if (Updater.gamepackRevision > 221) {
+                    if (methodNode.name.equals("<init>") && methodNode.desc.equals("(BF)V")) {
+                        return classNode;
+                    }
+                } else {
+                    if (methodNode.name.equals("<init>") && methodNode.desc.equals("(B)V")) {
+                        return classNode;
+                    }
                 }
             }
         }

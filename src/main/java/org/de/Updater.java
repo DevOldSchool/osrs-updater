@@ -254,10 +254,10 @@ public class Updater {
         analysers.add(new BoundaryObject());
         analysers.add(new InteractableObject());
         analysers.add(new AnimableObject());
-        analysers.add(new Region());
         analysers.add(new WallDecoration());
         analysers.add(new FloorDecoration());
         analysers.add(new Tile());
+        analysers.add(new Region());
         analysers.add(new PendingSpawn());
         analysers.add(new WidgetNode());
         analysers.add(new ChatboxMessage());
