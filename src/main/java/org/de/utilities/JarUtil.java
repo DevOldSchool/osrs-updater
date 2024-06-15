@@ -20,7 +20,8 @@ import java.util.List;
 import java.util.jar.JarEntry;
 import java.util.jar.JarFile;
 
-import static org.objectweb.asm.Opcodes.*;
+import static org.objectweb.asm.Opcodes.ALOAD;
+import static org.objectweb.asm.Opcodes.SIPUSH;
 
 public class JarUtil {
     /**
@@ -63,11 +64,17 @@ public class JarUtil {
      */
     public static void setGamepackRevision(ClassNode classNode) {
         for (MethodNode methodNode : classNode.methods) {
-            InstructionSearcher instructionSearch = new InstructionSearcher(methodNode.instructions, 0, DUP, ALOAD, GETFIELD, SIPUSH);
+            InstructionSearcher instructionSearch = new InstructionSearcher(methodNode.instructions, 0, ALOAD, SIPUSH, SIPUSH, SIPUSH);
             if (instructionSearch.match()) {
                 for (AbstractInsnNode[] matches : instructionSearch.getMatches()) {
-                    IntInsnNode intInsnNode = (IntInsnNode) matches[3];
-                    Updater.gamepackRevision = intInsnNode.operand;
+                    IntInsnNode intInsnNode = (IntInsnNode) matches[1];
+
+                    if (intInsnNode.operand != 765) {
+                        continue;
+                    }
+
+                    IntInsnNode intInsnNode2 = (IntInsnNode) matches[3];
+                    Updater.gamepackRevision = intInsnNode2.operand;
                     return;
                 }
             }
