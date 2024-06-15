@@ -4,6 +4,7 @@ import org.de.Analyser;
 import org.objectweb.asm.tree.ClassNode;
 import org.objectweb.asm.tree.FieldNode;
 
+import java.lang.reflect.Modifier;
 import java.util.List;
 
 public class WorldMapRectangle extends Analyser {
@@ -23,6 +24,10 @@ public class WorldMapRectangle extends Analyser {
             int worldMapRendererCount = 0;
             int intCount = 0;
             for (FieldNode fieldNode : classNode.fields) {
+                if (Modifier.isStatic(fieldNode.access)) {
+                    continue;
+                }
+
                 if (fieldNode.desc.equals(String.format("L%s;", getClassAnalyser("WorldMapRenderer").getNode().name))) {
                     worldMapRendererCount++;
                 }
@@ -35,7 +40,7 @@ public class WorldMapRectangle extends Analyser {
             if (worldMapRendererCount != 1 || intCount != 4) {
                 continue;
             }
-
+            
             return classNode;
         }
 
