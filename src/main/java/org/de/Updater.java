@@ -128,7 +128,7 @@ public class Updater {
         deobfuscators.add(new IllegalStateExceptions());
         deobfuscators.add(new UnusedArguments());
         deobfuscators.add(new JumpOptimiser());
-        deobfuscators.add(new ControlFlow());
+//        deobfuscators.add(new ControlFlow());
         deobfuscators.add(new ConstructorErrors());
         deobfuscators.add(new GetPaths());
 
@@ -220,7 +220,7 @@ public class Updater {
         analysers.add(new AbstractRawAudioNode());
         analysers.add(new Resampler());
         analysers.add(new RawAudioNode());
-        analysers.add(new Item());
+        analysers.add(new TileItem());
         analysers.add(new DynamicObject());
         analysers.add(new Projectile());
         analysers.add(new Varp());
@@ -237,7 +237,7 @@ public class Updater {
         analysers.add(new MovementType());
         analysers.add(new Actor());
         analysers.add(new Npc());
-//        analysers.add(new ChatSetting());
+        analysers.add(new ChatSetting());
         analysers.add(new Player());
         analysers.add(new MenuRowContext());
         analysers.add(new AttackOptionSetting());
@@ -300,22 +300,27 @@ public class Updater {
         analysers.add(new AbstractRequester());
         analysers.add(new UrlRequester());
         analysers.add(new AppletParameter());
-        // PlatformInfo
-        analysers.add(new MachineInfo());
+        analysers.add(new PlatformInfo());
+        analysers.add(new PlatformInfoProvider());
         analysers.add(new WorldMapLabelSize());
         analysers.add(new WorldMapLabel());
+        analysers.add(new Coordinate());
         analysers.add(new AbstractWorldMapIcon());
-        // WorldMapDecoration
+        analysers.add(new WorldMapDecoration());
         analysers.add(new AbstractWorldMapData());
+        analysers.add(new WorldMapArea());
+        analysers.add(new WorldMapRenderer());
+        analysers.add(new WorldMapRectangle());
+        analysers.add(new WorldMapArchiveLoader());
+        analysers.add(new WorldMap());
         analysers.add(new KitDefinition());
         analysers.add(new FileRequest());
-        // VarCString
         analysers.add(new Overlay());
         analysers.add(new HorizontalAlignment());
         analysers.add(new VerticalAlignment());
         analysers.add(new WorldMapElement());
         analysers.add(new Enumerated());
-//        analysers.add(new Bounds());
+        analysers.add(new Bounds());
         analysers.add(new NanoTimer());
         analysers.add(new AbstractTimer());
         analysers.add(new MilliTimer());
@@ -324,6 +329,7 @@ public class Updater {
         analysers.add(new BuildType());
         analysers.add(new GameShell());
 
+        analysers.add(new RouteStrategy());
         analysers.add(new ApproximateRouteStrategy());
         analysers.add(new FileSystemRequestHandler());
         analysers.add(new ArchiveLoader());
