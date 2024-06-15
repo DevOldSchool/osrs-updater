@@ -10,14 +10,14 @@ import java.util.Map;
 
 public class Main {
     public static Map<Integer, List<Analyser>> analysers = new HashMap<>();
+    public static boolean gamepackToFile = false;
+    public static boolean resultsToFile = false;
 
     public static void main(String[] args) {
         String jar = null;
         String basePath = null;
         int startRevision = 0;
         int endRevision = 0;
-        boolean gamepackToFile = false;
-        boolean resultsToFile = false;
 
         if (args.length > 0) {
             for (int i = 0; i < args.length; i++) {
