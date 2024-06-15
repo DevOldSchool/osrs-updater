@@ -1,0 +1,16 @@
+<component name="ProjectRunConfigurationManager">
+  <configuration default="false" name="Run 209" type="Application" factoryName="Application">
+    <option name="MAIN_CLASS_NAME" value="org.de.Main" />
+    <module name="osrs-updater" />
+    <option name="PROGRAM_PARAMETERS" value="-jar $PROJECT_DIR$/../osrs-gamepacks/gamepacks/osrs-209.jar --gtf" />
+    <extension name="coverage">
+      <pattern>
+        <option name="PATTERN" value="org.de.*" />
+        <option name="ENABLED" value="true" />
+      </pattern>
+    </extension>
+    <method v="2">
+      <option name="Make" enabled="true" />
+    </method>
+  </configuration>
+</component>

@@ -1,0 +1,16 @@
+<component name="ProjectRunConfigurationManager">
+  <configuration default="false" name="Run all" type="Application" factoryName="Application">
+    <option name="MAIN_CLASS_NAME" value="org.de.Main" />
+    <module name="osrs-updater" />
+    <option name="PROGRAM_PARAMETERS" value="-base-path $PROJECT_DIR$/../osrs-gamepacks/gamepacks/ -start-revision 209 -end-revision 222 --rtf" />
+    <extension name="coverage">
+      <pattern>
+        <option name="PATTERN" value="org.de.*" />
+        <option name="ENABLED" value="true" />
+      </pattern>
+    </extension>
+    <method v="2">
+      <option name="Make" enabled="true" />
+    </method>
+  </configuration>
+</component>
