@@ -11,16 +11,37 @@ import java.util.List;
 
 public class Renamer extends Deobfuscator {
     private int renamedClasses;
+    private int totalClasses;
     private int renamedMethods;
+    private int totalMethods;
     private int renamedFields;
+    private int totalFields;
 
     @Override
     public void onCompletion() {
-        System.out.printf("Deobfuscation: Renamed %d classes, %d methods and %d fields in %d ms\n", renamedClasses, renamedMethods, renamedFields, (System.currentTimeMillis() - begin));
+        System.out.printf("Deobfuscation: Renamed %d/%d classes, %d/%d methods and %d/%d fields in %d ms\n",
+                renamedClasses, totalClasses,
+                renamedMethods, totalMethods,
+                renamedFields, totalFields,
+                (System.currentTimeMillis() - begin));
     }
 
     @Override
     public void execute(List<ClassNode> classes, List<Analyser> analysers) {
+        for (ClassNode classNode : classes) {
+            totalClasses++;
+
+            for (MethodNode methodNode : classNode.methods) {
+                if (methodNode.name.equals("<init>") || methodNode.name.equals("<clinit>")) {
+                    continue;
+                }
+
+                totalMethods++;
+            }
+
+            totalFields += classNode.fields.size();
+        }
+
         for (Analyser analyser : analysers) {
             if (analyser.getNode() != null) {
                 updateClassReferences(classes, analyser.getObfuscatedName(), analyser.getClass().getSimpleName());
