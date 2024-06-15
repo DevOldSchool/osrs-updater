@@ -1,154 +1,152 @@
 Gamepack Revision: 218
-Finished loading 559 classes in 77 ms
+Finished loading 559 classes in 64 ms
 Stored 1760 multipliers
 
 Deobfuscation: Removed 2825 RuntimeException try-catch blocks in 1 ms
-Deobfuscation: Removed 31471 dead instructions in 188 ms
-Deobfuscation: Optimised 219781 method control-flow graphs in 445 ms
+Deobfuscation: Removed 31471 dead instructions in 211 ms
+Deobfuscation: Optimised 219781 method control-flow graphs in 443 ms
 Deobfuscation: Optimised 1834 try-catch block handler exception ranges in 1 ms
-Deobfuscation: Removed 8534 IllegalStateException opaque checks in 66 ms
-Deobfuscation: Removed 1313 unused method arguments in 33 ms
-Deobfuscation: Removed 98535 redundant GOTO jumps in 8 ms
-Deobfuscation: Removed 75979 jumps and 12561 labels in 197 ms
-Deobfuscation: Removed 100 constructor errors in 1 ms
+Deobfuscation: Removed 8534 IllegalStateException opaque checks in 55 ms
+Deobfuscation: Removed 1313 unused method arguments in 32 ms
+Deobfuscation: Removed 98535 redundant GOTO jumps in 7 ms
+Deobfuscation: Removed 100 constructor errors in 2 ms
 Deobfuscation: Fixed 4 invalid getPath() method calls in 7 ms
-Deobfuscation: Moved 6912 fields to original classes in 17 ms
-Deobfuscation: Removed 980 unused fields in 14 ms
+Deobfuscation: Moved 6912 fields to original classes in 19 ms
+Deobfuscation: Removed 980 unused fields in 16 ms
 Deobfuscation: Reordered 4373 fields in 1 ms
-Deobfuscation: Moved 4402 methods to original classes in 334 ms
-Deobfuscation: Removed 1277 unused methods in 62 ms
-Deobfuscation: Reordered 9570 methods in 26 ms
-Deobfuscation: Inlined 3256 strings in 10 ms
-Deobfuscation: Removed 66938 multipliers in 7 ms
+Deobfuscation: Moved 4402 methods to original classes in 388 ms
+Deobfuscation: Removed 7011 unused methods in 1481 ms
+Deobfuscation: Reordered 3836 methods in 6 ms
+Deobfuscation: Inlined 1144 strings in 4 ms
+Deobfuscation: Removed 20708 multipliers in 3 ms
 Deobfuscation: Removed 0 decomplier traps in 0 ms
 
-[- Canvas identified as ag extends java/awt/Canvas -] (1/1) (0/0) in 0 ms
+[- Canvas identified as ag extends java/awt/Canvas -] (1/1) (0/0)
 	[> 'getComponent()' identified as 'ag.at' -] (Ljava/awt/Component;)
 
-[- Node identified as sh extends java/lang/Object -] (3/3) (0/0) in 0 ms
-	[> 'getUid()' identified as 'sh.hp' -] (J)
-	[> 'getNext()' identified as 'sh.hl' -] (Lsh;)
-	[> 'getPrevious()' identified as 'sh.hq' -] (Lsh;)
+[- Node identified as sh extends java/lang/Object -] (3/3) (2/2)
+	[> 'uid' identified as 'sh.hp' -] (J)
+	[> 'getNext()' identified as 'sh.hq' -] (Lsh;)
+	[> 'getPrevious()' identified as 'sh.hl' -] (Lsh;)
+	[> Method 'hasNext()' identified as 'sh.fx' -] (()Z)
+	[> Method 'remove()' identified as 'sh.fz' -] (()V)
 
-[- Link identified as se extends java/lang/Object -] (2/2) (0/0) in 1 ms
+[- Link identified as se extends java/lang/Object -] (2/2) (0/0)
 	[> 'getNext()' identified as 'se.ab' -] (Lse;)
 	[> 'getPrevious()' identified as 'se.ao' -] (Lse;)
 
-[- LinkedList identified as pu extends java/lang/Object -] (2/2) (0/0) in 2 ms
+[- LinkedList identified as pu extends java/lang/Object -] (2/2) (0/0)
 	[> 'getHead()' identified as 'pu.at' -] (Lse;)
 	[> 'getPointer()' identified as 'pu.ah' -] (Lse;)
 
-[- RSException identified as vf extends java/lang/RuntimeException -] (2/2) (0/0) in 0 ms
+[- RSException identified as vf extends java/lang/RuntimeException -] (2/2) (0/0)
 	[> 'getText()' identified as 'vf.au' -] (Ljava/lang/String;)
 	[> 'getThrowable()' identified as 'vf.aa' -] (Ljava/lang/Throwable;)
 
-[- Inflater identified as ve extends java/lang/Object -] (1/1) (0/0) in 0 ms
+[- Inflater identified as ve extends java/lang/Object -] (1/1) (0/0)
 	[> 'getInflater()' identified as 've.at' -] (Ljava/util/zip/Inflater;)
 
-[- ItemStorage identified as du extends sh -] (2/2) (0/0) in 0 ms
+[- ItemStorage identified as du extends sh -] (2/2) (0/0)
 	[> 'getStackSizes()' identified as 'du.ar' -] ([I)
 	[> 'getIds()' identified as 'du.ah' -] ([I)
 
-[- ByteBuffer identified as uj extends sh -] (2/2) (0/0) in 0 ms
+[- ByteBuffer identified as uj extends sh -] (2/2) (0/0)
 	[> 'getOffset()' identified as 'uj.al' -] (I)	[ * 1904364897 ]
 	[> 'getBytes()' identified as 'uj.ac' -] ([B)
 
-[- ByteArrayNode identified as uj extends sh -] (1/1) (0/0) in 0 ms
+[- ByteArrayNode identified as uj extends sh -] (1/1) (0/0)
 	[> 'getBytes()' identified as 'uj.ac' -] ([B)
 
-[- AbstractByteBuffer identified as np extends java/lang/Object -] (0/0) (0/0) in 1 ms
+[- AbstractByteBuffer identified as np extends java/lang/Object -] (0/0) (0/0)
 
-[- BasicByteBuffer identified as na extends np -] (1/1) (0/0) in 0 ms
+[- BasicByteBuffer identified as na extends np -] (1/1) (0/0)
 	[> 'getBuffer()' identified as 'na.at' -] (Ljava/nio/ByteBuffer;)
 
-[- Producer identified as uu extends java/lang/Object -] (3/3) (0/0) in 0 ms
+[- Producer identified as uu extends java/lang/Object -] (3/3) (0/0)
 	[> 'getWidth()' identified as 'uu.ao' -] (I)	[ * -1353905913 ]
 	[> 'getPixels()' identified as 'uu.ar' -] ([I)
 	[> 'getHeight()' identified as 'uu.ab' -] (I)	[ * 1542064901 ]
 
-[- ComponentProducer identified as bg extends uu -] (2/2) (0/0) in 0 ms
+[- ComponentProducer identified as bg extends uu -] (2/2) (0/0)
 	[> 'getImage()' identified as 'bg.ah' -] (Ljava/awt/Image;)
 	[> 'getComponent()' identified as 'bg.at' -] (Ljava/awt/Component;)
 
-[- HashTable identified as tw extends java/lang/Object -] (5/5) (0/0) in 1 ms
+[- HashTable identified as tw extends java/lang/Object -] (5/5) (0/0)
 	[> 'getBuckets()' identified as 'tw.ah' -] ([Lsh;)
 	[> 'getCurrent()' identified as 'tw.ao' -] (Lsh;)
 	[> 'getIndex()' identified as 'tw.ab' -] (I)	[ * 1 ]
 	[> 'getHead()' identified as 'tw.ar' -] (Lsh;)
 	[> 'getSize()' identified as 'tw.at' -] (I)	[ * 1 ]
 
-[- FixedSizeDeque identified as tz extends java/lang/Object -] (5/5) (0/0) in 1 ms
+[- FixedSizeDeque identified as tz extends java/lang/Object -] (5/5) (0/0)
 	[> 'getBuckets()' identified as 'tz.ah' -] ([Lsh;)
 	[> 'getCurrent()' identified as 'tz.ao' -] (Lsh;)
 	[> 'getIndex()' identified as 'tz.ab' -] (I)	[ * 1 ]
 	[> 'getHead()' identified as 'tz.ar' -] (Lsh;)
 	[> 'getSize()' identified as 'tz.at' -] (I)	[ * 1 ]
 
-[- FixedSizeDequeIterator identified as tp extends java/lang/Object -] (4/4) (0/0) in 0 ms
+[- FixedSizeDequeIterator identified as tp extends java/lang/Object -] (4/4) (0/0)
 	[> 'getNext()' identified as 'tp.ah' -] (Lsh;)
 	[> 'getCurrent()' identified as 'tp.ao' -] (Lsh;)
 	[> 'getSize()' identified as 'tp.ar' -] (I)	[ * 1 ]
 	[> 'getDeque()' identified as 'tp.at' -] (Ltz;)
 
-[- NodeList identified as pm extends java/lang/Object -] (2/2) (0/0) in 0 ms
+[- NodeList identified as pm extends java/lang/Object -] (2/2) (0/0)
 	[> 'getCurrent()' identified as 'pm.ah' -] (Lsh;)
 	[> 'getHead()' identified as 'pm.at' -] (Lsh;)
 
-[- NodeListIterator identified as pk extends java/lang/Object -] (3/3) (0/0) in 0 ms
+[- NodeListIterator identified as pk extends java/lang/Object -] (2/3) (0/0)
 	[> 'getList()' identified as 'pk.at' -] (Lpm;)
-	[> 'getNext()' identified as 'pk.ah' -] (Lsh;)
 	[> 'getCurrent()' identified as 'pk.ar' -] (Lsh;)
 
-[- EntityNode identified as sn extends sh -] (3/3) (1/1) in 0 ms
+[- EntityNode identified as sn extends sh -] (3/3) (1/1)
 	[> 'getUid()' identified as 'sn.em' -] (J)
 	[> 'getNext()' identified as 'sn.eo' -] (Lsn;)
 	[> 'getPrevious()' identified as 'sn.ef' -] (Lsn;)
-	[> Method 'unlink' identified as 'sn.fm' -] (()V)
+	[> Method 'unlink' identified as 'sn.fd' -] (()V)
 
-[- Reference identified as la extends sn -] (1/1) (0/0) in 0 ms
+[- Reference identified as la extends sn -] (1/1) (0/0)
 	[> 'getIndex()' identified as 'la.ah' -] (I)	[ * 1 ]
 
-[- SoftReference identified as ln extends la -] (1/1) (0/0) in 0 ms
+[- SoftReference identified as ln extends la -] (1/1) (0/0)
 	[> 'getSoftReference()' identified as 'ln.at' -] (Ljava/lang/ref/SoftReference;)
 
-[- HardReference identified as ll extends la -] (1/1) (0/0) in 0 ms
+[- HardReference identified as ll extends la -] (1/1) (0/0)
 	[> 'getHardReference()' identified as 'll.at' -] (Ljava/lang/Object;)
 
-[- DoublyNode identified as po extends java/lang/Object -] (2/2) (0/0) in 0 ms
+[- DoublyNode identified as po extends java/lang/Object -] (2/2) (0/0)
 	[> 'getCurrent()' identified as 'po.ah' -] (Lsn;)
 	[> 'getHead()' identified as 'po.at' -] (Lsn;)
 
-[- DoublyNodeIterator identified as ph extends java/lang/Object -] (3/3) (0/0) in 0 ms
+[- DoublyNodeIterator identified as ph extends java/lang/Object -] (3/3) (0/0)
 	[> 'getIterableNode()' identified as 'ph.at' -] (Lpo;)
 	[> 'getNext()' identified as 'ph.ah' -] (Lsn;)
 	[> 'getCurrent()' identified as 'ph.ar' -] (Lsn;)
 
-[- ClientPreferences identified as dl extends java/lang/Object -] (7/7) (0/0) in 0 ms
-	[> 'isLoadingAudioDisabled()' identified as 'dl.ab' -] (Z)
+[- ClientPreferences identified as dl extends java/lang/Object -] (5/7) (0/0)
 	[> 'getBrightness()' identified as 'dl.au' -] (Z)
-	[> 'isRoofDisabled()' identified as 'dl.ab' -] (Z)
 	[> 'getAuthTokens()' identified as 'dl.aj' -] (Ljava/util/Map;)
 	[> 'getDisplayFps()' identified as 'dl.ak' -] (I)	[ * -1858072331 ]
 	[> 'getRememberedUsername()' identified as 'dl.ay' -] (Ljava/lang/String;)
 	[> 'getMusicVolume()' identified as 'dl.az' -] (D)
 
-[- RenderableNode identified as kt extends sn -] (1/1) (0/0) in 0 ms
+[- RenderableNode identified as kt extends sn -] (1/1) (0/0)
 	[> 'getModelHeight()' identified as 'kt.ek' -] (I)	[ * -2146691913 ]
 
-[- Queue identified as od extends java/lang/Object -] (1/1) (0/0) in 1 ms
+[- Queue identified as od extends java/lang/Object -] (1/1) (0/0)
 	[> 'getEntityNode()' identified as 'od.at' -] (Lsn;)
 
-[- Cache identified as lk extends java/lang/Object -] (5/5) (0/0) in 0 ms
+[- Cache identified as lk extends java/lang/Object -] (5/5) (0/0)
 	[> 'getNodeComposite()' identified as 'lk.ab' -] (Lpo;)
 	[> 'getFixedSizedDeque()' identified as 'lk.ao' -] (Ltz;)
 	[> 'getEntityNode()' identified as 'lk.at' -] (Lsn;)
 	[> 'getRemaining()' identified as 'lk.ar' -] (I)	[ * 1 ]
 	[> 'getSize()' identified as 'lk.ah' -] (I)	[ * 1 ]
 
-[- InventoryDefinition identified as gz extends sn -] (1/1) (0/0) in 0 ms
+[- InventoryDefinition identified as gz extends sn -] (1/1) (0/0)
 	[> 'getCapacity()' identified as 'gz.ar' -] (I)	[ * 1 ]
 
-[- ISAACCipher identified as uy extends java/lang/Object -] (6/6) (0/0) in 12 ms
+[- ISAACCipher identified as uy extends java/lang/Object -] (6/6) (0/0)
 	[> 'getCounter()' identified as 'uy.al' -] (I)	[ * 1 ]
 	[> 'getLast()' identified as 'uy.ac' -] (I)	[ * -637627563 ]
 	[> 'getAccumulator()' identified as 'uy.aa' -] (I)	[ * 1984477295 ]
@@ -156,26 +154,26 @@ Deobfuscation: Removed 0 decomplier traps in 0 ms
 	[> 'getMemory()' identified as 'uy.au' -] ([I)
 	[> 'getCount()' identified as 'uy.ao' -] (I)	[ * 269818793 ]
 
-[- PacketBuffer identified as uo extends uj -] (2/2) (0/0) in 0 ms
+[- PacketBuffer identified as uo extends uj -] (2/2) (0/0)
 	[> 'getBitOffset()' identified as 'uo.ar' -] (I)	[ * -1984139847 ]
 	[> 'getCipher()' identified as 'uo.at' -] (Luy;)
 
-[- OutgoingPacketMeta identified as lq extends java/lang/Object -] (2/2) (0/0) in 1 ms
+[- OutgoingPacketMeta identified as lq extends java/lang/Object -] (2/2) (0/0)
 	[> 'getId()' identified as 'lq.dl' -] (I)	[ * -980425147 ]
 	[> 'getLength()' identified as 'lq.de' -] (I)	[ * 1569386491 ]
 
-[- OutgoingPacket identified as ld extends sh -] (3/3) (0/0) in 0 ms
+[- OutgoingPacket identified as ld extends sh -] (3/3) (0/0)
 	[> 'getMeta()' identified as 'ld.at' -] (Llq;)
 	[> 'getBuffer()' identified as 'ld.ar' -] (Luo;)
 	[> 'getSize()' identified as 'ld.au' -] (I)	[ * -155215749 ]
 
-[- RegionUpdatePacketHeader identified as ly extends java/lang/Object -] (0/0) (0/0) in 1 ms
+[- RegionUpdatePacketHeader identified as ly extends java/lang/Object -] (0/0) (0/0)
 
-[- IncomingPacketMeta identified as lu extends java/lang/Object -] (2/2) (0/0) in 1 ms
+[- IncomingPacketMeta identified as lu extends java/lang/Object -] (2/2) (0/0)
 	[> 'getId()' identified as 'lu.ee' -] (I)	[ * 1979699673 ]
 	[> 'getLength()' identified as 'lu.ej' -] (I)	[ * 1623601625 ]
 
-[- AsynchronousInputStream identified as ra extends java/lang/Object -] (7/7) (0/0) in 0 ms
+[- AsynchronousInputStream identified as ra extends java/lang/Object -] (7/7) (0/0)
 	[> 'getOffset()' identified as 'ra.au' -] (I)	[ * 692713339 ]
 	[> 'getReadIndex()' identified as 'ra.au' -] (I)	[ * 692713339 ]
 	[> 'getBuffer()' identified as 'ra.ao' -] ([B)
@@ -184,7 +182,7 @@ Deobfuscation: Removed 0 decomplier traps in 0 ms
 	[> 'getSize()' identified as 'ra.ar' -] (I)	[ * -2126647663 ]
 	[> 'getThread()' identified as 'ra.at' -] (Ljava/lang/Thread;)
 
-[- AsynchronousOutputStream identified as rs extends java/lang/Object -] (8/8) (0/0) in 0 ms
+[- AsynchronousOutputStream identified as rs extends java/lang/Object -] (8/8) (0/0)
 	[> 'getOffset()' identified as 'rs.ab' -] (I)	[ * 2045851071 ]
 	[> 'getBuffer()' identified as 'rs.ao' -] ([B)
 	[> 'getOutputStream()' identified as 'rs.ah' -] (Ljava/io/OutputStream;)
@@ -194,20 +192,20 @@ Deobfuscation: Removed 0 decomplier traps in 0 ms
 	[> 'getSize()' identified as 'rs.ar' -] (I)	[ * 159807561 ]
 	[> 'getThread()' identified as 'rs.at' -] (Ljava/lang/Thread;)
 
-[- Socket identified as re extends ro -] (4/4) (0/0) in 1 ms
+[- Socket identified as re extends ro -] (4/4) (0/0)
 	[> 'getSocket()' identified as 're.at' -] (Ljava/net/Socket;)
 	[> 'getOutputStream()' identified as 're.ar' -] (Lrs;)
 	[> 'getInputStream()' identified as 're.ah' -] (Lra;)
 	[> 'getSize()' identified as 're.ah' -] (Lra;)
 
-[- AbstractSocket identified as ro extends java/lang/Object -] (0/0) (0/0) in 0 ms
+[- AbstractSocket identified as ro extends java/lang/Object -] (0/0) (0/0)
 
-[- PacketContext identified as ab extends java/lang/Object -] (0/0) (0/0) in 0 ms
+[- PacketContext identified as ab extends java/lang/Object -] (0/0) (0/0)
 
-[- IdentityTable identified as vh extends java/lang/Object -] (1/1) (0/0) in 9 ms
+[- IdentityTable identified as vh extends java/lang/Object -] (1/1) (0/0)
 	[> 'getIds()' identified as 'vh.at' -] ([I)
 
-[- AbstractArchive identified as ol extends java/lang/Object -] (11/12) (0/0) in 1 ms
+[- AbstractArchive identified as ol extends java/lang/Object -] (11/12) (0/0)
 	[> 'getEntryIdentifiers()' identified as 'ol.ad' -] ([I)
 	[> 'getChildIndices()' identified as 'ol.be' -] ([[I)
 	[> 'getChildBuffers()' identified as 'ol.bv' -] ([[Ljava/lang/Object;)
@@ -220,28 +218,28 @@ Deobfuscation: Removed 0 decomplier traps in 0 ms
 	[> 'getEntryIndices()' identified as 'ol.aw' -] ([I)
 	[> 'isDiscardingEntryBuffers()' identified as 'ol.bm' -] (Z)
 
-[- Rasterizer2D identified as uw extends sn -] (0/0) (0/0) in 0 ms
+[- Rasterizer2D identified as uw extends sn -] (0/0) (0/0)
 
-[- AbstractRasterizer identified as kn extends uw -] (0/0) (0/0) in 0 ms
+[- AbstractRasterizer identified as kn extends uw -] (0/0) (0/0)
 
-[- Sprite identified as uz extends uw -] (0/0) (0/0) in 0 ms
+[- Sprite identified as uz extends uw -] (0/0) (0/0)
 
-[- AbstractFont identified as pa extends uw -] (1/1) (0/0) in 0 ms
+[- AbstractFont identified as pa extends uw -] (1/1) (0/0)
 	[> 'getPixels()' identified as 'pa.av' -] ([B)
 
-[- Skeleton identified as kd extends sh -] (4/4) (0/0) in 0 ms
+[- Skeleton identified as kd extends sh -] (4/4) (0/0)
 	[> 'getOpcodes()' identified as 'kd.ac' -] ([I)
 	[> 'getId()' identified as 'kd.au' -] (I)	[ * 334360487 ]
 	[> 'getSkinList()' identified as 'kd.al' -] ([[I)
 	[> 'getCount()' identified as 'kd.aa' -] (I)	[ * 521667617 ]
 
-[- Animation identified as kr extends java/lang/Object -] (1/1) (0/0) in 1 ms
+[- Animation identified as kr extends java/lang/Object -] (1/1) (0/0)
 	[> 'getSkins()' identified as 'kr.ab' -] (Lkd;)
 
-[- Frames identified as ko extends sn -] (1/1) (0/0) in 0 ms
+[- Frames identified as ko extends sn -] (1/1) (0/0)
 	[> 'getKits()' identified as 'ko.at' -] ([Lkr;)
 
-[- Model identified as ka extends kt -] (6/6) (0/0) in 0 ms
+[- Model identified as ka extends kt -] (6/6) (0/0)
 	[> 'getVerticesZ()' identified as 'ka.ap' -] ([I)
 	[> 'getVerticesX()' identified as 'ka.al' -] ([I)
 	[> 'getVerticesY()' identified as 'ka.az' -] ([I)
@@ -249,15 +247,15 @@ Deobfuscation: Removed 0 decomplier traps in 0 ms
 	[> 'getIndicesY()' identified as 'ka.ax' -] ([I)
 	[> 'getIndicesZ()' identified as 'ka.as' -] ([I)
 
-[- AppearanceCustomization identified as gx extends java/lang/Object -] (2/2) (0/0) in 4 ms
+[- AppearanceCustomization identified as gx extends java/lang/Object -] (2/2) (0/0)
 	[> 'getNewTextures()' identified as 'gx.ao' -] ([S)
 	[> 'getNewColors()' identified as 'gx.ar' -] ([S)
 
-[- AnimationSequence identified as hx extends sn -] (0/0) (0/0) in 0 ms
+[- AnimationSequence identified as hx extends sn -] (0/0) (0/0)
 
-[- ModelHeader identified as kq extends kt -] (0/0) (0/0) in 1 ms
+[- ModelHeader identified as kq extends kt -] (0/0) (0/0)
 
-[- ItemDefinition identified as hv extends sn -] (8/8) (0/0) in 0 ms
+[- ItemDefinition identified as hv extends sn -] (8/8) (0/0)
 	[> 'getStackAmounts()' identified as 'hv.br' -] ([I)
 	[> 'getStackIds()' identified as 'hv.br' -] ([I)
 	[> 'getPrice()' identified as 'hv.an' -] (I)	[ * 1275516445 ]
@@ -267,87 +265,85 @@ Deobfuscation: Removed 0 decomplier traps in 0 ms
 	[> 'isTradable()' identified as 'hv.cl' -] (Z)
 	[> 'isMembers()' identified as 'hv.ba' -] (Z)
 
-[- DefinitionProperty identified as hr extends sn -] (1/2) (0/0) in 0 ms
+[- DefinitionProperty identified as hr extends sn -] (1/2) (0/0)
 	[> 'getCache()' identified as 'hr.ah' -] (Llk;)
 
-[- ObjectDefinition identified as hs extends sn -] (2/2) (0/0) in 1 ms
+[- ObjectDefinition identified as hs extends sn -] (2/2) (0/0)
 	[> 'getName()' identified as 'hs.av' -] (Ljava/lang/String;)
 	[> 'getActions()' identified as 'hs.bl' -] ([Ljava/lang/String;)
 
-[- NpcDefinition identified as hw extends sn -] (4/4) (0/0) in 0 ms
+[- NpcDefinition identified as hw extends sn -] (4/4) (0/0)
 	[> 'getId()' identified as 'hw.au' -] (I)	[ * 1732339779 ]
 	[> 'getName()' identified as 'hw.aa' -] (Ljava/lang/String;)
 	[> 'getActions()' identified as 'hw.bi' -] ([Ljava/lang/String;)
 	[> 'getModelIds()' identified as 'hw.al' -] ([I)
 
-[- FloorUnderlayDefinition identified as hu extends sn -] (2/2) (0/0) in 0 ms
+[- FloorUnderlayDefinition identified as hu extends sn -] (2/2) (0/0)
 	[> 'getCache()' identified as 'hu.ah' -] (Llk;)
 	[> 'getRgbColor()' identified as 'hu.ar' -] (I)	[ * 1132257727 ]
 
-[- SpotAnim identified as ha extends sn -] (0/0) (0/0) in 0 ms
+[- SpotAnim identified as ha extends sn -] (0/0) (0/0)
 
-[- PlayerDefinition identified as nb extends java/lang/Object -] (3/3) (1/1) in 7 ms
+[- PlayerDefinition identified as nb extends java/lang/Object -] (3/3) (1/1)
 	[> 'getEquipment()' identified as 'nb.ah' -] ([I)
 	[> 'isFemale()' identified as 'nb.az' -] (Z)
 	[> 'getHash()' identified as 'nb.aa' -] (J)
-	[> Method 'getModelHeader()' identified as 'nb.by' -] (()Lkq;)
+	[> Method 'getModelHeader()' identified as 'nb.ap' -] ((I)Lkq;)
 
-[- IndexedImage identified as up extends uw -] (1/1) (0/0) in 0 ms
+[- IndexedImage identified as up extends uw -] (1/1) (0/0)
 	[> 'getPixels()' identified as 'up.at' -] ([B)
 
-[- RuneScript identified as dt extends sn -] (1/1) (0/0) in 0 ms
+[- RuneScript identified as dt extends sn -] (1/1) (0/0)
 	[> 'getSwitches()' identified as 'dt.az' -] ([Ltz;)
 
-[- AccessFile identified as to extends java/lang/Object -] (2/2) (0/0) in 0 ms
+[- AccessFile identified as to extends java/lang/Object -] (2/2) (0/0)
 	[> 'getPosition()' identified as 'to.ar' -] (J)
 	[> 'getFile()' identified as 'to.at' -] (Ljava/io/RandomAccessFile;)
 
-[- AccessFileHandler identified as tr extends java/lang/Object -] (1/1) (0/0) in 2 ms
+[- AccessFileHandler identified as tr extends java/lang/Object -] (1/1) (0/0)
 	[> 'getAccessFile()' identified as 'tr.ah' -] (Lto;)
 
-[- ArchiveDisk identified as rg extends java/lang/Object -] (2/2) (0/0) in 8 ms
+[- ArchiveDisk identified as rg extends java/lang/Object -] (2/2) (0/0)
 	[> 'getIndexFile()' identified as 'rg.ar' -] (Ltr;)
 	[> 'getDataFile()' identified as 'rg.ah' -] (Ltr;)
 
-[- Archive identified as oh extends ol -] (0/0) (0/0) in 0 ms
+[- Archive identified as oh extends ol -] (0/0) (0/0)
 
-[- FileSystemRequest identified as or extends sh -] (0/0) (0/0) in 0 ms
+[- FileSystemRequest identified as or extends sh -] (0/0) (0/0)
 
-[- ClassInfo identified as bj extends sh -] (2/2) (0/0) in 0 ms
+[- ClassInfo identified as bj extends sh -] (2/2) (0/0)
 	[> 'getMethods()' identified as 'bj.aa' -] ([Ljava/lang/reflect/Method;)
 	[> 'getFields()' identified as 'bj.ab' -] ([Ljava/lang/reflect/Field;)
 
-[- NameComposite identified as vj extends java/lang/Object -] (2/2) (0/0) in 1 ms
+[- NameComposite identified as vj extends java/lang/Object -] (2/2) (0/0)
 	[> 'getName()' identified as 'vj.at' -] (Ljava/lang/String;)
 	[> 'getFormattedName()' identified as 'vj.ah' -] (Ljava/lang/String;)
 
-[- Nameable identified as rf extends java/lang/Object -] (2/2) (0/0) in 0 ms
+[- Nameable identified as rf extends java/lang/Object -] (2/2) (0/0)
 	[> 'getName()' identified as 'rf.ar' -] (Lvj;)
 	[> 'getPreviousName()' identified as 'rf.ao' -] (Lvj;)
 
-[- PlayerType identified as oc extends java/lang/Object -] (4/4) (0/0) in 0 ms
+[- PlayerType identified as oc extends java/lang/Object -] (4/4) (0/0)
 	[> 'getChatBadgeId()' identified as 'oc.aq' -] (I)	[ * 587948549 ]
 	[> 'getId()' identified as 'oc.am' -] (I)	[ * -142166065 ]
 	[> 'isTradable()' identified as 'oc.ai' -] (Z)
 	[> 'isModerator()' identified as 'oc.aw' -] (Z)
 
-[- AbstractRawAudioNode identified as cl extends sh -] (1/1) (0/0) in 0 ms
+[- AbstractRawAudioNode identified as cl extends sh -] (1/1) (0/0)
 	[> 'getId()' identified as 'cl.au' -] (I)	[ * 1 ]
 
-[- Resampler identified as ce extends java/lang/Object -] (1/1) (0/0) in 1 ms
+[- Resampler identified as ce extends java/lang/Object -] (1/1) (0/0)
 	[> 'getResampleTable()' identified as 'ce.au' -] ([[I)
 
-[- RawAudioNode identified as bt extends cl -] (1/1) (0/0) in 0 ms
+[- RawAudioNode identified as bt extends cl -] (1/1) (0/0)
 	[> 'getBuffer()' identified as 'bt.ah' -] ([B)
 
-[- Item identified as ec extends kt -] (2/2) (0/0) in 0 ms
-	[> 'getId()' identified as 'ec.ao' -] (I)	[ * 553790659 ]
-	[> 'getStackSize()' identified as 'ec.at' -] (I)	[ * -1683425433 ]
+[- TileItem identified as ec extends kt -] (0/2) (0/0)
 
-[- DynamicObject identified as di extends kt -] (1/1) (0/0) in 0 ms
+[- DynamicObject identified as di extends kt -] (1/1) (0/0)
 	[> 'getAnimationSequence()' identified as 'di.aa' -] (Lhx;)
 
-[- Projectile identified as ck extends kt -] (9/9) (1/1) in 0 ms
+[- Projectile identified as ck extends kt -] (9/9) (1/1)
 	[> 'getSpeedZ()' identified as 'ck.an' -] (D)
 	[> 'getSpeedX()' identified as 'ck.ai' -] (D)
 	[> 'isMoving()' identified as 'ck.ak' -] (Z)
@@ -359,46 +355,46 @@ Deobfuscation: Removed 0 decomplier traps in 0 ms
 	[> 'getProjectileComposite()' identified as 'ck.be' -] (Lhx;)
 	[> Method 'getModel()' identified as 'ck.au' -] (()Lka;)
 
-[- Varp identified as ht extends sn -] (2/2) (0/0) in 0 ms
+[- Varp identified as ht extends sn -] (2/2) (0/0)
 	[> 'getCache()' identified as 'ht.ah' -] (Llk;)
 	[> 'getConfigId()' identified as 'ht.ao' -] (I)	[ * -578060217 ]
 
-[- VarPlayerType identified as gz extends sn -] (1/1) (0/0) in 0 ms
+[- VarPlayerType identified as gz extends sn -] (1/1) (0/0)
 	[> 'getControl()' identified as 'gz.ar' -] (I)	[ * 1 ]
 
-[- Task identified as iq extends java/lang/Object -] (2/2) (0/0) in 0 ms
+[- Task identified as iq extends java/lang/Object -] (2/2) (0/0)
 	[> 'getValue()' identified as 'iq.ac' -] (Ljava/lang/Object;)
 	[> 'getTask()' identified as 'iq.at' -] (Liq;)
 
-[- Signlink identified as ih extends java/lang/Object -] (1/1) (0/0) in 0 ms
+[- Signlink identified as ih extends java/lang/Object -] (1/1) (0/0)
 	[> 'getThread()' identified as 'ih.ab' -] (Ljava/lang/Thread;)
 
-[- Deque identified as on extends java/lang/Object -] (2/2) (0/0) in 2 ms
+[- Deque identified as on extends java/lang/Object -] (2/2) (0/0)
 	[> 'getCurrent()' identified as 'on.ah' -] (Lsh;)
 	[> 'getHead()' identified as 'on.at' -] (Lsh;)
 
-[- MouseTracker identified as db extends java/lang/Object -] (0/0) (0/0) in 0 ms
+[- MouseTracker identified as db extends java/lang/Object -] (0/0) (0/0)
 
-[- CollisionMap identified as iw extends java/lang/Object -] (5/5) (0/0) in 4 ms
+[- CollisionMap identified as iw extends java/lang/Object -] (5/5) (0/0)
 	[> 'getWidth()' identified as 'iw.bp' -] (I)	[ * -562831735 ]
 	[> 'getHeightOffset()' identified as 'iw.bm' -] (I)	[ * 1562012705 ]
 	[> 'getFlags()' identified as 'iw.bj' -] ([[I)
 	[> 'getHeight()' identified as 'iw.bw' -] (I)	[ * 702872543 ]
 	[> 'getWidthOffset()' identified as 'iw.ba' -] (I)	[ * -356375381 ]
 
-[- AudioEnvelope identified as bh extends java/lang/Object -] (1/1) (0/0) in 1 ms
+[- AudioEnvelope identified as bh extends java/lang/Object -] (1/1) (0/0)
 	[> 'getDurations()' identified as 'bh.ah' -] ([I)
 
-[- SoundFilter identified as ci extends java/lang/Object -] (1/1) (0/0) in 0 ms
+[- SoundFilter identified as ci extends java/lang/Object -] (1/1) (0/0)
 	[> 'getPairs()' identified as 'ci.at' -] ([I)
 
-[- AudioInstrument identified as cq extends java/lang/Object -] (0/0) (0/0) in 1 ms
+[- AudioInstrument identified as cq extends java/lang/Object -] (0/0) (0/0)
 
-[- AudioEffect identified as bo extends java/lang/Object -] (0/0) (0/0) in 0 ms
+[- AudioEffect identified as bo extends java/lang/Object -] (0/0) (0/0)
 
-[- MovementType identified as iz extends java/lang/Object -] (0/0) (0/0) in 0 ms
+[- MovementType identified as iz extends java/lang/Object -] (0/0) (0/0)
 
-[- Actor identified as df extends kt -] (8/8) (0/0) in 0 ms
+[- Actor identified as df extends kt -] (8/8) (0/0)
 	[> 'isAnimating()' identified as 'df.an' -] (Z)
 	[> 'getNodeList()' identified as 'df.cm' -] (Lpm;)
 	[> 'getHitsplatCycles()' identified as 'df.cl' -] ([I)
@@ -408,10 +404,12 @@ Deobfuscation: Removed 0 decomplier traps in 0 ms
 	[> 'isInteracting()' identified as 'df.cr' -] (Z)
 	[> 'getHitsplatTypes()' identified as 'df.cw' -] ([I)
 
-[- Npc identified as dn extends df -] (1/1) (0/0) in 0 ms
+[- Npc identified as dn extends df -] (1/1) (0/0)
 	[> 'getDefinition()' identified as 'dn.at' -] (Lhw;)
 
-[- Player identified as ds extends df -] (8/8) (0/0) in 0 ms
+[- ChatSetting identified as rw extends java/lang/Object -] (0/0) (0/0)
+
+[- Player identified as ds extends df -] (8/8) (0/0)
 	[> 'getOverheadIcon()' identified as 'ds.ao' -] (I)	[ * -262723037 ]
 	[> 'getPlayerDefinition()' identified as 'ds.ah' -] (Lnb;)
 	[> 'getSkullIcon()' identified as 'ds.ar' -] (I)	[ * -110809851 ]
@@ -421,50 +419,50 @@ Deobfuscation: Removed 0 decomplier traps in 0 ms
 	[> 'getNameComposite()' identified as 'ds.at' -] (Lvj;)
 	[> 'getCombatLevel()' identified as 'ds.aa' -] (I)	[ * 578825607 ]
 
-[- MenuRowContext identified as cb extends java/lang/Object -] (0/0) (0/0) in 0 ms
+[- MenuRowContext identified as cb extends java/lang/Object -] (0/0) (0/0)
 
-[- AttackOptionSetting identified as lo extends java/lang/Object -] (0/0) (0/0) in 2 ms
+[- AttackOptionSetting identified as lo extends java/lang/Object -] (0/0) (0/0)
 
-[- GrandExchangeOffer identified as ow extends java/lang/Object -] (0/0) (0/0) in 0 ms
+[- GrandExchangeOffer identified as ow extends java/lang/Object -] (0/0) (0/0)
 
-[- MouseListener identified as bp extends java/lang/Object -] (0/0) (0/0) in 0 ms
+[- MouseListener identified as bp extends java/lang/Object -] (0/0) (0/0)
 
-[- MouseWheelListener identified as ae extends java/lang/Object -] (1/1) (0/0) in 0 ms
+[- MouseWheelListener identified as ae extends java/lang/Object -] (1/1) (0/0)
 	[> 'getRotation()' identified as 'ae.at' -] (I)	[ * 1014752237 ]
 
-[- KeyInputData identified as bi extends java/lang/Object -] (0/0) (0/0) in 0 ms
+[- KeyInputData identified as bi extends java/lang/Object -] (0/0) (0/0)
 
-[- KeyboardListener identified as af extends java/lang/Object -] (0/0) (0/0) in 0 ms
+[- KeyboardListener identified as af extends java/lang/Object -] (0/0) (0/0)
 
-[- KeyInputHandler identified as il extends java/lang/Object -] (0/0) (0/0) in 0 ms
+[- KeyInputHandler identified as il extends java/lang/Object -] (0/0) (0/0)
 
-[- TileModel identified as kl extends java/lang/Object -] (0/0) (0/0) in 1 ms
+[- TileModel identified as kl extends java/lang/Object -] (0/0) (0/0)
 
-[- TilePaint identified as ke extends java/lang/Object -] (0/0) (0/0) in 0 ms
+[- TilePaint identified as ke extends java/lang/Object -] (0/0) (0/0)
 
-[- JagexLoginType identified as tt extends java/lang/Object -] (0/0) (0/0) in 0 ms
+[- JagexLoginType identified as tt extends java/lang/Object -] (0/0) (0/0)
 
-[- ItemLayer identified as kj extends java/lang/Object -] (2/2) (0/0) in 0 ms
+[- ItemLayer identified as kj extends java/lang/Object -] (2/2) (0/0)
 	[> 'getRenderable()' identified as 'kj.ab' -] (Lkt;)
 	[> 'getHash()' identified as 'kj.aa' -] (J)
 
-[- BoundaryObject identified as lv extends java/lang/Object -] (0/0) (0/0) in 1 ms
+[- BoundaryObject identified as lv extends java/lang/Object -] (0/0) (0/0)
 
-[- InteractableObject identified as le extends java/lang/Object -] (0/0) (0/0) in 0 ms
+[- InteractableObject identified as le extends java/lang/Object -] (0/0) (0/0)
 
-[- AnimableObject identified as cu extends kt -] (0/0) (0/0) in 0 ms
+[- AnimableObject identified as cu extends kt -] (0/0) (0/0)
 
-[- WallDecoration identified as lj extends java/lang/Object -] (4/4) (0/0) in 0 ms
+[- WallDecoration identified as lj extends java/lang/Object -] (4/4) (0/0)
 	[> 'getRenderInfo()' identified as 'lj.ap' -] (I)	[ * 416998107 ]
 	[> 'getRenderable()' identified as 'lj.ac' -] (Lkt;)
 	[> 'getRenderable2()' identified as 'lj.al' -] (Lkt;)
 	[> 'getHash()' identified as 'lj.az' -] (J)
 
-[- FloorDecoration identified as km extends java/lang/Object -] (2/2) (0/0) in 0 ms
+[- FloorDecoration identified as km extends java/lang/Object -] (2/2) (0/0)
 	[> 'getRenderable()' identified as 'km.ao' -] (Lkt;)
 	[> 'getHash()' identified as 'km.ab' -] (J)
 
-[- Tile identified as kv extends sh -] (9/9) (0/0) in 0 ms
+[- Tile identified as kv extends sh -] (9/9) (0/0)
 	[> 'getTileModel()' identified as 'kv.au' -] (Lkl;)
 	[> 'getEntityFlags()' identified as 'kv.ax' -] ([I)
 	[> 'getInteractableObjects()' identified as 'kv.av' -] ([Lle;)
@@ -475,207 +473,231 @@ Deobfuscation: Removed 0 decomplier traps in 0 ms
 	[> 'getTilePaint()' identified as 'kv.ab' -] (Lke;)
 	[> 'getWallDecoration()' identified as 'kv.ac' -] (Llj;)
 
-[- Region identified as kf extends java/lang/Object -] (2/2) (0/0) in 1 ms
+[- Region identified as kf extends java/lang/Object -] (2/2) (0/0)
 	[> 'getInteractableObjects()' identified as 'kf.al' -] ([Lle;)
 	[> 'getTiles()' identified as 'kf.au' -] ([[[Lkv;)
 
-[- PendingSpawn identified as dp extends sh -] (0/0) (0/0) in 0 ms
+[- PendingSpawn identified as nn extends sh -] (0/0) (0/0)
 
-[- WidgetNode identified as dc extends sh -] (1/1) (0/0) in 0 ms
+[- WidgetNode identified as dc extends sh -] (1/1) (0/0)
 	[> 'isRoot()' identified as 'dc.ar' -] (Z)
 
-[- ChatboxMessage identified as co extends sn -] (0/0) (0/0) in 0 ms
+[- ChatboxMessage identified as co extends sn -] (0/0) (0/0)
 
-[- ChatboxChannel identified as dk extends java/lang/Object -] (0/0) (0/0) in 1 ms
+[- ChatboxChannel identified as dk extends java/lang/Object -] (0/0) (0/0)
 
-[- BufferedImage identified as me extends sn -] (0/0) (0/0) in 0 ms
+[- BufferedImage identified as me extends sn -] (0/0) (0/0)
 
-[- Widget identified as nn extends sh -] (4/4) (0/0) in 0 ms
+[- Widget identified as nn extends sh -] (4/4) (0/0)
 	[> 'getOpcodes()' identified as 'nn.gl' -] ([[I)
 	[> 'getParent()' identified as 'nn.en' -] (Lnn;)
 	[> 'getActions()' identified as 'nn.ea' -] ([Ljava/lang/String;)
 	[> 'getChildren()' identified as 'nn.gz' -] ([Lnn;)
 
-[- ScriptEvent identified as do extends sh -] (0/0) (0/0) in 0 ms
+[- ScriptEvent identified as do extends sh -] (0/0) (0/0)
 
-[- ScriptState identified as cs extends java/lang/Object -] (4/4) (0/0) in 1 ms
+[- ScriptState identified as cs extends java/lang/Object -] (4/4) (0/0)
 	[> 'getLocalInts()' identified as 'cs.ar' -] ([I)
 	[> 'getStackIndex()' identified as 'cs.ah' -] (I)	[ * 640777695 ]
 	[> 'getLocalStrings()' identified as 'cs.ao' -] ([Ljava/lang/String;)
 	[> 'getInvokedFromScript()' identified as 'cs.at' -] (Ldt;)
 
-[- RuneScriptVM identified as em extends java/lang/Object -] (3/3) (0/0) in 0 ms
+[- RuneScriptVM identified as em extends java/lang/Object -] (3/3) (0/0)
 	[> 'getVarcMap()' identified as 'em.ao' -] (Ljava/util/Map;)
 	[> 'getChanged()' identified as 'em.au' -] (Z)
 	[> 'getCycle()' identified as 'em.aa' -] (J)
 
-[- Server identified as cr extends java/lang/Object -] (0/0) (0/0) in 0 ms
+[- Server identified as cr extends java/lang/Object -] (0/0) (0/0)
 
-[- RSShadowedFont identified as kx extends kn -] (0/0) (0/0) in 0 ms
+[- RSShadowedFont identified as kx extends kn -] (0/0) (0/0)
 
-[- CombatBarData identified as dv extends sh -] (0/0) (0/0) in 0 ms
+[- CombatBarData identified as dv extends sh -] (0/0) (0/0)
 
-[- CombatBar identified as de extends sh -] (2/2) (0/0) in 0 ms
+[- CombatBar identified as de extends sh -] (2/2) (0/0)
 	[> 'getNodeList()' identified as 'de.ao' -] (Lpm;)
 	[> 'getDefinition()' identified as 'de.ar' -] (Lgh;)
 
-[- CombatBarDefinition identified as gh extends sn -] (0/0) (0/0) in 0 ms
+[- CombatBarDefinition identified as gh extends sn -] (0/0) (0/0)
 
-[- TaskDataNode identified as bk extends sh -] (1/1) (0/0) in 0 ms
+[- TaskDataNode identified as bk extends sh -] (1/1) (0/0)
 	[> 'getAudioNode()' identified as 'bk.am' -] (Lcl;)
 
-[- AbstractSoundSystem identified as by extends java/lang/Object -] (0/0) (0/0) in 0 ms
+[- AbstractSoundSystem identified as by extends java/lang/Object -] (0/0) (0/0)
 
-[- SoundSystem identified as ad extends by -] (4/4) (0/0) in 0 ms
+[- SoundSystem identified as ad extends by -] (4/4) (0/0)
 	[> 'getSourceDataLine()' identified as 'ad.ah' -] (Ljavax/sound/sampled/SourceDataLine;)
 	[> 'getLength()' identified as 'ad.ar' -] (I)	[ * 679660463 ]
 	[> 'getBytes()' identified as 'ad.ao' -] ([B)
 	[> 'getAudioFormat()' identified as 'ad.at' -] (Ljavax/sound/sampled/AudioFormat;)
 
-[- AudioTask identified as mn extends bk -] (1/1) (0/0) in 0 ms
+[- AudioTask identified as mn extends bk -] (1/1) (0/0)
 	[> 'getHashTable()' identified as 'mn.at' -] (Ltw;)
 
-[- AudioRequestNode identified as bb extends bk -] (0/0) (0/0) in 0 ms
+[- AudioRequestNode identified as bb extends bk -] (0/0) (0/0)
 
-[- AreaSoundEmitter identified as ca extends sh -] (2/2) (0/0) in 0 ms
+[- AreaSoundEmitter identified as ca extends sh -] (2/2) (0/0)
 	[> 'getSoundIds()' identified as 'ca.av' -] ([I)
 	[> 'getEmittingObject()' identified as 'ca.ay' -] (Lhs;)
 
-[- AudioRunnable identified as bz extends java/lang/Object -] (1/1) (0/0) in 0 ms
+[- AudioRunnable identified as bz extends java/lang/Object -] (1/1) (0/0)
 	[> 'getAudioSystem()' identified as 'bz.at' -] ([Lby;)
 
-[- AudioTrack identified as bv extends java/lang/Object -] (0/0) (0/0) in 1 ms
+[- AudioTrack identified as bv extends java/lang/Object -] (0/0) (0/0)
 
-[- AbstractNameableComparator identified as rn extends java/lang/Object -] (1/1) (0/0) in 0 ms
+[- AbstractNameableComparator identified as rn extends java/lang/Object -] (1/1) (0/0)
 	[> 'getComparator()' identified as 'rn.ah' -] (Ljava/util/Comparator;)
 
-[- NameableContainer identified as rc extends java/lang/Object -] (2/2) (0/0) in 0 ms
+[- NameableContainer identified as rc extends java/lang/Object -] (2/2) (0/0)
 	[> 'getComparator()' identified as 'rc.as' -] (Ljava/util/Comparator;)
 	[> 'getNameables()' identified as 'rc.ap' -] ([Lrf;)
 
-[- FriendContainer identified as qh extends rc -] (3/3) (0/0) in 0 ms
+[- FriendContainer identified as qh extends rc -] (3/3) (0/0)
 	[> 'getLoginType()' identified as 'qh.ar' -] (Ltt;)
 	[> 'getFriendUpdateList()' identified as 'qh.ab' -] (Lpu;)
 	[> 'getSize()' identified as 'qh.ao' -] (I)	[ * 1 ]
 
-[- FriendListLink identified as rm extends se -] (3/3) (0/0) in 0 ms
+[- FriendListLink identified as rm extends se -] (3/3) (0/0)
 	[> 'getStartCycle()' identified as 'rm.at' -] (I)	[ * 910859569 ]
 	[> 'getName()' identified as 'rm.ah' -] (Lvj;)
 	[> 'getWorld()' identified as 'rm.ar' -] (S)
 
-[- IgnoreContainer identified as qs extends rc -] (1/1) (0/0) in 0 ms
+[- IgnoreContainer identified as qs extends rc -] (1/1) (0/0)
 	[> 'getLoginType()' identified as 'qs.ab' -] (Ltt;)
 
-[- ChatPlayer identified as rh extends rf -] (0/0) (0/0) in 1 ms
+[- ChatPlayer identified as rh extends rf -] (0/0) (0/0)
 
-[- IgnoredMessage identified as rr extends rf -] (1/1) (0/0) in 0 ms
+[- IgnoredMessage identified as rr extends rf -] (1/1) (0/0)
 	[> 'getListIndex()' identified as 'rr.at' -] (I)	[ * 728477389 ]
 
-[- FriendMessage identified as qk extends rh -] (0/0) (0/0) in 0 ms
+[- FriendMessage identified as qk extends rh -] (0/0) (0/0)
 
-[- ClanMember identified as rp extends rh -] (0/0) (0/0) in 0 ms
+[- ClanMember identified as rp extends rh -] (0/0) (0/0)
 
-[- FriendManager identified as cj extends java/lang/Object -] (4/4) (0/0) in 1 ms
+[- FriendManager identified as cj extends java/lang/Object -] (4/4) (0/0)
 	[> 'getIgnoreContainer()' identified as 'cj.au' -] (Lqs;)
 	[> 'getLoginType()' identified as 'cj.ao' -] (Ltt;)
 	[> 'getStatus()' identified as 'cj.aa' -] (I)	[ * -1161414997 ]
 	[> 'getFriendContainer()' identified as 'cj.ab' -] (Lqh;)
 
-[- ClanContainer identified as qi extends rc -] (1/1) (0/0) in 0 ms
+[- ClanContainer identified as qi extends rc -] (1/1) (0/0)
 	[> 'getLoginType()' identified as 'qi.ah' -] (Ltt;)
 
-[- Occluder identified as kw extends java/lang/Object -] (0/0) (0/0) in 0 ms
+[- Occluder identified as kw extends java/lang/Object -] (0/0) (0/0)
 
-[- Hitsplat identified as hz extends sn -] (2/2) (0/0) in 0 ms
+[- Hitsplat identified as hz extends sn -] (2/2) (0/0)
 	[> 'getTransformIds()' identified as 'hz.ad' -] ([I)
 	[> 'getAmount()' identified as 'hz.ae' -] (Ljava/lang/String;)
 
-[- IntegerNode identified as sy extends sh -] (1/1) (0/0) in 0 ms
+[- IntegerNode identified as sy extends sh -] (1/1) (0/0)
 	[> 'getValue()' identified as 'sy.at' -] (I)	[ * 1 ]
 
-[- ObjectNode identified as sw extends sh -] (1/1) (0/0) in 0 ms
+[- ObjectNode identified as sw extends sh -] (1/1) (0/0)
 	[> 'getValue()' identified as 'sw.at' -] (Ljava/lang/Object;)
 
-[- UrlRequest identified as ea extends java/lang/Object -] (2/2) (1/1) in 0 ms
+[- UrlRequest identified as ea extends java/lang/Object -] (2/2) (1/1)
 	[> 'getUrl()' identified as 'ea.at' -] (Ljava/net/URL;)
 	[> 'getResponse()' identified as 'ea.ab' -] ([B)
 	[> Method 'isComplete()' identified as 'ea.at' -] ((I)Z)
 
-[- AbstractRequester identified as el extends java/lang/Object -] (4/4) (0/0) in 0 ms
+[- AbstractRequester identified as el extends java/lang/Object -] (4/4) (0/0)
 	[> 'getClientRevision()' identified as 'el.ao' -] (I)	[ * 1 ]
 	[> 'getRequests()' identified as 'el.ar' -] (Ljava/util/Queue;)
 	[> 'isClosed()' identified as 'el.ah' -] (Z)
 	[> 'getThread()' identified as 'el.at' -] (Ljava/lang/Thread;)
 
-[- UrlRequester identified as es extends el -] (1/1) (0/0) in 0 ms
+[- UrlRequester identified as es extends el -] (1/1) (0/0)
 	[> 'IsHttps()' identified as 'es.ab' -] (Z)
 
-[- AppletParameter identified as jz extends java/lang/Object -] (1/1) (0/0) in 0 ms
+[- AppletParameter identified as jz extends java/lang/Object -] (1/1) (0/0)
 	[> 'getKey()' identified as 'jz.au' -] (Ljava/lang/String;)
 
-[- MachineInfo identified as st extends java/lang/Object -] (0/0) (0/0) in 7 ms
+[- PlatformInfo identified as sb extends sh -] (0/1) (0/1)
 
-[- WorldMapLabelSize identified as mh extends java/lang/Object -] (0/0) (0/0) in 1 ms
+[- PlatformInfoProvider identified as st extends java/lang/Object -] (0/0) (0/0)
 
-[- WorldMapLabel identified as jv extends java/lang/Object -] (2/2) (0/0) in 2 ms
-	[> 'getLabelSize()' identified as 'jv.aa' -] (Lmh;)
-	[> 'getText()' identified as 'jv.ah' -] (Ljava/lang/String;)
+[- WorldMapLabelSize identified as io extends java/lang/Object -] (0/0) (0/0)
 
-[- AbstractWorldMapIcon identified as jc extends java/lang/Object -] (0/0) (0/0) in 0 ms
+[- WorldMapLabel identified as jk extends java/lang/Object -] (2/2) (0/0)
+	[> 'getLabelSize()' identified as 'jk.ao' -] (Lio;)
+	[> 'getText()' identified as 'jk.at' -] (Ljava/lang/String;)
 
-[- AbstractWorldMapData identified as jm extends java/lang/Object -] (0/0) (0/0) in 0 ms
+[- Coordinate identified as mh extends java/lang/Object -] (3/3) (0/0)
+	[> 'getPlane()' identified as 'mh.at' -] (I)	[ * 18874645 ]
+	[> 'getX()' identified as 'mh.ah' -] (I)	[ * -1733966023 ]
+	[> 'getY()' identified as 'mh.ar' -] (I)	[ * -7006855 ]
 
-[- KitDefinition identified as go extends sn -] (0/0) (0/0) in 0 ms
+[- AbstractWorldMapIcon identified as jc extends java/lang/Object -] (0/0) (0/0)
 
-[- FileRequest identified as oy extends sn -] (3/3) (0/0) in 1 ms
+[- WorldMapDecoration identified as ir extends java/lang/Object -] (0/0) (0/0)
+
+[- AbstractWorldMapData identified as jm extends java/lang/Object -] (0/0) (0/0)
+
+[- WorldMapArea identified as jv extends java/lang/Object -] (0/0) (0/0)
+
+[- WorldMapRenderer identified as jf extends java/lang/Object -] (0/0) (0/0)
+
+[- WorldMapRectangle identified as jy extends java/lang/Object -] (0/0) (0/0)
+
+[- WorldMapArchiveLoader identified as sl extends java/lang/Object -] (0/0) (0/0)
+
+[- WorldMap identified as tn extends java/lang/Object -] (0/0) (0/0)
+
+[- KitDefinition identified as go extends sn -] (0/0) (0/0)
+
+[- FileRequest identified as oy extends sn -] (3/3) (0/0)
 	[> 'getPadding()' identified as 'oy.ar' -] (B)
 	[> 'getCrc()' identified as 'oy.ah' -] (I)	[ * -1849041209 ]
 	[> 'getArchive()' identified as 'oy.at' -] (Loh;)
 
-[- Overlay identified as gr extends sn -] (0/0) (0/0) in 0 ms
+[- Overlay identified as gr extends sn -] (0/0) (0/0)
 
-[- HorizontalAlignment identified as hq extends java/lang/Object -] (0/0) (0/0) in 0 ms
+[- HorizontalAlignment identified as hq extends java/lang/Object -] (0/0) (0/0)
 
-[- VerticalAlignment identified as hg extends java/lang/Object -] (0/0) (0/0) in 1 ms
+[- VerticalAlignment identified as hg extends java/lang/Object -] (0/0) (0/0)
 
-[- WorldMapElement identified as gr extends sn -] (2/2) (0/0) in 0 ms
+[- WorldMapElement identified as gr extends sn -] (2/2) (0/0)
 	[> 'getHorizontalAlignment()' identified as 'gr.aw' -] (Lhq;)
 	[> 'getVerticalAlignment()' identified as 'gr.ae' -] (Lhg;)
 
-[- Enumerated identified as oj extends java/lang/Object -] (0/0) (0/0) in 0 ms
+[- Enumerated identified as oj extends java/lang/Object -] (0/0) (0/0)
 
-[- NanoTimer identified as he extends iu -] (0/0) (0/0) in 1 ms
+[- Bounds identified as rv extends java/lang/Object -] (0/4) (0/0)
 
-[- AbstractTimer identified as iu extends java/lang/Object -] (0/0) (0/0) in 0 ms
+[- NanoTimer identified as he extends iu -] (0/0) (0/0)
 
-[- MilliTimer identified as ie extends iu -] (0/0) (0/0) in 0 ms
+[- AbstractTimer identified as iu extends java/lang/Object -] (0/0) (0/0)
 
-[- JagexGame identified as az extends java/lang/Object -] (0/0) (0/0) in 0 ms
+[- MilliTimer identified as ie extends iu -] (0/0) (0/0)
 
-[- LanguageType identified as of extends java/lang/Object -] (0/0) (0/0) in 0 ms
+[- JagexGame identified as az extends java/lang/Object -] (0/0) (0/0)
 
-[- BuildType identified as nv extends java/lang/Object -] (0/0) (0/0) in 1 ms
+[- LanguageType identified as of extends java/lang/Object -] (0/0) (0/0)
 
-[- GameShell identified as bm extends java/applet/Applet -] (5/5) (0/0) in 0 ms
+[- BuildType identified as nv extends java/lang/Object -] (0/0) (0/0)
+
+[- GameShell identified as bm extends java/applet/Applet -] (5/5) (0/0)
 	[> 'getClipboard()' identified as 'bm.bt' -] (Ljava/awt/datatransfer/Clipboard;)
 	[> 'getCanvas()' identified as 'bm.bv' -] (Ljava/awt/Canvas;)
 	[> 'getFrame()' identified as 'bm.bi' -] (Ljava/awt/Frame;)
 	[> 'getMouseWheelListener()' identified as 'bm.bo' -] (Lae;)
 	[> 'getEventQueue()' identified as 'bm.bu' -] (Ljava/awt/EventQueue;)
 
-[- ApproximateRouteStrategy identified as cm extends it -] (0/0) (0/0) in 0 ms
+[- RouteStrategy identified as it extends java/lang/Object -] (0/0) (1/1)
+	[> Method 'haveArrived()' identified as 'it.at' -] (()Z)
 
-[- FileSystemRequestHandler identified as ox extends java/lang/Object -] (1/1) (0/0) in 0 ms
+[- ApproximateRouteStrategy identified as cm extends it -] (0/0) (0/0)
+
+[- FileSystemRequestHandler identified as ox extends java/lang/Object -] (1/1) (0/0)
 	[> 'getObject()' identified as 'ox.ab' -] (Ljava/lang/Object;)
 
-[- ArchiveLoader identified as dh extends java/lang/Object -] (1/1) (0/0) in 1 ms
+[- ArchiveLoader identified as dh extends java/lang/Object -] (1/1) (0/0)
 	[> 'getArchive()' identified as 'dh.ah' -] (Loh;)
 
-[- ActorSpotAnim identified as vl extends sh -] (0/0) (0/0) in 0 ms
+[- ActorSpotAnim identified as vl extends sh -] (0/0) (0/0)
 
-[- AddRequestTask identified as pj extends ql -] (0/0) (0/0) in 0 ms
+[- AddRequestTask identified as pj extends ql -] (0/0) (0/0)
 
-Identified 176/176 classes
-Identified 4/4 methods
-Identified 297/299 fields
-Finished analysing in 94 ms
+Identified 187/187 classes
+Identified 7/8 methods
+Identified 295/307 fields
+Finished analysing in 63 ms
