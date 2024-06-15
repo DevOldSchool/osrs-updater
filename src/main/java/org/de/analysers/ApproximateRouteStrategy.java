@@ -2,7 +2,6 @@ package org.de.analysers;
 
 import org.de.Analyser;
 import org.objectweb.asm.tree.ClassNode;
-import org.objectweb.asm.tree.MethodNode;
 
 import java.util.List;
 
@@ -20,15 +19,11 @@ public class ApproximateRouteStrategy extends Analyser {
     @Override
     public ClassNode matchClassNode(List<ClassNode> classes) {
         for (ClassNode classNode : classes) {
-            if (classNode.superName.equals("java/lang/Object")) {
+            if (!classNode.superName.equals(getClassAnalyser("RouteStrategy").getNode().name)) {
                 continue;
             }
 
-            for (MethodNode methodNode : classNode.methods) {
-                if (methodNode.desc.equals(String.format("(IIL%s;)Z", getClassAnalyser("CollisionMap").getNode().name))) {
-                    return classNode;
-                }
-            }
+            return classNode;
         }
 
         return null;

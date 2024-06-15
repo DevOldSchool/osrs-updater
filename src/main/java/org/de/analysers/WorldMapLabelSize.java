@@ -2,8 +2,9 @@ package org.de.analysers;
 
 import org.de.Analyser;
 import org.objectweb.asm.tree.ClassNode;
-import org.objectweb.asm.tree.MethodNode;
+import org.objectweb.asm.tree.FieldNode;
 
+import java.lang.reflect.Modifier;
 import java.util.List;
 
 public class WorldMapLabelSize extends Analyser {
@@ -20,26 +21,23 @@ public class WorldMapLabelSize extends Analyser {
     @Override
     public ClassNode matchClassNode(List<ClassNode> classes) {
         for (ClassNode classNode : classes) {
-            boolean initMethod = false;
-            boolean hasEqualsMethod = false;
-            int boolMethodCount = 0;
-            for (MethodNode methodNode : classNode.methods) {
-                if (methodNode.name.equals("<init>") && methodNode.desc.equals("(III)V")) {
-                    initMethod = true;
+            int selfFieldCount = 0;
+            int finalIntCount = 0;
+            for (FieldNode fieldNode : classNode.fields) {
+                if (fieldNode.desc.equals(String.format("L%s;", classNode.name))) {
+                    selfFieldCount++;
                 }
 
-                if (methodNode.desc.endsWith(")Z")) {
-                    boolMethodCount++;
-                }
-
-                if (methodNode.name.equals("equals")) {
-                    hasEqualsMethod = true;
+                if (Modifier.isFinal(fieldNode.access) && fieldNode.desc.equals("I")) {
+                    finalIntCount++;
                 }
             }
 
-            if (initMethod && boolMethodCount > 4 && hasEqualsMethod) {
-                return classNode;
+            if (selfFieldCount != 3 || finalIntCount != 3) {
+                continue;
             }
+
+            return classNode;
         }
 
         return null;

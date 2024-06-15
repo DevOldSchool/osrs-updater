@@ -7,7 +7,7 @@ import org.objectweb.asm.tree.*;
 import java.lang.reflect.Modifier;
 import java.util.List;
 
-public class Item extends Analyser {
+public class TileItem extends Analyser {
     @Override
     public int getExpectedFieldsSize() {
         return 2;
@@ -25,45 +25,38 @@ public class Item extends Analyser {
                 continue;
             }
 
-            int intFieldCount = 0;
+            int intCount = 0;
+            int animationSequenceCount = 0;
             for (FieldNode fieldNode : classNode.fields) {
                 if (Modifier.isStatic(fieldNode.access)) {
                     continue;
                 }
 
                 if (fieldNode.desc.equals("I")) {
-                    intFieldCount++;
+                    intCount++;
+                }
+
+                if (fieldNode.desc.equals(String.format("L%s;", getClassAnalyser("AnimationSequence").getNode().name))) {
+                    animationSequenceCount++;
                 }
             }
 
-            if (intFieldCount < 3) {
+            if (intCount < 3 || animationSequenceCount > 0) {
                 continue;
             }
 
-            int modelIntMethodCount = 0;
-            int modelByteMethodCount = 0;
-            int boolMethodCount = 0;
+            int modelMethods = 0;
             for (MethodNode methodNode : classNode.methods) {
-                if (methodNode.desc.equals(String.format("(I)L%s;", getClassAnalyser("Model").getNode().name))) {
-                    modelIntMethodCount++;
-                }
-
-                if (methodNode.desc.equals(String.format("(B)L%s;", getClassAnalyser("Model").getNode().name))) {
-                    modelByteMethodCount++;
-                }
-
-                if (methodNode.desc.equals("(I)Z")) {
-                    boolMethodCount++;
+                if (methodNode.desc.equals(String.format("()L%s;", getClassAnalyser("Model").getNode().name))) {
+                    modelMethods++;
                 }
             }
 
-            if (boolMethodCount < 1) {
+            if (modelMethods < 1) {
                 continue;
             }
 
-            if (modelIntMethodCount > 0 || modelByteMethodCount > 0) {
-                return classNode;
-            }
+            return classNode;
         }
 
         return null;
@@ -72,27 +65,19 @@ public class Item extends Analyser {
     @Override
     public void matchFields(ClassNode classNode) {
         for (MethodNode methodNode : classNode.methods) {
-            InstructionSearcher instructionSearcher = new InstructionSearcher(methodNode.instructions, 0, ALOAD, GETFIELD, IMUL);
-            if (instructionSearcher.match()) {
-                for (AbstractInsnNode[] abstractInsnNodes : instructionSearcher.getMatches()) {
-                    FieldInsnNode fieldInsnNode = (FieldInsnNode) abstractInsnNodes[1];
-
-                    if (fieldInsnNode.owner.equals(classNode.name) && fieldInsnNode.desc.equals("I")) {
-                        addField("getId()", insnToField(fieldInsnNode, classNode));
-                        break;
-                    }
-                }
-            }
-
             if (methodNode.desc.equals(String.format("()L%s;", getClassAnalyser("Model").getNode().name))) {
-                instructionSearcher = new InstructionSearcher(methodNode.instructions, 0, ALOAD, GETFIELD);
+                InstructionSearcher instructionSearcher = new InstructionSearcher(methodNode.instructions, 0, ALOAD, GETFIELD, IMUL, BIPUSH, INVOKESTATIC, ALOAD, GETFIELD);
                 if (instructionSearcher.match()) {
                     for (AbstractInsnNode[] abstractInsnNodes : instructionSearcher.getMatches()) {
                         FieldInsnNode fieldInsnNode = (FieldInsnNode) abstractInsnNodes[1];
+                        FieldInsnNode fieldInsnNode2 = (FieldInsnNode) abstractInsnNodes[6];
 
                         if (fieldInsnNode.owner.equals(classNode.name) && fieldInsnNode.desc.equals("I")) {
-                            addField("getStackSize()", insnToField(fieldInsnNode, classNode));
-                            break;
+                            addField("getId()", insnToField(fieldInsnNode, classNode));
+                        }
+
+                        if (fieldInsnNode2.owner.equals(classNode.name) && fieldInsnNode2.desc.equals("I")) {
+                            addField("getQuantity()", insnToField(fieldInsnNode2, classNode));
                         }
                     }
                 }

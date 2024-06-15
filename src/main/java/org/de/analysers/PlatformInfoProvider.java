@@ -9,7 +9,7 @@ import org.objectweb.asm.tree.MethodNode;
 
 import java.util.List;
 
-public class MachineInfo extends Analyser {
+public class PlatformInfoProvider extends Analyser {
     @Override
     public int getExpectedFieldsSize() {
         return 0;
@@ -24,7 +24,7 @@ public class MachineInfo extends Analyser {
     public ClassNode matchClassNode(List<ClassNode> classes) {
         for (ClassNode classNode : classes) {
             for (MethodNode methodNode : classNode.methods) {
-                InstructionSearcher instructionSearch = new InstructionSearcher(methodNode.instructions, 0, GETSTATIC, LDC, INVOKEVIRTUAL, ICONST_3);
+                InstructionSearcher instructionSearch = new InstructionSearcher(methodNode.instructions, 0, GETSTATIC, LDC, INVOKEVIRTUAL, IFEQ, ICONST_3);
                 if (instructionSearch.match()) {
                     for (AbstractInsnNode[] matches : instructionSearch.getMatches()) {
                         LdcInsnNode ldcInsnNode = (LdcInsnNode) matches[1];

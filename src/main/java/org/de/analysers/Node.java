@@ -2,7 +2,6 @@ package org.de.analysers;
 
 import org.de.Analyser;
 import org.de.utilities.InstructionSearcher;
-import org.objectweb.asm.Opcodes;
 import org.objectweb.asm.tree.*;
 
 import java.lang.reflect.Modifier;
@@ -16,7 +15,7 @@ public class Node extends Analyser {
 
     @Override
     public int getExpectedMethodsSize() {
-        return 0;
+        return 2;
     }
 
     @Override
@@ -26,18 +25,28 @@ public class Node extends Analyser {
                 continue;
             }
 
-            boolean hasLong = false;
+            if (classNode.fields.size() != 3) {
+                continue;
+            }
+
+            int longCount = 0;
             int selfFieldCount = 0;
 
             for (FieldNode fieldNode : classNode.fields) {
-                if (!Modifier.isStatic(fieldNode.access) && fieldNode.desc.equals("J")) {
-                    hasLong = true;
-                } else if (!Modifier.isStatic(fieldNode.access) && fieldNode.desc.equals(String.format("L%s;", classNode.name))) {
+                if (Modifier.isStatic(fieldNode.access)) {
+                    continue;
+                }
+
+                if (fieldNode.desc.equals("J")) {
+                    longCount++;
+                }
+
+                if (fieldNode.desc.equals(String.format("L%s;", classNode.name))) {
                     selfFieldCount++;
                 }
             }
 
-            if (hasLong && selfFieldCount == 2) {
+            if (longCount == 1 && selfFieldCount == 2) {
                 return classNode;
             }
         }
@@ -47,19 +56,14 @@ public class Node extends Analyser {
 
     @Override
     public void matchFields(ClassNode classNode) {
-        String getNextField = null;
+        for (MethodNode methodNode : classNode.methods) {
+            if (!methodNode.name.equals("<init>") && methodNode.desc.equals("()V")) {
+                InstructionSearcher instructionSearcher = new InstructionSearcher(methodNode.instructions, 0, ALOAD, GETFIELD, IFNONNULL);
+                if (instructionSearcher.match()) {
+                    for (AbstractInsnNode[] abstractInsnNodes : instructionSearcher.getMatches()) {
+                        FieldInsnNode fieldInsnNode = (FieldInsnNode) abstractInsnNodes[1];
 
-        for (int i = 0; i < classNode.methods.size(); i++) {
-            MethodNode methodNode = classNode.methods.get(i);
-            InstructionSearcher instructionSearch = new InstructionSearcher(methodNode.instructions, 0, ALOAD, ACONST_NULL, PUTFIELD);
-
-            if (instructionSearch.match()) {
-                if (getNextField == null) {
-                    for (AbstractInsnNode[] matches : instructionSearch.getMatches()) {
-                        FieldInsnNode fieldInsnNode = (FieldInsnNode) matches[2];
-
-                        if (fieldInsnNode.desc.equals(String.format("L%s;", classNode.name))) {
-                            getNextField = fieldInsnNode.name;
+                        if (fieldInsnNode.owner.equals(classNode.name) && fieldInsnNode.desc.equals(String.format("L%s;", classNode.name))) {
                             addField("getNext()", insnToField(fieldInsnNode, classNode));
                             break;
                         }
@@ -69,20 +73,35 @@ public class Node extends Analyser {
         }
 
         for (FieldNode fieldNode : classNode.fields) {
-            if (fieldNode.desc.equals("J") &&
-                    (fieldNode.access & Opcodes.ACC_STATIC) == 0) {
-                addField("getUid()", fieldNode);
+            if (Modifier.isStatic(fieldNode.access)) {
+                continue;
             }
 
-            if (!fieldNode.name.equals(getNextField) &&
-                    fieldNode.desc.equals(String.format("L%s;", classNode.name))) {
+            if (fieldNode.desc.equals(String.format("L%s;", classNode.name)) &&
+                    !fieldNode.name.equals(getField("getNext()").getField().name)) {
                 addField("getPrevious()", fieldNode);
+            }
+
+            if (fieldNode.desc.equals("J")) {
+                addField("uid", fieldNode);
             }
         }
     }
 
     @Override
     public void matchMethods(ClassNode classNode) {
+        for (MethodNode methodNode : classNode.methods) {
+            if (Modifier.isStatic(methodNode.access)) {
+                continue;
+            }
 
+            if (!methodNode.name.equals("<init>") && methodNode.desc.equals("()V")) {
+                addMethod("remove()", methodNode);
+            }
+
+            if (methodNode.desc.equals("()Z")) {
+                addMethod("hasNext()", methodNode);
+            }
+        }
     }
 }

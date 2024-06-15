@@ -80,7 +80,10 @@ public class Actor extends Analyser {
                 }
             }
 
-            instructionSearcher = new InstructionSearcher(methodNode.instructions, 0, ALOAD, ICONST_4, NEWARRAY, PUTFIELD, -1, -1, ALOAD, ICONST_4, NEWARRAY, PUTFIELD, -1, -1, ALOAD, ICONST_4, NEWARRAY, PUTFIELD);
+            instructionSearcher = new InstructionSearcher(methodNode.instructions, 0,
+                    ALOAD, ICONST_4, NEWARRAY, PUTFIELD, -1, -1,
+                    ALOAD, ICONST_4, NEWARRAY, PUTFIELD, -1, -1,
+                    ALOAD, ICONST_4, NEWARRAY, PUTFIELD);
             if (instructionSearcher.match()) {
                 for (AbstractInsnNode[] abstractInsnNodes : instructionSearcher.getMatches()) {
                     FieldInsnNode fieldInsnNode = (FieldInsnNode) abstractInsnNodes[3];

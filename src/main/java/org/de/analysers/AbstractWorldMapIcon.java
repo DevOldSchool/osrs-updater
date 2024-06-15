@@ -25,14 +25,19 @@ public class AbstractWorldMapIcon extends Analyser {
                 continue;
             }
 
+            int coordinateCount = 0;
             for (FieldNode fieldNode : classNode.fields) {
                 if (Modifier.isStatic(fieldNode.access)) {
                     continue;
                 }
 
-                if (fieldNode.desc.equals(String.format("L%s;", getClassAnalyser("WorldMapLabelSize").getNode().name))) {
-                    return classNode;
+                if (fieldNode.desc.equals(String.format("L%s;", getClassAnalyser("Coordinate").getNode().name))) {
+                    coordinateCount++;
                 }
+            }
+
+            if (coordinateCount == 2) {
+                return classNode;
             }
         }
 
