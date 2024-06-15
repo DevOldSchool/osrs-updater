@@ -3,7 +3,6 @@ package org.de.analysers;
 import org.de.Analyser;
 import org.objectweb.asm.tree.ClassNode;
 import org.objectweb.asm.tree.FieldNode;
-import org.objectweb.asm.tree.MethodNode;
 
 import java.lang.reflect.Modifier;
 import java.util.List;
@@ -22,7 +21,7 @@ public class KitDefinition extends Analyser {
     @Override
     public ClassNode matchClassNode(List<ClassNode> classes) {
         for (ClassNode classNode : classes) {
-            if (!classNode.superName.equals(getClassAnalyser("EntityNode").getNode().name)) {
+            if (!classNode.superName.equals(getClassAnalyser("DualNode").getNode().name)) {
                 continue;
             }
 
@@ -51,11 +50,7 @@ public class KitDefinition extends Analyser {
                 continue;
             }
 
-            for (MethodNode methodNode : classNode.methods) {
-                if (methodNode.desc.equals(String.format("(L%s;I)V", getClassAnalyser("ByteBuffer").getNode().name))) {
-                    return classNode;
-                }
-            }
+            return classNode;
         }
 
         return null;
