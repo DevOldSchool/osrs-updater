@@ -3,7 +3,6 @@ package org.de.analysers;
 import org.de.Analyser;
 import org.objectweb.asm.tree.ClassNode;
 import org.objectweb.asm.tree.FieldNode;
-import org.objectweb.asm.tree.MethodNode;
 
 import java.lang.reflect.Modifier;
 import java.util.List;
@@ -26,6 +25,10 @@ public class PendingSpawn extends Analyser {
                 continue;
             }
 
+            if (!Modifier.isFinal(classNode.access)) {
+                continue;
+            }
+
             int intCount = 0;
             for (FieldNode fieldNode : classNode.fields) {
                 if (Modifier.isStatic(fieldNode.access)) {
@@ -37,22 +40,7 @@ public class PendingSpawn extends Analyser {
                 }
             }
 
-            if (intCount < 10) {
-                continue;
-            }
-
-            int boolMethodCount = 0;
-            for (MethodNode methodNode : classNode.methods) {
-                if (Modifier.isStatic(methodNode.access)) {
-                    continue;
-                }
-
-                if (methodNode.desc.endsWith(")Z")) {
-                    boolMethodCount++;
-                }
-            }
-
-            if (boolMethodCount < 2) {
+            if (intCount < 12) {
                 continue;
             }
 
