@@ -23,7 +23,7 @@ public class Cache extends Analyser {
             if (classNode.superName.equalsIgnoreCase("java/lang/Object") &&
                     !classNode.name.equals(getClassAnalyser("Queue").getNode().name)) {
                 for (FieldNode fieldNode : classNode.fields) {
-                    if (fieldNode.desc.equals(String.format("L%s;", getClassAnalyser("EntityNode").getNode().name))) {
+                    if (fieldNode.desc.equals(String.format("L%s;", getClassAnalyser("DualNode").getNode().name))) {
                         return classNode;
                     }
                 }
@@ -36,7 +36,7 @@ public class Cache extends Analyser {
     @Override
     public void matchFields(ClassNode classNode) {
         for (FieldNode fieldNode : classNode.fields) {
-            if (fieldNode.desc.equals(String.format("L%s;", getClassAnalyser("EntityNode").getNode().name))) {
+            if (fieldNode.desc.equals(String.format("L%s;", getClassAnalyser("DualNode").getNode().name))) {
                 addField("getEntityNode()", fieldNode);
             }
             if (fieldNode.desc.equals(String.format("L%s;", getClassAnalyser("DoublyNode").getNode().name))) {

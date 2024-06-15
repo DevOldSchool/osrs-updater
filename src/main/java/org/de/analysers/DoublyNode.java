@@ -30,9 +30,9 @@ public class DoublyNode extends Analyser {
             for (String interfaceName : classNode.interfaces) {
                 if (interfaceName.equalsIgnoreCase("java/lang/Iterable")) {
                     for (MethodNode methodNode : classNode.methods) {
-                        if ((methodNode.desc.equals(String.format("()L%s;", getClassAnalyser("EntityNode").getNode().name)))) {
+                        if ((methodNode.desc.equals(String.format("()L%s;", getClassAnalyser("DualNode").getNode().name)))) {
                             for (FieldNode fieldNode : classNode.fields) {
-                                if (fieldNode.desc.equals(String.format("L%s;", getClassAnalyser("EntityNode").getNode().name))) {
+                                if (fieldNode.desc.equals(String.format("L%s;", getClassAnalyser("DualNode").getNode().name))) {
                                     return classNode;
                                 }
                             }
@@ -48,7 +48,7 @@ public class DoublyNode extends Analyser {
     @Override
     public void matchFields(ClassNode classNode) {
         for (FieldNode fieldNode : classNode.fields) {
-            if (fieldNode.desc.equals(String.format("L%s;", getClassAnalyser("EntityNode").getNode().name))) {
+            if (fieldNode.desc.equals(String.format("L%s;", getClassAnalyser("DualNode").getNode().name))) {
                 if (Modifier.isPublic(fieldNode.access)) {
                     addField("getHead()", fieldNode);
                 }

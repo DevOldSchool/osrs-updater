@@ -20,7 +20,7 @@ public class BufferedImage extends Analyser {
     @Override
     public ClassNode matchClassNode(List<ClassNode> classes) {
         for (ClassNode classNode : classes) {
-            if (!classNode.superName.equals(getClassAnalyser("EntityNode").getNode().name)) {
+            if (!classNode.superName.equals(getClassAnalyser("DualNode").getNode().name)) {
                 continue;
             }
 

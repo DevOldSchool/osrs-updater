@@ -1,10 +1,8 @@
 package org.de.analysers;
 
 import org.de.Analyser;
-import org.de.utilities.InstructionSearcher;
-import org.objectweb.asm.tree.*;
+import org.objectweb.asm.tree.ClassNode;
 
-import java.lang.reflect.Modifier;
 import java.util.List;
 
 public class CombatBarDefinition extends Analyser {
@@ -21,7 +19,7 @@ public class CombatBarDefinition extends Analyser {
     @Override
     public ClassNode matchClassNode(List<ClassNode> classes) {
         for (ClassNode classNode : classes) {
-            if (!classNode.superName.equals(getClassAnalyser("EntityNode").getNode().name)) {
+            if (!classNode.superName.equals(getClassAnalyser("DualNode").getNode().name)) {
                 continue;
             }
 

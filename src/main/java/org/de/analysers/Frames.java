@@ -26,7 +26,7 @@ public class Frames extends Analyser {
         }
 
         for (ClassNode classNode : classes) {
-            if (classNode.superName.equals(getClassAnalyser("EntityNode").getNode().name)) {
+            if (classNode.superName.equals(getClassAnalyser("DualNode").getNode().name)) {
                 for (FieldNode fieldNode : classNode.fields) {
                     if (fieldNode.desc.equals(String.format("[L%s;", identityKitClassNode.name))) {
                         return classNode;

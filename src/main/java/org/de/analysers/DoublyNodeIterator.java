@@ -48,7 +48,7 @@ public class DoublyNodeIterator extends Analyser {
                 for (AbstractInsnNode[] matches : instructionSearch.getMatches()) {
                     FieldInsnNode fieldInsnNode = (FieldInsnNode) matches[2];
 
-                    if (fieldInsnNode.desc.equals(String.format("L%s;", getClassAnalyser("EntityNode").getNode().name))) {
+                    if (fieldInsnNode.desc.equals(String.format("L%s;", getClassAnalyser("DualNode").getNode().name))) {
                         addField("getCurrent()", insnToField(fieldInsnNode, classNode));
                         break;
                     }
@@ -60,7 +60,7 @@ public class DoublyNodeIterator extends Analyser {
                 for (AbstractInsnNode[] matches : instructionSearch.getMatches()) {
                     FieldInsnNode fieldInsnNode = (FieldInsnNode) matches[3];
 
-                    if (fieldInsnNode.desc.equals(String.format("L%s;", getClassAnalyser("EntityNode").getNode().name))) {
+                    if (fieldInsnNode.desc.equals(String.format("L%s;", getClassAnalyser("DualNode").getNode().name))) {
                         addField("getNext()", insnToField(fieldInsnNode, classNode));
                         break;
                     }

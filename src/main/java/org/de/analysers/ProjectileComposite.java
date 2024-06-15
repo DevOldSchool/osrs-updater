@@ -20,7 +20,7 @@ public class ProjectileComposite extends Analyser {
     @Override
     public ClassNode matchClassNode(List<ClassNode> classes) {
         for (final ClassNode node : classes) {
-            if (node.superName.equals(getClassAnalyser("EntityNode").getNode().name)) {
+            if (node.superName.equals(getClassAnalyser("DualNode").getNode().name)) {
                 if (getField("getProjectileComposite()", getClassAnalyser("Projectile")).getField().desc.equals("L" + node.name + ";")) {
                     return node;
                 }

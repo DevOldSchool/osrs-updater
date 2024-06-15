@@ -33,7 +33,7 @@ public class Queue extends Analyser {
             for (MethodNode methodNode : classNode.methods) {
                 if ((methodNode.name.equals("<init>") && methodNode.desc.equals("()V"))) {
                     for (FieldNode fieldNode : classNode.fields) {
-                        if (fieldNode.desc.equals(String.format("L%s;", getClassAnalyser("EntityNode").getNode().name))) {
+                        if (fieldNode.desc.equals(String.format("L%s;", getClassAnalyser("DualNode").getNode().name))) {
                             return classNode;
                         }
                     }
@@ -47,7 +47,7 @@ public class Queue extends Analyser {
     @Override
     public void matchFields(ClassNode classNode) {
         for (FieldNode fieldNode : classNode.fields) {
-            if (fieldNode.desc.equals(String.format("L%s;", getClassAnalyser("EntityNode").getNode().name))) {
+            if (fieldNode.desc.equals(String.format("L%s;", getClassAnalyser("DualNode").getNode().name))) {
                 addField("getEntityNode()", fieldNode);
             }
         }

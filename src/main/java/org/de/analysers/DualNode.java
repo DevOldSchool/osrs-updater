@@ -8,7 +8,7 @@ import org.objectweb.asm.tree.*;
 import java.lang.reflect.Modifier;
 import java.util.List;
 
-public class EntityNode extends Analyser {
+public class DualNode extends Analyser {
     @Override
     public int getExpectedFieldsSize() {
         return 3;

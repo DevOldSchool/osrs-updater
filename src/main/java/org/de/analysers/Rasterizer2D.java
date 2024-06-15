@@ -20,7 +20,7 @@ public class Rasterizer2D extends Analyser {
     @Override
     public ClassNode matchClassNode(List<ClassNode> classes) {
         for (ClassNode classNode : classes) {
-            if (classNode.superName.equals(getClassAnalyser("EntityNode").getNode().name)) {
+            if (classNode.superName.equals(getClassAnalyser("DualNode").getNode().name)) {
                 for (MethodNode methodNode : classNode.methods) {
                     if (methodNode.desc.equals("(IIIIII[BIZ)V")) {
                         return classNode;

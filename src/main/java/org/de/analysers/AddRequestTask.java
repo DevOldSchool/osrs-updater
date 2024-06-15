@@ -22,7 +22,7 @@ public class AddRequestTask extends Analyser {
 
     @Override
     public ClassNode matchClassNode(List<ClassNode> classes) {
-        // Seems to have been introduced at revision 215
+        // Introduced at revision 215
         for (ClassNode classNode : classes) {
             for (MethodNode methodNode : classNode.methods) {
                 if (methodNode.name.equals("<init>")) {
