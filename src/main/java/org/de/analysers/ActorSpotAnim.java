@@ -19,7 +19,6 @@ public class ActorSpotAnim extends Analyser {
 
     @Override
     public ClassNode matchClassNode(List<ClassNode> classes) {
-        // Seems to have been introduced at revision 213
         for (ClassNode classNode : classes) {
             if (!classNode.superName.equals(getClassAnalyser("Node").getNode().name)) {
                 continue;
@@ -31,7 +30,7 @@ public class ActorSpotAnim extends Analyser {
             }
 
             for (MethodNode methodNode : classNode.methods) {
-                if (methodNode.name.equals("<init>") && methodNode.desc.equals("(IIII)V")) {
+                if (methodNode.name.equals("<init>") && methodNode.desc.endsWith("III)V")) {
                     return classNode;
                 }
             }
