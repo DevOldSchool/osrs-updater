@@ -20,7 +20,7 @@ public class SoftReference extends Analyser {
     @Override
     public ClassNode matchClassNode(List<ClassNode> classes) {
         for (ClassNode classNode : classes) {
-            if (!classNode.superName.equals(getClassAnalyser("Reference").getNode().name)) {
+            if (!classNode.superName.equals(getClassAnalyser("Wrapper").getNode().name)) {
                 continue;
             }
 
