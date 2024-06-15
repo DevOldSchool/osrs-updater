@@ -164,8 +164,8 @@ public class Updater {
         analysers.add(new FixedSizeDequeIterator());
         analysers.add(new NodeList());
         analysers.add(new NodeListIterator());
-        analysers.add(new EntityNode());
-        analysers.add(new Reference());
+        analysers.add(new DualNode());
+        analysers.add(new Wrapper());
         analysers.add(new SoftReference());
         analysers.add(new HardReference());
         analysers.add(new DoublyNode());
@@ -312,6 +312,7 @@ public class Updater {
         analysers.add(new WorldMapRenderer());
         analysers.add(new WorldMapRectangle());
         analysers.add(new WorldMapArchiveLoader());
+        analysers.add(new WorldMapSprite());
         analysers.add(new WorldMap());
         analysers.add(new KitDefinition());
         analysers.add(new FileRequest());
@@ -320,6 +321,7 @@ public class Updater {
         analysers.add(new VerticalAlignment());
         analysers.add(new WorldMapElement());
         analysers.add(new Enumerated());
+        analysers.add(new WorldMapSectionType());
         analysers.add(new Bounds());
         analysers.add(new NanoTimer());
         analysers.add(new AbstractTimer());
@@ -328,19 +330,20 @@ public class Updater {
         analysers.add(new LanguageType());
         analysers.add(new BuildType());
         analysers.add(new GameShell());
-
         analysers.add(new RouteStrategy());
         analysers.add(new ApproximateRouteStrategy());
         analysers.add(new FileSystemRequestHandler());
         analysers.add(new ArchiveLoader());
-
-        if (gamepackRevision >= 213) {
-            analysers.add(new ActorSpotAnim());
-        }
+        analysers.add(new ActorSpotAnim());
 
         if (gamepackRevision >= 215) {
             analysers.add(new AddRequestTask());
         }
-//        analysers.add(new Client());
+
+        if (gamepackRevision >= 222) {
+            analysers.add(new WorldView());
+        }
+
+        analysers.add(new Client());
     }
 }

@@ -1,25 +1,25 @@
 Gamepack Revision: 215
-Finished loading 547 classes in 62 ms
+Finished loading 547 classes in 65 ms
 Stored 1676 multipliers
 
 Deobfuscation: Removed 2773 RuntimeException try-catch blocks in 2 ms
-Deobfuscation: Removed 30715 dead instructions in 198 ms
-Deobfuscation: Optimised 210681 method control-flow graphs in 444 ms
+Deobfuscation: Removed 30715 dead instructions in 181 ms
+Deobfuscation: Optimised 210681 method control-flow graphs in 451 ms
 Deobfuscation: Optimised 1923 try-catch block handler exception ranges in 2 ms
-Deobfuscation: Removed 8490 IllegalStateException opaque checks in 36 ms
-Deobfuscation: Removed 1270 unused method arguments in 33 ms
+Deobfuscation: Removed 8490 IllegalStateException opaque checks in 38 ms
+Deobfuscation: Removed 1270 unused method arguments in 28 ms
 Deobfuscation: Removed 94661 redundant GOTO jumps in 7 ms
 Deobfuscation: Removed 90 constructor errors in 2 ms
-Deobfuscation: Fixed 4 invalid getPath() method calls in 6 ms
-Deobfuscation: Moved 6045 fields to original classes in 16 ms
-Deobfuscation: Removed 989 unused fields in 14 ms
+Deobfuscation: Fixed 4 invalid getPath() method calls in 7 ms
+Deobfuscation: Moved 6045 fields to original classes in 17 ms
+Deobfuscation: Removed 989 unused fields in 13 ms
 Deobfuscation: Reordered 4302 fields in 1 ms
-Deobfuscation: Moved 4023 methods to original classes in 312 ms
-Deobfuscation: Removed 6868 unused methods in 1356 ms
-Deobfuscation: Reordered 3769 methods in 6 ms
+Deobfuscation: Moved 4023 methods to original classes in 321 ms
+Deobfuscation: Removed 6868 unused methods in 1353 ms
+Deobfuscation: Reordered 3769 methods in 5 ms
 Deobfuscation: Inlined 1026 strings in 4 ms
-Deobfuscation: Removed 19648 multipliers in 3 ms
-Deobfuscation: Removed 0 decomplier traps in 0 ms
+Deobfuscation: Removed 19648 multipliers in 2 ms
+Deobfuscation: Removed 0 decomplier traps in 1 ms
 
 [- Canvas identified as af extends java/awt/Canvas -] (1/1) (0/0)
 	[> 'getComponent()' identified as 'af.aw' -] (Ljava/awt/Component;)
@@ -99,13 +99,13 @@ Deobfuscation: Removed 0 decomplier traps in 0 ms
 	[> 'getList()' identified as 'on.aw' -] (Lor;)
 	[> 'getCurrent()' identified as 'on.ar' -] (Lsb;)
 
-[- EntityNode identified as sh extends sb -] (3/3) (1/1)
+[- DualNode identified as sh extends sb -] (3/3) (1/1)
 	[> 'getUid()' identified as 'sh.ew' -] (J)
 	[> 'getNext()' identified as 'sh.eo' -] (Lsh;)
 	[> 'getPrevious()' identified as 'sh.eb' -] (Lsh;)
 	[> Method 'unlink' identified as 'sh.fy' -] (()V)
 
-[- Reference identified as la extends sh -] (1/1) (0/0)
+[- Wrapper identified as la extends sh -] (1/1) (0/0)
 	[> 'getIndex()' identified as 'la.ay' -] (I)	[ * 1 ]
 
 [- SoftReference identified as lr extends la -] (1/1) (0/0)
@@ -473,7 +473,7 @@ Deobfuscation: Removed 0 decomplier traps in 0 ms
 	[> 'getInteractableObjects()' identified as 'iz.av' -] ([Ljc;)
 	[> 'getTiles()' identified as 'iz.aj' -] ([[[Lil;)
 
-[- PendingSpawn identified as mt extends sb -] (0/0) (0/0)
+[- PendingSpawn identified as dz extends sb -] (0/0) (0/0)
 
 [- WidgetNode identified as dn extends sb -] (1/1) (0/0)
 	[> 'isRoot()' identified as 'dn.ar' -] (Z)
@@ -636,6 +636,10 @@ Deobfuscation: Removed 0 decomplier traps in 0 ms
 
 [- WorldMapArchiveLoader identified as st extends java/lang/Object -] (0/0) (0/0)
 
+[- WorldMapSprite identified as kw extends java/lang/Object -] (1/1) (1/1)
+	[> 'getTileColors()' identified as 'kw.ay' -] ([I)
+	[> Method 'getTileColor()' identified as 'kw.aw' -] ((III)I)
+
 [- WorldMap identified as sq extends java/lang/Object -] (0/0) (0/0)
 
 [- KitDefinition identified as hx extends sh -] (0/0) (0/0)
@@ -656,6 +660,8 @@ Deobfuscation: Removed 0 decomplier traps in 0 ms
 	[> 'getVerticalAlignment()' identified as 'ho.ak' -] (Lhl;)
 
 [- Enumerated identified as os extends java/lang/Object -] (0/0) (0/0)
+
+[- WorldMapSectionType identified as io extends java/lang/Object -] (0/0) (0/0)
 
 [- Bounds identified as rk extends java/lang/Object -] (0/4) (0/0)
 
@@ -689,11 +695,19 @@ Deobfuscation: Removed 0 decomplier traps in 0 ms
 [- ArchiveLoader identified as dr extends java/lang/Object -] (1/1) (0/0)
 	[> 'getArchive()' identified as 'dr.ay' -] (Lny;)
 
-[- ActorSpotAnim identified as ub extends sb -] (0/0) (0/0)
+[- ActorSpotAnim identified as il extends sb -] (0/0) (0/0)
 
 [- AddRequestTask identified as pe extends pp -] (0/0) (0/0)
 
-Identified 187/187 classes
-Identified 7/8 methods
-Identified 291/307 fields
-Finished analysing in 63 ms
+[- Client identified as client extends bq -] (6/6) (0/0)
+	[> 'getKeyInputHandler()' identified as 'client.st' -] (Lih;)
+	[> 'getPlayerDefinition()' identified as 'client.vi' -] (Lmb;)
+	[> 'getApproximateRouteStrategy()' identified as 'client.xm' -] (Lco;)
+	[> 'getOtlTokenRequester()' identified as 'client.hv' -] (Lcom/jagex/oldscape/pub/OtlTokenRequester;)
+	[> 'getWorldId()' identified as 'client.bj' -] (I)	[ * -2119372723 ]
+	[> 'getRefreshAccessTokenRequester()' identified as 'client.ho' -] (Lcom/jagex/oldscape/pub/RefreshAccessTokenRequester;)
+
+Identified 190/190 classes
+Identified 8/9 methods
+Identified 298/314 fields
+Finished analysing in 64 ms

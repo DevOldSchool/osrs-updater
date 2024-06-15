@@ -1,24 +1,24 @@
 Gamepack Revision: 212
-Finished loading 510 classes in 73 ms
+Finished loading 510 classes in 70 ms
 Stored 1678 multipliers
 
 Deobfuscation: Removed 2663 RuntimeException try-catch blocks in 3 ms
-Deobfuscation: Removed 29651 dead instructions in 183 ms
-Deobfuscation: Optimised 198342 method control-flow graphs in 406 ms
+Deobfuscation: Removed 29651 dead instructions in 187 ms
+Deobfuscation: Optimised 198342 method control-flow graphs in 407 ms
 Deobfuscation: Optimised 1490 try-catch block handler exception ranges in 3 ms
-Deobfuscation: Removed 8352 IllegalStateException opaque checks in 49 ms
-Deobfuscation: Removed 1197 unused method arguments in 27 ms
-Deobfuscation: Removed 88383 redundant GOTO jumps in 6 ms
+Deobfuscation: Removed 8352 IllegalStateException opaque checks in 33 ms
+Deobfuscation: Removed 1197 unused method arguments in 25 ms
+Deobfuscation: Removed 88383 redundant GOTO jumps in 8 ms
 Deobfuscation: Removed 88 constructor errors in 2 ms
-Deobfuscation: Fixed 3 invalid getPath() method calls in 17 ms
-Deobfuscation: Moved 4842 fields to original classes in 15 ms
-Deobfuscation: Removed 959 unused fields in 12 ms
-Deobfuscation: Reordered 4146 fields in 2 ms
-Deobfuscation: Moved 2721 methods to original classes in 297 ms
-Deobfuscation: Removed 6478 unused methods in 1307 ms
-Deobfuscation: Reordered 3590 methods in 5 ms
+Deobfuscation: Fixed 3 invalid getPath() method calls in 8 ms
+Deobfuscation: Moved 4842 fields to original classes in 27 ms
+Deobfuscation: Removed 959 unused fields in 11 ms
+Deobfuscation: Reordered 4146 fields in 1 ms
+Deobfuscation: Moved 2721 methods to original classes in 333 ms
+Deobfuscation: Removed 6478 unused methods in 1369 ms
+Deobfuscation: Reordered 3590 methods in 6 ms
 Deobfuscation: Inlined 1188 strings in 3 ms
-Deobfuscation: Removed 19049 multipliers in 2 ms
+Deobfuscation: Removed 19049 multipliers in 3 ms
 Deobfuscation: Removed 0 decomplier traps in 1 ms
 
 [- Canvas identified as aa extends java/awt/Canvas -] (1/1) (0/0)
@@ -99,13 +99,13 @@ Deobfuscation: Removed 0 decomplier traps in 1 ms
 	[> 'getList()' identified as 'nc.aj' -] (Lni;)
 	[> 'getCurrent()' identified as 'nc.ac' -] (Lru;)
 
-[- EntityNode identified as qk extends ru -] (3/3) (1/1)
+[- DualNode identified as qk extends ru -] (3/3) (1/1)
 	[> 'getUid()' identified as 'qk.eo' -] (J)
 	[> 'getNext()' identified as 'qk.ev' -] (Lqk;)
 	[> 'getPrevious()' identified as 'qk.ef' -] (Lqk;)
 	[> Method 'unlink' identified as 'qk.ey' -] (()V)
 
-[- Reference identified as ki extends qk -] (1/1) (0/0)
+[- Wrapper identified as ki extends qk -] (1/1) (0/0)
 	[> 'getIndex()' identified as 'ki.al' -] (I)	[ * 1 ]
 
 [- SoftReference identified as ko extends ki -] (1/1) (0/0)
@@ -474,7 +474,7 @@ Deobfuscation: Removed 0 decomplier traps in 1 ms
 	[> 'getInteractableObjects()' identified as 'ir.ap' -] ([Ljm;)
 	[> 'getTiles()' identified as 'ir.ao' -] ([[[Lid;)
 
-[- PendingSpawn identified as my extends ru -] (0/0) (0/0)
+[- PendingSpawn identified as da extends ru -] (0/0) (0/0)
 
 [- WidgetNode identified as de extends ru -] (1/1) (0/0)
 	[> 'isRoot()' identified as 'de.ac' -] (Z)
@@ -633,9 +633,13 @@ Deobfuscation: Removed 0 decomplier traps in 1 ms
 
 [- WorldMapRenderer identified as jt extends java/lang/Object -] (0/0) (0/0)
 
-	-> WorldMapRectangle is broken.
+[- WorldMapRectangle identified as jl extends java/lang/Object -] (0/0) (0/0)
 
 [- WorldMapArchiveLoader identified as rk extends java/lang/Object -] (0/0) (0/0)
+
+[- WorldMapSprite identified as jn extends java/lang/Object -] (1/1) (1/1)
+	[> 'getTileColors()' identified as 'jn.al' -] ([I)
+	[> Method 'getTileColor()' identified as 'jn.al' -] ((III)I)
 
 [- WorldMap identified as rc extends java/lang/Object -] (0/0) (0/0)
 
@@ -657,6 +661,8 @@ Deobfuscation: Removed 0 decomplier traps in 1 ms
 	[> 'getVerticalAlignment()' identified as 'hd.ai' -] (Lhe;)
 
 [- Enumerated identified as nt extends java/lang/Object -] (0/0) (0/0)
+
+[- WorldMapSectionType identified as is extends java/lang/Object -] (0/0) (0/0)
 
 [- Bounds identified as qy extends java/lang/Object -] (0/4) (0/0)
 
@@ -690,7 +696,17 @@ Deobfuscation: Removed 0 decomplier traps in 1 ms
 [- ArchiveLoader identified as dp extends java/lang/Object -] (1/1) (0/0)
 	[> 'getArchive()' identified as 'dp.al' -] (Lmx;)
 
-Identified 184/185 classes
-Identified 7/8 methods
-Identified 292/307 fields
-Finished analysing in 63 ms
+[- ActorSpotAnim identified as id extends ru -] (0/0) (0/0)
+
+[- Client identified as client extends br -] (6/6) (0/0)
+	[> 'getKeyInputHandler()' identified as 'client.sq' -] (Lic;)
+	[> 'getPlayerDefinition()' identified as 'client.vn' -] (Llc;)
+	[> 'getApproximateRouteStrategy()' identified as 'client.wa' -] (Lcy;)
+	[> 'getOtlTokenRequester()' identified as 'client.gv' -] (Lcom/jagex/oldscape/pub/OtlTokenRequester;)
+	[> 'getWorldId()' identified as 'client.bw' -] (I)	[ * 1239493743 ]
+	[> 'getRefreshAccessTokenRequester()' identified as 'client.hd' -] (Lcom/jagex/oldscape/pub/RefreshAccessTokenRequester;)
+
+Identified 189/189 classes
+Identified 8/9 methods
+Identified 299/314 fields
+Finished analysing in 67 ms

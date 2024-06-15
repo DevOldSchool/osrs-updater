@@ -1,21 +1,21 @@
 Gamepack Revision: 217
-Finished loading 562 classes in 63 ms
+Finished loading 562 classes in 80 ms
 Stored 1738 multipliers
 
 Deobfuscation: Removed 2850 RuntimeException try-catch blocks in 1 ms
-Deobfuscation: Removed 31646 dead instructions in 202 ms
-Deobfuscation: Optimised 209382 method control-flow graphs in 450 ms
+Deobfuscation: Removed 31646 dead instructions in 207 ms
+Deobfuscation: Optimised 209382 method control-flow graphs in 440 ms
 Deobfuscation: Optimised 1613 try-catch block handler exception ranges in 2 ms
-Deobfuscation: Removed 8388 IllegalStateException opaque checks in 37 ms
-Deobfuscation: Removed 1352 unused method arguments in 31 ms
-Deobfuscation: Removed 93940 redundant GOTO jumps in 7 ms
+Deobfuscation: Removed 8388 IllegalStateException opaque checks in 36 ms
+Deobfuscation: Removed 1352 unused method arguments in 43 ms
+Deobfuscation: Removed 93940 redundant GOTO jumps in 8 ms
 Deobfuscation: Removed 100 constructor errors in 1 ms
-Deobfuscation: Fixed 5 invalid getPath() method calls in 6 ms
-Deobfuscation: Moved 6040 fields to original classes in 17 ms
-Deobfuscation: Removed 980 unused fields in 14 ms
+Deobfuscation: Fixed 5 invalid getPath() method calls in 5 ms
+Deobfuscation: Moved 6040 fields to original classes in 16 ms
+Deobfuscation: Removed 980 unused fields in 13 ms
 Deobfuscation: Reordered 4369 fields in 1 ms
-Deobfuscation: Moved 3745 methods to original classes in 339 ms
-Deobfuscation: Removed 6863 unused methods in 1402 ms
+Deobfuscation: Moved 3745 methods to original classes in 353 ms
+Deobfuscation: Removed 6863 unused methods in 1429 ms
 Deobfuscation: Reordered 3910 methods in 6 ms
 Deobfuscation: Inlined 1022 strings in 4 ms
 Deobfuscation: Removed 19431 multipliers in 3 ms
@@ -99,13 +99,13 @@ Deobfuscation: Removed 0 decomplier traps in 0 ms
 	[> 'getList()' identified as 'pj.ac' -] (Lpy;)
 	[> 'getCurrent()' identified as 'pj.ak' -] (Lsj;)
 
-[- EntityNode identified as sb extends sj -] (3/3) (1/1)
+[- DualNode identified as sb extends sj -] (3/3) (1/1)
 	[> 'getUid()' identified as 'sb.ei' -] (J)
 	[> 'getNext()' identified as 'sb.ex' -] (Lsb;)
 	[> 'getPrevious()' identified as 'sb.ek' -] (Lsb;)
 	[> Method 'unlink' identified as 'sb.fs' -] (()V)
 
-[- Reference identified as lb extends sb -] (1/1) (0/0)
+[- Wrapper identified as lb extends sb -] (1/1) (0/0)
 	[> 'getIndex()' identified as 'lb.al' -] (I)	[ * 1 ]
 
 [- SoftReference identified as ld extends lb -] (1/1) (0/0)
@@ -475,7 +475,7 @@ Deobfuscation: Removed 0 decomplier traps in 0 ms
 	[> 'getInteractableObjects()' identified as 'jt.am' -] ([Lkl;)
 	[> 'getTiles()' identified as 'jt.ah' -] ([[[Ljh;)
 
-[- PendingSpawn identified as nm extends sj -] (0/0) (0/0)
+[- PendingSpawn identified as dw extends sj -] (0/0) (0/0)
 
 [- WidgetNode identified as de extends sj -] (1/1) (0/0)
 	[> 'isRoot()' identified as 'de.ak' -] (Z)
@@ -638,9 +638,12 @@ Deobfuscation: Removed 0 decomplier traps in 0 ms
 
 [- WorldMapArchiveLoader identified as tb extends java/lang/Object -] (0/0) (0/0)
 
+[- WorldMapSprite identified as kc extends java/lang/Object -] (1/1) (0/1)
+	[> 'getTileColors()' identified as 'kc.al' -] ([I)
+
 [- WorldMap identified as tu extends java/lang/Object -] (0/0) (0/0)
 
-	-> KitDefinition is broken.
+[- KitDefinition identified as hz extends sb -] (0/0) (0/0)
 
 [- FileRequest identified as ou extends sb -] (3/3) (0/0)
 	[> 'getPadding()' identified as 'ou.ak' -] (B)
@@ -658,6 +661,8 @@ Deobfuscation: Removed 0 decomplier traps in 0 ms
 	[> 'getVerticalAlignment()' identified as 'hp.aq' -] (Lhr;)
 
 [- Enumerated identified as on extends java/lang/Object -] (0/0) (0/0)
+
+[- WorldMapSectionType identified as ip extends java/lang/Object -] (0/0) (0/0)
 
 [- Bounds identified as rx extends java/lang/Object -] (0/4) (0/0)
 
@@ -691,11 +696,19 @@ Deobfuscation: Removed 0 decomplier traps in 0 ms
 [- ArchiveLoader identified as dn extends java/lang/Object -] (1/1) (0/0)
 	[> 'getArchive()' identified as 'dn.al' -] (Lok;)
 
-[- ActorSpotAnim identified as vk extends sj -] (0/0) (0/0)
+[- ActorSpotAnim identified as jh extends sj -] (0/0) (0/0)
 
 [- AddRequestTask identified as pi extends qm -] (0/0) (0/0)
 
-Identified 186/187 classes
-Identified 7/8 methods
-Identified 293/307 fields
-Finished analysing in 66 ms
+[- Client identified as client extends bb -] (6/6) (0/0)
+	[> 'getKeyInputHandler()' identified as 'client.sj' -] (Lit;)
+	[> 'getPlayerDefinition()' identified as 'client.vi' -] (Lni;)
+	[> 'getApproximateRouteStrategy()' identified as 'client.xx' -] (Lcs;)
+	[> 'getOtlTokenRequester()' identified as 'client.hy' -] (Lcom/jagex/oldscape/pub/OtlTokenRequester;)
+	[> 'getWorldId()' identified as 'client.bw' -] (I)	[ * -1845111543 ]
+	[> 'getRefreshAccessTokenRequester()' identified as 'client.hk' -] (Lcom/jagex/oldscape/pub/RefreshAccessTokenRequester;)
+
+Identified 190/190 classes
+Identified 7/9 methods
+Identified 300/314 fields
+Finished analysing in 71 ms
